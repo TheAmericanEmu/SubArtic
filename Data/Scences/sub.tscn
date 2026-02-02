@@ -74,6 +74,7 @@ light_size = 0.585
 shadow_enabled = true
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1902696497 node_paths=PackedStringArray("cam")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("1_yum48")
 cam = NodePath("Camera3D")
 
