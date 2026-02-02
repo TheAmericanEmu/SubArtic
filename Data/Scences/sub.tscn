@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://c5pv700ic2oxv"]
+
+[ext_resource type="Script" uid="uid://bxwmsdwkdbh1q" path="res://src/char_conttler.gd" id="1_yum48"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rjpdc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yum48"]
+
+[node name="Sub" type="Node3D" unique_id=443815960]
+
+[node name="Node3D" type="Node3D" parent="." unique_id=765512476]
+transform = Transform3D(4.168087, 0, 0, 0, 3.8921623, 0, 0, 0, 3.8921623, 0, 0, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Node3D" unique_id=1640316048]
+transform = Transform3D(-4.3741654e-08, 1.0006924, 0, -1.0006924, -4.3741654e-08, 0, 0, 0, 1.0006924, 0, 0, 0)
+use_collision = true
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Node3D/CSGCylinder3D" unique_id=1664900815]
+transform = Transform3D(-0.022020385, -5.836675e-08, 0.87141055, -4.0302787e-08, 1.3033857, 3.8090565e-08, -0.8997305, -5.6955738e-08, -0.02132727, 0, 0, 0)
+operation = 2
+sides = 6
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Node3D" unique_id=1995002136]
+transform = Transform3D(-4.3741654e-08, 1.0006924, 0, -1.0006924, -4.3741654e-08, 0, 0, 0, 1.0006924, -1.0934865, -3.90642e-08, 0)
+use_collision = true
+height = 0.21386719
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Node3D" unique_id=1760715090]
+transform = Transform3D(0.2399182, 0, 0, 0, -0.1144153, 0.23004438, 0, -0.23004438, -0.1144153, 0, 0.4213385, -0.1897946)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Node3D" unique_id=1421689198]
+transform = Transform3D(0.2399182, 0, 0, 0, -0.1144153, 0.23004438, 0, -0.23004438, -0.1144153, -0.48548204, 0.4213385, -0.1897946)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Node3D" unique_id=1242509814]
+transform = Transform3D(0.2399182, 0, 0, 0, -0.1144153, 0.23004438, 0, -0.23004438, -0.1144153, 0.75404984, 0.4213385, -0.1897946)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Node3D" unique_id=1291164987]
+transform = Transform3D(0.2399182, 0, 0, 0, 0.14201665, 0.21410874, 0, -0.21410874, 0.14201665, 0, 0.4213385, 0.16584393)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Node3D" unique_id=1160412564]
+transform = Transform3D(0.2399182, 0, 0, 0, 0.14201665, 0.21410874, 0, -0.21410874, 0.14201665, -0.48548204, 0.4213385, 0.16584393)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Node3D" unique_id=548131648]
+transform = Transform3D(0.2399182, 0, 0, 0, 0.14201665, 0.21410874, 0, -0.21410874, 0.14201665, 0.7540497, 0.4213385, 0.16584393)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1902696497 node_paths=PackedStringArray("cam")]
+script = ExtResource("1_yum48")
+cam = NodePath("Camera3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1720319678]
+mesh = SubResource("CapsuleMesh_rjpdc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=462568932]
+shape = SubResource("CapsuleShape3D_yum48")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=490995391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6716558, 0)
