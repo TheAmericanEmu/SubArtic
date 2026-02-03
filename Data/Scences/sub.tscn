@@ -1,6 +1,16 @@
 [gd_scene format=3 uid="uid://c5pv700ic2oxv"]
 
-[ext_resource type="Script" uid="uid://bxwmsdwkdbh1q" path="res://src/char_conttler.gd" id="1_yum48"]
+[ext_resource type="Script" uid="uid://bchfrjsiw8snx" path="res://src/character_body_3d_mk2.gd" id="1_yum48"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yum48"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ylndv"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_715lt"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_ylndv")
+emission_energy_multiplier = 8.79
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_rjpdc"]
 
@@ -73,10 +83,15 @@ light_volumetric_fog_energy = 0.87
 light_size = 0.585
 shadow_enabled = true
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=1229945878]
+transform = Transform3D(4.370854e-08, -0.9999351, -0.01139684, -0.9999999, -4.3711385e-08, 5.704476e-17, -4.981682e-10, 0.011396845, -0.99993485, 1.326718, 0, 0.51177883)
+mesh = SubResource("PlaneMesh_yum48")
+surface_material_override/0 = SubResource("StandardMaterial3D_715lt")
+
 [node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1902696497 node_paths=PackedStringArray("cam")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_yum48")
-cam = NodePath("Camera3D")
+cam = NodePath("Cam")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1720319678]
 mesh = SubResource("CapsuleMesh_rjpdc")
@@ -84,6 +99,15 @@ mesh = SubResource("CapsuleMesh_rjpdc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=462568932]
 shape = SubResource("CapsuleShape3D_yum48")
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=490995391]
+[node name="Cam" type="Node3D" parent="CharacterBody3D" unique_id=1263163769]
+
+[node name="Camera" type="Camera3D" parent="CharacterBody3D/Cam" unique_id=490995391]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5870817, 0)
 current = true
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1730299742]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=478533778]
+transform = Transform3D(-0.33808097, 0, -0.94111705, 0, 1, 0, 0.94111705, 0, -0.33808097, -4.605159, 0.5298064, 0)
