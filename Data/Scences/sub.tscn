@@ -1,41 +1,101 @@
 [gd_scene format=3 uid="uid://c5pv700ic2oxv"]
 
 [ext_resource type="Script" uid="uid://bchfrjsiw8snx" path="res://src/character_body_3d_mk2.gd" id="1_yum48"]
+[ext_resource type="Script" uid="uid://7vakksvm5beb" path="res://src/real_sub.gd" id="2_ylndv"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_yum48"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_715lt"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_7hphq"]
+sky_material = SubResource("ProceduralSkyMaterial_715lt")
+
+[sub_resource type="Environment" id="Environment_1pqt4"]
+background_mode = 2
+sky = SubResource("Sky_7hphq")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ylndv"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("Real_Sub/MainWindowCam")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_715lt"]
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_ylndv")
 emission_energy_multiplier = 8.79
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_yum48"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_rjpdc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yum48"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_715lt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ylndv"]
+
 [node name="Sub" type="Node3D" unique_id=443815960]
 
-[node name="Node3D" type="Node3D" parent="." unique_id=765512476]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1847204775]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1667378322]
+environment = SubResource("Environment_1pqt4")
+
+[node name="PlayerSpace" type="Node3D" parent="." unique_id=2147308345]
+
+[node name="Fake_SuB" type="Node3D" parent="PlayerSpace" unique_id=765512476]
 transform = Transform3D(4.168087, 0, 0, 0, 3.8921623, 0, 0, 0, 3.8921623, 0, 0, 0)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Node3D" unique_id=1640316048]
-transform = Transform3D(-4.3741654e-08, 1.0006924, 0, -1.0006924, -4.3741654e-08, 0, 0, 0, 1.0006924, 0, 0, 0)
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB" unique_id=1393444667]
+transform = Transform3D(-4.3711385e-08, 0.9999997, 0, -1.0000002, -4.3711395e-08, 0, 0, 0, 1.0000002, -1.0166882, 0.118687905, 0)
+operation = 2
+use_collision = true
+radius = 0.176
+height = 0.1
+material = SubResource("StandardMaterial3D_715lt")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB" unique_id=412303701]
+transform = Transform3D(-4.3741654e-08, 1.0006922, 0, -1.0006925, -4.3741665e-08, 0, 0, 0, 1.0006925, 1.0657775, -5.3599067e-08, 0)
+use_collision = true
+height = 0.21386719
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB" unique_id=1995002136]
+transform = Transform3D(-4.374164e-08, 1.2959981, 0, -1.0006924, -5.6649885e-08, 0, 0, 0, 1.0006924, -1.0934861, -3.90642e-08, 0)
+use_collision = true
+height = 0.21386719
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/CSGCylinder3D2" unique_id=1640316048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.680192e-08, 1.0927299, 0)
 use_collision = true
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Node3D/CSGCylinder3D" unique_id=1664900815]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/CSGCylinder3D2/CSGCylinder3D" unique_id=1664900815]
 transform = Transform3D(-0.022020385, -5.836675e-08, 0.87141055, -4.0302787e-08, 1.3033857, 3.8090565e-08, -0.8997305, -5.6955738e-08, -0.02132727, 0, 0, 0)
 operation = 2
 sides = 6
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Node3D" unique_id=1995002136]
-transform = Transform3D(-4.3741654e-08, 1.0006924, 0, -1.0006924, -4.3741654e-08, 0, 0, 0, 1.0006924, -1.0934865, -3.90642e-08, 0)
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/CSGCylinder3D2" unique_id=2021352098]
+transform = Transform3D(1.0000001, 7.1054274e-15, 0, -3.5527137e-15, 1.0000001, 0, 0, 0, 1.0000001, -0.11928945, 0, 0)
+operation = 2
 use_collision = true
-height = 0.21386719
+radius = 0.176
+height = 0.804
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Node3D" unique_id=1760715090]
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB" unique_id=693124963]
+transform = Transform3D(-4.3711378e-08, 0.9999997, 0, -1, -4.371139e-08, 0, 0, 0, 1, -1.0414566, 0.118687905, 0)
+use_collision = true
+radius = 0.2
+height = 0.2
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/CSGCylinder3D4" unique_id=916865724]
+transform = Transform3D(1.0000001, 0, 0, -3.5527137e-15, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
+operation = 2
+use_collision = true
+radius = 0.176
+height = 0.804
+
+[node name="SpotLight3D" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=1760715090]
 transform = Transform3D(0.2399182, 0, 0, 0, -0.1144153, 0.23004438, 0, -0.23004438, -0.1144153, 0, 0.4213385, -0.1897946)
 light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
 light_energy = 8.556
@@ -43,7 +103,7 @@ light_volumetric_fog_energy = 0.87
 light_size = 0.585
 shadow_enabled = true
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="Node3D" unique_id=1421689198]
+[node name="SpotLight3D3" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=1421689198]
 transform = Transform3D(0.2399182, 0, 0, 0, -0.1144153, 0.23004438, 0, -0.23004438, -0.1144153, -0.48548204, 0.4213385, -0.1897946)
 light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
 light_energy = 8.556
@@ -51,7 +111,7 @@ light_volumetric_fog_energy = 0.87
 light_size = 0.585
 shadow_enabled = true
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="Node3D" unique_id=1242509814]
+[node name="SpotLight3D2" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=1242509814]
 transform = Transform3D(0.2399182, 0, 0, 0, -0.1144153, 0.23004438, 0, -0.23004438, -0.1144153, 0.75404984, 0.4213385, -0.1897946)
 light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
 light_energy = 8.556
@@ -59,7 +119,7 @@ light_volumetric_fog_energy = 0.87
 light_size = 0.585
 shadow_enabled = true
 
-[node name="SpotLight3D4" type="SpotLight3D" parent="Node3D" unique_id=1291164987]
+[node name="SpotLight3D4" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=1291164987]
 transform = Transform3D(0.2399182, 0, 0, 0, 0.14201665, 0.21410874, 0, -0.21410874, 0.14201665, 0, 0.4213385, 0.16584393)
 light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
 light_energy = 8.556
@@ -67,7 +127,7 @@ light_volumetric_fog_energy = 0.87
 light_size = 0.585
 shadow_enabled = true
 
-[node name="SpotLight3D5" type="SpotLight3D" parent="Node3D" unique_id=1160412564]
+[node name="SpotLight3D5" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=1160412564]
 transform = Transform3D(0.2399182, 0, 0, 0, 0.14201665, 0.21410874, 0, -0.21410874, 0.14201665, -0.48548204, 0.4213385, 0.16584393)
 light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
 light_energy = 8.556
@@ -75,7 +135,7 @@ light_volumetric_fog_energy = 0.87
 light_size = 0.585
 shadow_enabled = true
 
-[node name="SpotLight3D6" type="SpotLight3D" parent="Node3D" unique_id=548131648]
+[node name="SpotLight3D6" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=548131648]
 transform = Transform3D(0.2399182, 0, 0, 0, 0.14201665, 0.21410874, 0, -0.21410874, 0.14201665, 0.7540497, 0.4213385, 0.16584393)
 light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
 light_energy = 8.556
@@ -83,31 +143,55 @@ light_volumetric_fog_energy = 0.87
 light_size = 0.585
 shadow_enabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" unique_id=1229945878]
-transform = Transform3D(4.370854e-08, -0.9999351, -0.01139684, -0.9999999, -4.3711385e-08, 5.704476e-17, -4.981682e-10, 0.011396845, -0.99993485, 1.326718, 0, 0.51177883)
+[node name="Main_Window" type="MeshInstance3D" parent="PlayerSpace/Fake_SuB" unique_id=1229945878]
+transform = Transform3D(-8.742273e-09, 0.19999981, -8.742273e-09, 0, -8.742276e-09, -0.19999999, -0.20000002, -8.742276e-09, 3.8213706e-16, -0.9531607, 0.12109735, 0.0012976032)
 mesh = SubResource("PlaneMesh_yum48")
 surface_material_override/0 = SubResource("StandardMaterial3D_715lt")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1902696497 node_paths=PackedStringArray("cam")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+[node name="CharacterBody3D" type="CharacterBody3D" parent="PlayerSpace" unique_id=1902696497 node_paths=PackedStringArray("cam", "real_sub")]
+transform = Transform3D(-0.99999994, 0, 8.742277e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_yum48")
 cam = NodePath("Cam")
+real_sub = NodePath("../../Real_Sub")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1720319678]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerSpace/CharacterBody3D" unique_id=1720319678]
 mesh = SubResource("CapsuleMesh_rjpdc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=462568932]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerSpace/CharacterBody3D" unique_id=462568932]
 shape = SubResource("CapsuleShape3D_yum48")
 
-[node name="Cam" type="Node3D" parent="CharacterBody3D" unique_id=1263163769]
+[node name="Cam" type="Node3D" parent="PlayerSpace/CharacterBody3D" unique_id=1263163769]
 
-[node name="Camera" type="Camera3D" parent="CharacterBody3D/Cam" unique_id=490995391]
+[node name="Camera" type="Camera3D" parent="PlayerSpace/CharacterBody3D/Cam" unique_id=490995391]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5870817, 0)
 current = true
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=1730299742]
+[node name="Real_Sub" type="CharacterBody3D" parent="." unique_id=1852088454]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -46)
+script = ExtResource("2_ylndv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Real_Sub" unique_id=1565459029]
+transform = Transform3D(5.5783315, 0, 0, 0, 3.4186203, 0, 0, 0, 3.5422978, 0, 0, 0)
+mesh = SubResource("BoxMesh_715lt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Real_Sub" unique_id=1698410215]
+transform = Transform3D(5.5783315, 0, 0, 0, 3.4186203, 0, 0, 0, 3.5422978, 0, 0, 0)
+shape = SubResource("BoxShape3D_ylndv")
+
+[node name="MainWindowCam" type="SubViewport" parent="Real_Sub" unique_id=1730299742]
 handle_input_locally = false
+render_target_clear_mode = 2
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=478533778]
-transform = Transform3D(-0.33808097, 0, -0.94111705, 0, 1, 0, 0.94111705, 0, -0.33808097, -4.605159, 0.5298064, 0)
+[node name="Cam" type="Camera3D" parent="Real_Sub/MainWindowCam" unique_id=478533778]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -42.21966)
+
+[node name="MainCamPoint" type="Marker3D" parent="Real_Sub" unique_id=283411051]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.2565193, 0, -1.8318588e-08)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Real_Sub" unique_id=152622237]
+transform = Transform3D(-3.295724e-08, 0.48051432, 0.87698686, 4.2007898e-08, 0.87698686, -0.48051432, -1, 2.1003949e-08, -4.9088463e-08, -2.6914253, -1.2396116, -1.1764564e-07)
+light_energy = 16.0
+light_indirect_energy = 2.587
+spot_range = 3.2238367
+spot_angle = 17.060335
