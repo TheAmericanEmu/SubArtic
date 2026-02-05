@@ -10,6 +10,10 @@ const JUMP_VELOCITY = 4.5
 
 var is_poilting := false
 
+#Stats
+var depth :=0.00
+var power_settings:=1
+
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -17,8 +21,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	main_cam.global_transform=main_cam_point.global_transform
-	
-	print(main_cam.position, main_cam_point.position)
+	var surface = self.position
+	surface.y = 0
+	depth = self.position.distance_to(surface)
+	print(depth)
 
 func _physics_process(delta: float) -> void:
 	
@@ -29,6 +35,12 @@ func _physics_process(delta: float) -> void:
 			#velocity += get_gravity() * delta
 
 		# Handle jump.
+		if Input.is_action_just_pressed("power_up"):
+			if power_settings<3:
+				power_settings+=1
+		elif Input.is_action_just_pressed("power_up"):
+			if power_settings>-1:
+				power_settings-=1
 
 
 		# Get the input direction and handle the movement/deceleration.
@@ -37,10 +49,10 @@ func _physics_process(delta: float) -> void:
 		var direction := (self.basis * Vector3(input_dir.y, 0, 0)).normalized()
 		
 		self.rotate_y(input_dir.x*delta)
-		var up_down :=  Input.get_axis("up","down") * SPEED
+		var up_down :=  Input.get_axis("up","down") * (SPEED*power_settings)
 		if direction or up_down:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
+			velocity.x = direction.x * (SPEED*power_settings)
+			velocity.z = direction.z * (SPEED*power_settings)
 			velocity.y=up_down
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
