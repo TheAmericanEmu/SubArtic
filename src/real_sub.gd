@@ -38,8 +38,8 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("power_up"):
 			if power_settings<3:
 				power_settings+=1
-		elif Input.is_action_just_pressed("power_up"):
-			if power_settings>-1:
+		elif Input.is_action_just_pressed("power_down"):
+			if power_settings>1:
 				power_settings-=1
 
 

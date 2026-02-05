@@ -22,6 +22,7 @@ func _toogle_main_window():
 
 func _update_computer():
 	sub_comp.depth=real_sub.depth
+	sub_comp.speed=real_sub.power_settings
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
