@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bchfrjsiw8snx" path="res://src/character_body_3d_mk2.gd" id="1_yum48"]
 [ext_resource type="PackedScene" uid="uid://bhexbtaua4erj" path="res://Data/objects/sub_hud.tscn" id="2_7hphq"]
 [ext_resource type="Script" uid="uid://7vakksvm5beb" path="res://src/real_sub.gd" id="2_ylndv"]
+[ext_resource type="PackedScene" uid="uid://j63n404ov600" path="res://Data/objects/Map.tscn" id="5_1pqt4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_715lt"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -50,9 +51,13 @@ heightmap_texture = SubResource("ViewportTexture_1pqt4")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ylndv"]
 height = 2.4550781
 
-[sub_resource type="BoxMesh" id="BoxMesh_715lt"]
+[sub_resource type="BoxMesh" id="BoxMesh_1pqt4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ylndv"]
+size = Vector3(1.6753235, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6mkbk"]
+size = Vector3(2.7495728, 3.8150635, 3.8999634)
 
 [node name="Sub" type="Node3D" unique_id=443815960]
 
@@ -64,6 +69,7 @@ shadow_enabled = true
 environment = SubResource("Environment_1pqt4")
 
 [node name="PlayerSpace" type="Node3D" parent="." unique_id=2147308345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -900.21277, 0, 0)
 
 [node name="Fake_SuB" type="Node3D" parent="PlayerSpace" unique_id=765512476]
 transform = Transform3D(4.168087, 0, 0, 0, 3.8921623, 0, 0, 0, 3.8921623, 0, 0, 0)
@@ -199,15 +205,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5870817, 0)
 current = true
 
 [node name="Real_Sub" type="CharacterBody3D" parent="." unique_id=1852088454]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -46)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.4013424, -30.743452)
 script = ExtResource("2_ylndv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Real_Sub" unique_id=1565459029]
-transform = Transform3D(5.5783315, 0, 0, 0, 3.4186203, 0, 0, 0, 3.5422978, 0, 0, 0)
-mesh = SubResource("BoxMesh_715lt")
+transform = Transform3D(9.243612, 0, 0, 0, 3.4186203, 0, 0, 0, 3.5422978, 0, 0, 0)
+mesh = SubResource("BoxMesh_1pqt4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Real_Sub" unique_id=1698410215]
-transform = Transform3D(5.5783315, 0, 0, 0, 3.4186203, 0, 0, 0, 3.5422978, 0, 0, 0)
+transform = Transform3D(5.5783315, 0, 0, 0, 3.4186203, 0, 0, 0, 3.5422978, -0.028173447, 0, -5.684342e-13)
 shape = SubResource("BoxShape3D_ylndv")
 
 [node name="MainWindowCam" type="SubViewport" parent="Real_Sub" unique_id=1730299742]
@@ -217,9 +223,10 @@ render_target_update_mode = 4
 
 [node name="Cam" type="Camera3D" parent="Real_Sub/MainWindowCam" unique_id=478533778]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -42.21966)
+fov = 37.849285
 
 [node name="MainCamPoint" type="Marker3D" parent="Real_Sub" unique_id=283411051]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.2565193, 0, -1.8318588e-08)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.2565193, 0, -1.05741606e-07)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Real_Sub" unique_id=152622237]
 transform = Transform3D(-3.295724e-08, 0.48051432, 0.87698686, 4.2007898e-08, 0.87698686, -0.48051432, -1, 2.1003949e-08, -4.9088463e-08, -2.6914253, -1.2396116, -1.1764564e-07)
@@ -227,3 +234,30 @@ light_energy = 16.0
 light_indirect_energy = 2.587
 spot_range = 3.2238367
 spot_angle = 17.060335
+
+[node name="AftHitBox" type="Area3D" parent="Real_Sub" unique_id=178918366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9148865, 0, 3.9990937e-08)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Real_Sub/AftHitBox" unique_id=1529665611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6663532, -0.007385254, -0.04165647)
+shape = SubResource("BoxShape3D_6mkbk")
+
+[node name="MidHitBox2" type="Area3D" parent="Real_Sub" unique_id=910260075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7247963, 0, -1.1910481e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Real_Sub/MidHitBox2" unique_id=1093348691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6663532, -0.007385254, -0.04165647)
+shape = SubResource("BoxShape3D_6mkbk")
+
+[node name="ForHitBox3" type="Area3D" parent="Real_Sub" unique_id=1263880900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2.622685e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Real_Sub/ForHitBox3" unique_id=1034044236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6663532, -0.007385254, -0.04165647)
+shape = SubResource("BoxShape3D_6mkbk")
+
+[node name="Node3D" parent="." unique_id=69286103 groups=["Map"] instance=ExtResource("5_1pqt4")]
+
+[connection signal="body_entered" from="Real_Sub/AftHitBox" to="Real_Sub" method="_on_aft_hit_box_body_entered"]
+[connection signal="body_entered" from="Real_Sub/MidHitBox2" to="Real_Sub" method="_on_mid_hit_box_2_body_entered"]
+[connection signal="body_entered" from="Real_Sub/ForHitBox3" to="Real_Sub" method="_on_for_hit_box_3_body_entered"]

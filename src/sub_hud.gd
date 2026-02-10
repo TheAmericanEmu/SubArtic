@@ -2,12 +2,18 @@ class_name sub_hud extends Control
 
 @onready var depth_label: Label = $Depth/Label
 @onready var speed_label: Label = $Speed/Label
+@onready var power_label: Label = $Power/Label
 
 
 var depth:=100.0:
 	set(new_value):
 		depth_label.text="Depth: "+str(roundf(new_value))+" M"
 		depth=new_value
+
+var power_left:=100.0:
+	set(new_value):
+		power_label.text="⚡: "+str(roundf(new_value))+" %"
+		power_left=new_value
 
 var speed:=1:
 	set(new_value):

@@ -13,6 +13,13 @@ var is_poilting := false
 #Stats
 var depth :=0.00
 var power_settings:=1
+var power_left:=100.0
+var engine_rpm:=0
+
+var for_health:=100
+var mid_health:=100
+var aft_health:=100
+
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -24,7 +31,6 @@ func _process(delta: float) -> void:
 	var surface = self.position
 	surface.y = 0
 	depth = self.position.distance_to(surface)
-	print(depth)
 
 func _physics_process(delta: float) -> void:
 	
@@ -54,8 +60,32 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction.x * (SPEED*power_settings)
 			velocity.z = direction.z * (SPEED*power_settings)
 			velocity.y=up_down
+			
+			power_left-=(abs(input_dir.y)* (power_settings))*0.01
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
-			velocity.y = move_toward(velocity.y, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, 0.2)
+			velocity.z = move_toward(velocity.z, 0, 0.2)
+			velocity.y = move_toward(velocity.y, 0, 0.2)
 		move_and_slide()
+
+func do_collison(body:StaticBody3D,sec:int):
+	if sec==0:
+		for_health-=1
+	elif sec==1:
+		mid_health-=1
+	else:
+		aft_health-=1
+	print(for_health,"-----",mid_health,"-----",aft_health)
+func _on_aft_hit_box_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Map"):
+		do_collison(body,2)
+
+
+func _on_mid_hit_box_2_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Map"):
+		do_collison(body,1)
+
+
+func _on_for_hit_box_3_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Map"):
+		do_collison(body,0)
