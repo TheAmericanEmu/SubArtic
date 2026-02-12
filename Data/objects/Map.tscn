@@ -2,6 +2,7 @@
 
 [ext_resource type="Material" uid="uid://dle0is8iegxl8" path="res://Data/Mat/Ground.tres" id="1_qhumg"]
 [ext_resource type="Texture2D" uid="uid://urxa0jcqu4ki" path="res://Data/textures/Texturelabs_Stone_166S.jpg" id="2_6jxuw"]
+[ext_resource type="PackedScene" uid="uid://dwcrmcu8p8ps5" path="res://Data/objects/city_one.tscn" id="3_acq4a"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_es73t"]
 _surfaces = [{
@@ -119,3 +120,6 @@ material = ExtResource("1_qhumg")
 
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="MapCollison" unique_id=1198624948]
 shape = SubResource("ConcavePolygonShape3D_acq4a")
+
+[node name="City One" parent="." unique_id=1079765549 instance=ExtResource("3_acq4a")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -188.72849, -174.41594, 175.85374)
