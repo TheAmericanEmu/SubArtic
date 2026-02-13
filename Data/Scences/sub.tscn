@@ -5,7 +5,9 @@
 [ext_resource type="Material" uid="uid://b3jratmg8myh3" path="res://Data/Mat/metal_sub.tres" id="2_6mkbk"]
 [ext_resource type="PackedScene" uid="uid://bhexbtaua4erj" path="res://Data/objects/sub_hud.tscn" id="2_7hphq"]
 [ext_resource type="Script" uid="uid://7vakksvm5beb" path="res://src/real_sub.gd" id="2_ylndv"]
+[ext_resource type="Script" uid="uid://buv7u1vpinn0t" path="res://src/photo_spot.gd" id="4_wm6fd"]
 [ext_resource type="PackedScene" uid="uid://j63n404ov600" path="res://Data/objects/Map.tscn" id="5_1pqt4"]
+[ext_resource type="Script" uid="uid://oar3d7retwq5" path="res://src/helm_interact_point.gd" id="5_rcmm0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_715lt"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -47,6 +49,9 @@ albedo_texture = SubResource("ViewportTexture_6mkbk")
 emission_energy_multiplier = 8.79
 heightmap_texture = SubResource("ViewportTexture_1pqt4")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wm6fd"]
+size = Vector3(0.35864258, 1, 1)
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_rjpdc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ylndv"]
@@ -65,6 +70,9 @@ background_color = Color(0.24123287, 0.46388268, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6mkbk"]
 size = Vector3(2.7495728, 3.8150635, 3.8999634)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rcmm0"]
+size = Vector3(10.509766, 4.275635, 4.571289)
 
 [node name="Sub" type="Node3D" unique_id=443815960]
 
@@ -200,6 +208,22 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wm6fd")
 
 [node name="Control" parent="PlayerSpace/Fake_SuB/Hud" unique_id=202643959 instance=ExtResource("2_7hphq")]
 
+[node name="Cam" type="Area3D" parent="PlayerSpace/Fake_SuB" unique_id=1299493268]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 1.4608002, 0, 0)
+script = ExtResource("4_wm6fd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerSpace/Fake_SuB/Cam" unique_id=1659033969]
+transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_wm6fd")
+
+[node name="Helm" type="Area3D" parent="PlayerSpace/Fake_SuB" unique_id=1612783822]
+transform = Transform3D(0.9999996, 0, 0, 0, 1, 0, 0, 0, 1, -0.7613983, 0, 0)
+script = ExtResource("5_rcmm0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerSpace/Fake_SuB/Helm" unique_id=1611040364]
+transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_wm6fd")
+
 [node name="CharacterBody3D" type="CharacterBody3D" parent="PlayerSpace" unique_id=1902696497 node_paths=PackedStringArray("cam", "real_sub")]
 transform = Transform3D(-1, 0, 4.5695582e-08, 0, 1, 0, -4.569558e-08, 0, -1.0000001, -2.423153, 0, 0)
 script = ExtResource("1_yum48")
@@ -220,7 +244,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5870817, 0)
 current = true
 
 [node name="Real_Sub" type="CharacterBody3D" parent="." unique_id=1852088454]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -56.880962, -267.13412, -30.743452)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.4041252, 14.827316, -0.2795601)
 script = ExtResource("2_ylndv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Real_Sub" unique_id=1565459029]
@@ -290,8 +314,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2.622685e-07)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6663532, -0.007385254, -0.04165647)
 shape = SubResource("BoxShape3D_6mkbk")
 
+[node name="AreaCheckBox" type="Area3D" parent="Real_Sub" unique_id=319003008]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Real_Sub/AreaCheckBox" unique_id=328330442]
+shape = SubResource("BoxShape3D_rcmm0")
+
 [node name="Node3D" parent="." unique_id=69286103 groups=["Map"] instance=ExtResource("5_1pqt4")]
 
+[connection signal="body_entered" from="PlayerSpace/Fake_SuB/Cam" to="PlayerSpace/Fake_SuB/Cam" method="_on_body_entered"]
+[connection signal="body_exited" from="PlayerSpace/Fake_SuB/Cam" to="PlayerSpace/Fake_SuB/Cam" method="_on_body_exited"]
+[connection signal="request_take_pic" from="PlayerSpace/Fake_SuB/Cam" to="PlayerSpace/Fake_SuB" method="_on_area_3d_request_take_pic"]
+[connection signal="body_entered" from="PlayerSpace/Fake_SuB/Helm" to="PlayerSpace/Fake_SuB/Helm" method="_on_body_entered"]
+[connection signal="body_exited" from="PlayerSpace/Fake_SuB/Helm" to="PlayerSpace/Fake_SuB/Helm" method="_on_body_exited"]
+[connection signal="enter_helm" from="PlayerSpace/Fake_SuB/Helm" to="PlayerSpace/Fake_SuB" method="_on_helm_enter_helm"]
 [connection signal="body_entered" from="Real_Sub/AftHitBox" to="Real_Sub" method="_on_aft_hit_box_body_entered"]
 [connection signal="body_entered" from="Real_Sub/MidHitBox2" to="Real_Sub" method="_on_mid_hit_box_2_body_entered"]
 [connection signal="body_entered" from="Real_Sub/ForHitBox3" to="Real_Sub" method="_on_for_hit_box_3_body_entered"]
+[connection signal="area_entered" from="Real_Sub/AreaCheckBox" to="Real_Sub" method="_on_area_check_box_area_entered"]
+[connection signal="area_exited" from="Real_Sub/AreaCheckBox" to="Real_Sub" method="_on_area_check_box_area_exited"]

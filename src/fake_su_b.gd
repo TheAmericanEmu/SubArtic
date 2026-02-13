@@ -3,6 +3,7 @@ extends Node3D
 @onready var window_blocker: CSGCylinder3D = $Window_Blocker
 @onready var real_sub: RealSub = $"../../Real_Sub"
 @onready var sub_comp: sub_hud = $Hud/Control
+@onready var character_body_3d: player = $"../CharacterBody3D"
 
 var is_main_window_open :=false
 
@@ -27,3 +28,13 @@ func _update_computer():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	_update_computer()
+
+
+func _on_area_3d_request_take_pic() -> void:
+	if real_sub.current_poi!=null:
+		real_sub.current_poi.discover_poi()
+
+
+func _on_helm_enter_helm() -> void:
+	real_sub.is_poilting=true
+	character_body_3d.position=Vector3(-2.42,0.0,0.0)

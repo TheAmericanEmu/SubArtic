@@ -20,6 +20,7 @@ var for_health:=100
 var mid_health:=100
 var aft_health:=100
 
+var current_poi:POI = null
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -89,3 +90,17 @@ func _on_mid_hit_box_2_body_entered(body: Node3D) -> void:
 func _on_for_hit_box_3_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Map"):
 		do_collison(body,0)
+
+
+func _on_area_check_box_area_entered(area: Area3D) -> void:
+	if area is POI:
+		current_poi=area
+		if area.has_been_found==false:
+			print("Hey This is new")
+		
+		
+
+
+func _on_area_check_box_area_exited(area: Area3D) -> void:
+	if area is POI:
+		current_poi=null

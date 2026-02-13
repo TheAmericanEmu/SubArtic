@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://imjasg26i205"]
+
+[ext_resource type="Material" uid="uid://dud5yqpom7ui" path="res://Data/Mat/Brick.tres" id="1_nfw3n"]
+[ext_resource type="Texture2D" uid="uid://cwkgd5hqsrhxq" path="res://Data/textures/Texturelabs_Brick_169S.jpg" id="2_rkbk7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1wav1"]
+albedo_color = Color(1, 0.1764706, 0.1764706, 1)
+albedo_texture = ExtResource("2_rkbk7")
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 4.4382644
+
+[node name="Building" type="Node3D" unique_id=797210852]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=794060699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0048218, 0)
+material_override = ExtResource("1_nfw3n")
+size = Vector3(1, 2.0096436, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D" unique_id=265800376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.46191615, 0)
+material_override = SubResource("StandardMaterial3D_1wav1")
+size = Vector3(1.1135254, 0.11074066, 1.1953125)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=65598472]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7713067, 0)
+material_override = ExtResource("1_nfw3n")
+size = Vector3(1.2597656, 0.5115204, 1.3935547)
