@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://buv7u1vpinn0t" path="res://src/photo_spot.gd" id="4_wm6fd"]
 [ext_resource type="PackedScene" uid="uid://j63n404ov600" path="res://Data/objects/Map.tscn" id="5_1pqt4"]
 [ext_resource type="Script" uid="uid://oar3d7retwq5" path="res://src/helm_interact_point.gd" id="5_rcmm0"]
+[ext_resource type="Script" uid="uid://byu58ips5gnwv" path="res://src/task_manger.gd" id="9_c3sht"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_715lt"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -224,6 +225,10 @@ script = ExtResource("5_rcmm0")
 transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_wm6fd")
 
+[node name="radio_speaker" type="AudioStreamPlayer3D" parent="PlayerSpace/Fake_SuB" unique_id=1633211420]
+transform = Transform3D(0.23964986, 0.012147692, 0, -0.011343522, 0.25663927, 0, 0, 0, 0.2569266, -0.9283905, 0.3342938, 0)
+volume_db = 80.0
+
 [node name="CharacterBody3D" type="CharacterBody3D" parent="PlayerSpace" unique_id=1902696497 node_paths=PackedStringArray("cam", "real_sub")]
 transform = Transform3D(-1, 0, 4.5695582e-08, 0, 1, 0, -4.569558e-08, 0, -1.0000001, -2.423153, 0, 0)
 script = ExtResource("1_yum48")
@@ -321,12 +326,17 @@ shape = SubResource("BoxShape3D_rcmm0")
 
 [node name="Node3D" parent="." unique_id=69286103 groups=["Map"] instance=ExtResource("5_1pqt4")]
 
+[node name="TaskManger" type="Node3D" parent="." unique_id=1818109146]
+script = ExtResource("9_c3sht")
+
+[connection signal="discovered_new_poi" from="PlayerSpace/Fake_SuB" to="TaskManger" method="_discovered_new_poi"]
 [connection signal="body_entered" from="PlayerSpace/Fake_SuB/Cam" to="PlayerSpace/Fake_SuB/Cam" method="_on_body_entered"]
 [connection signal="body_exited" from="PlayerSpace/Fake_SuB/Cam" to="PlayerSpace/Fake_SuB/Cam" method="_on_body_exited"]
 [connection signal="request_take_pic" from="PlayerSpace/Fake_SuB/Cam" to="PlayerSpace/Fake_SuB" method="_on_area_3d_request_take_pic"]
 [connection signal="body_entered" from="PlayerSpace/Fake_SuB/Helm" to="PlayerSpace/Fake_SuB/Helm" method="_on_body_entered"]
 [connection signal="body_exited" from="PlayerSpace/Fake_SuB/Helm" to="PlayerSpace/Fake_SuB/Helm" method="_on_body_exited"]
 [connection signal="enter_helm" from="PlayerSpace/Fake_SuB/Helm" to="PlayerSpace/Fake_SuB" method="_on_helm_enter_helm"]
+[connection signal="enter_undiscovered_poi" from="Real_Sub" to="TaskManger" method="_enter_undiscovered_poi"]
 [connection signal="body_entered" from="Real_Sub/AftHitBox" to="Real_Sub" method="_on_aft_hit_box_body_entered"]
 [connection signal="body_entered" from="Real_Sub/MidHitBox2" to="Real_Sub" method="_on_mid_hit_box_2_body_entered"]
 [connection signal="body_entered" from="Real_Sub/ForHitBox3" to="Real_Sub" method="_on_for_hit_box_3_body_entered"]

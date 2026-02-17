@@ -7,6 +7,8 @@ extends Node3D
 
 var is_main_window_open :=false
 
+signal discovered_new_poi(id:int)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_toogle_main_window()
@@ -32,7 +34,9 @@ func _process(delta: float) -> void:
 
 func _on_area_3d_request_take_pic() -> void:
 	if real_sub.current_poi!=null:
+		
 		real_sub.current_poi.discover_poi()
+		discovered_new_poi.emit(real_sub.current_poi.id)
 
 
 func _on_helm_enter_helm() -> void:

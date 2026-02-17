@@ -22,6 +22,10 @@ var aft_health:=100
 
 var current_poi:POI = null
 
+#Signals
+signal enter_undiscovered_poi
+
+
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -96,7 +100,7 @@ func _on_area_check_box_area_entered(area: Area3D) -> void:
 	if area is POI:
 		current_poi=area
 		if area.has_been_found==false:
-			print("Hey This is new")
+			enter_undiscovered_poi.emit()
 		
 		
 
