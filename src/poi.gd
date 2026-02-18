@@ -2,6 +2,7 @@ class_name POI extends Area3D
 
 @export var poi_name:String
 @export var id:int=1
+@export var is_main_POI:=false
 
 signal poi_discovered
 
