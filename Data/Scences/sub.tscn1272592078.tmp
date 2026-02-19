@@ -1,0 +1,368 @@
+[gd_scene format=3 uid="uid://c5pv700ic2oxv"]
+
+[ext_resource type="Script" uid="uid://4uq35uy5es0o" path="res://src/fake_su_b.gd" id="1_715lt"]
+[ext_resource type="Script" uid="uid://bchfrjsiw8snx" path="res://src/character_body_3d_mk2.gd" id="1_yum48"]
+[ext_resource type="Material" uid="uid://b3jratmg8myh3" path="res://Data/Mat/metal_sub.tres" id="2_6mkbk"]
+[ext_resource type="PackedScene" uid="uid://bhexbtaua4erj" path="res://Data/objects/sub_hud.tscn" id="2_7hphq"]
+[ext_resource type="Script" uid="uid://7vakksvm5beb" path="res://src/real_sub.gd" id="2_ylndv"]
+[ext_resource type="Script" uid="uid://buv7u1vpinn0t" path="res://src/photo_spot.gd" id="4_wm6fd"]
+[ext_resource type="PackedScene" uid="uid://j63n404ov600" path="res://Data/objects/Map.tscn" id="5_1pqt4"]
+[ext_resource type="Script" uid="uid://oar3d7retwq5" path="res://src/helm_interact_point.gd" id="5_rcmm0"]
+[ext_resource type="Script" uid="uid://dwk56ghholdp3" path="res://src/radio_speaker.gd" id="6_im7rv"]
+[ext_resource type="Script" uid="uid://byu58ips5gnwv" path="res://src/task_manger.gd" id="9_c3sht"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_715lt"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_7hphq"]
+sky_material = SubResource("ProceduralSkyMaterial_715lt")
+
+[sub_resource type="Environment" id="Environment_1pqt4"]
+background_mode = 2
+sky = SubResource("Sky_7hphq")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yum48"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ylndv"]
+viewport_path = NodePath("Real_Sub/MainWindowCam")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1pqt4"]
+viewport_path = NodePath("Real_Sub/MainWindowCam")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_715lt"]
+resource_local_to_scene = true
+blend_mode = 4
+albedo_texture = SubResource("ViewportTexture_ylndv")
+emission_energy_multiplier = 8.79
+heightmap_texture = SubResource("ViewportTexture_1pqt4")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7hphq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6mkbk"]
+viewport_path = NodePath("PlayerSpace/Fake_SuB/Hud")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wm6fd"]
+resource_local_to_scene = true
+blend_mode = 4
+albedo_texture = SubResource("ViewportTexture_6mkbk")
+emission_energy_multiplier = 8.79
+heightmap_texture = SubResource("ViewportTexture_1pqt4")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wm6fd"]
+size = Vector3(0.35864258, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rjpdc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ylndv"]
+height = 2.4550781
+
+[sub_resource type="BoxMesh" id="BoxMesh_1pqt4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ylndv"]
+size = Vector3(1.6753235, 1, 1)
+
+[sub_resource type="Environment" id="Environment_6mkbk"]
+background_mode = 1
+background_color = Color(0.24123287, 0.46388268, 1, 1)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_1pqt4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6mkbk"]
+size = Vector3(2.7495728, 3.8150635, 3.8999634)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rcmm0"]
+size = Vector3(10.509766, 4.275635, 4.571289)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_im7rv"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Sub" type="Node3D" unique_id=443815960]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1847204775]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1667378322]
+environment = SubResource("Environment_1pqt4")
+
+[node name="PlayerSpace" type="Node3D" parent="." unique_id=2147308345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -900.21277, 0, 0)
+
+[node name="Fake_SuB" type="Node3D" parent="PlayerSpace" unique_id=765512476]
+transform = Transform3D(4.168087, 0, 0, 0, 3.8921623, 0, 0, 0, 3.8921623, 0, 0, 0)
+script = ExtResource("1_715lt")
+
+[node name="Sub_Body" type="Node3D" parent="PlayerSpace/Fake_SuB" unique_id=1816376281]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Sub_Body" unique_id=1640316048]
+transform = Transform3D(-4.374163e-08, 1.2959981, 0, -1.0006924, -5.6649885e-08, 0, 0, 0, 1.0006924, 0.32268986, -1.4105211e-08, 0)
+use_collision = true
+material = ExtResource("2_6mkbk")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Sub_Body/CSGCylinder3D" unique_id=1664900815]
+transform = Transform3D(-0.022020385, -5.836675e-08, 0.87141055, -4.0302787e-08, 1.3033857, 3.8090565e-08, -0.8997305, -5.6955738e-08, -0.02132727, 0, 0, 0)
+operation = 2
+sides = 6
+material = ExtResource("2_6mkbk")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Sub_Body" unique_id=412303701]
+transform = Transform3D(-4.3741647e-08, 1.0006921, 0, -1.0006925, -4.374167e-08, 0, 0, 0, 1.0006925, 1.719049, -5.3599074e-08, 0)
+use_collision = true
+height = 0.21386719
+material = ExtResource("2_6mkbk")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Sub_Body" unique_id=1995002136]
+transform = Transform3D(-4.3741636e-08, 1.2959981, 0, -1.0006924, -5.6649885e-08, 0, 0, 0, 1.0006924, -1.093486, -3.90642e-08, 0)
+use_collision = true
+height = 0.21386719
+material = ExtResource("2_6mkbk")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Sub_Body/CSGCylinder3D2" unique_id=2021352098]
+transform = Transform3D(1.0000001, 7.1054274e-15, 0, -3.5527137e-15, 1.0000001, 0, 0, 0, 1.0000001, -0.11928945, 0, 0)
+operation = 2
+use_collision = true
+radius = 0.176
+height = 0.804
+material = ExtResource("2_6mkbk")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB" unique_id=693124963]
+transform = Transform3D(-4.3711378e-08, 0.9999997, 0, -1, -4.371139e-08, 0, 0, 0, 1, -1.0414566, 0.118687905, 0)
+use_collision = true
+radius = 0.2
+height = 0.2
+material = ExtResource("2_6mkbk")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/CSGCylinder3D4" unique_id=916865724]
+transform = Transform3D(1.0000001, 0, 0, -3.5527137e-15, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
+operation = 2
+use_collision = true
+radius = 0.176
+height = 0.804
+material = ExtResource("2_6mkbk")
+
+[node name="Window_Blocker" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB" unique_id=211580294]
+transform = Transform3D(-4.3711346e-08, 0.115417175, 0, -1, -5.0450506e-09, 0, 0, 0, 1, -0.9920044, 0.10277064, 0)
+visible = false
+use_collision = true
+radius = 0.2
+height = 0.2
+
+[node name="SpotLight3D" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=1760715090]
+transform = Transform3D(0.2399182, 0, 0, 0, -0.1144153, 0.23004438, 0, -0.23004438, -0.1144153, 0, 0.4213385, -0.1897946)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=1421689198]
+transform = Transform3D(0.2399182, 0, 0, 0, -0.1144153, 0.23004438, 0, -0.23004438, -0.1144153, -0.48548204, 0.4213385, -0.1897946)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=1242509814]
+transform = Transform3D(0.2399182, 0, 0, 0, -0.1144153, 0.23004438, 0, -0.23004438, -0.1144153, 0.75404984, 0.4213385, -0.1897946)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=1291164987]
+transform = Transform3D(0.2399182, 0, 0, 0, 0.14201665, 0.21410874, 0, -0.21410874, 0.14201665, 0, 0.4213385, 0.16584393)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=1160412564]
+transform = Transform3D(0.2399182, 0, 0, 0, 0.14201665, 0.21410874, 0, -0.21410874, 0.14201665, -0.48548204, 0.4213385, 0.16584393)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=548131648]
+transform = Transform3D(0.2399182, 0, 0, 0, 0.14201665, 0.21410874, 0, -0.21410874, 0.14201665, 0.7540497, 0.4213385, 0.16584393)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="Main_Window" type="MeshInstance3D" parent="PlayerSpace/Fake_SuB" unique_id=1229945878]
+transform = Transform3D(-8.742273e-09, 0.19999976, -8.742273e-09, 0, -8.742276e-09, -0.19999999, -0.20000002, -8.742276e-09, 3.8213706e-16, -1.1412354, 0.12109735, 0.0012976032)
+mesh = SubResource("PlaneMesh_yum48")
+surface_material_override/0 = SubResource("StandardMaterial3D_715lt")
+
+[node name="Sub_Computer" type="MeshInstance3D" parent="PlayerSpace/Fake_SuB" unique_id=1336111389]
+transform = Transform3D(0.05083632, 0.22776003, -3.028412e-09, 4.425309e-23, -1.14958745e-08, -0.08, -0.08805112, 0.13149732, -1.7484543e-09, -0.8769214, 0.12109735, -0.24055463)
+mesh = SubResource("PlaneMesh_7hphq")
+surface_material_override/0 = SubResource("StandardMaterial3D_wm6fd")
+
+[node name="Hud" type="SubViewport" parent="PlayerSpace/Fake_SuB" unique_id=346411124]
+
+[node name="Control" parent="PlayerSpace/Fake_SuB/Hud" unique_id=202643959 instance=ExtResource("2_7hphq")]
+
+[node name="Cam" type="Area3D" parent="PlayerSpace/Fake_SuB" unique_id=1299493268]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 1.4608002, 0, 0)
+script = ExtResource("4_wm6fd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerSpace/Fake_SuB/Cam" unique_id=1659033969]
+transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_wm6fd")
+
+[node name="Helm" type="Area3D" parent="PlayerSpace/Fake_SuB" unique_id=1612783822]
+transform = Transform3D(0.9999996, 0, 0, 0, 1, 0, 0, 0, 1, -0.7613983, 0, 0)
+script = ExtResource("5_rcmm0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerSpace/Fake_SuB/Helm" unique_id=1611040364]
+transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_wm6fd")
+
+[node name="radio_speaker" type="AudioStreamPlayer3D" parent="PlayerSpace/Fake_SuB" unique_id=1633211420]
+transform = Transform3D(0.23964986, 0.012147692, 0, -0.011343522, 0.25663927, 0, 0, 0, 0.2569266, -0.9283905, 0.3342938, 0)
+volume_db = 80.0
+script = ExtResource("6_im7rv")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="PlayerSpace" unique_id=1902696497 node_paths=PackedStringArray("cam", "real_sub")]
+transform = Transform3D(-1, 0, 4.5695582e-08, 0, 1, 0, -4.569558e-08, 0, -1.0000001, -2.423153, 0, 0)
+script = ExtResource("1_yum48")
+cam = NodePath("Cam")
+real_sub = NodePath("../../Real_Sub")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerSpace/CharacterBody3D" unique_id=1720319678]
+transform = Transform3D(1, 0, 0, 0, 1.2380303, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_rjpdc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerSpace/CharacterBody3D" unique_id=1532397545]
+shape = SubResource("CapsuleShape3D_ylndv")
+
+[node name="Cam" type="Node3D" parent="PlayerSpace/CharacterBody3D" unique_id=1263163769]
+
+[node name="Camera" type="Camera3D" parent="PlayerSpace/CharacterBody3D/Cam" unique_id=490995391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5870817, 0)
+current = true
+
+[node name="Real_Sub" type="CharacterBody3D" parent="." unique_id=1852088454]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 28.367144, 0)
+script = ExtResource("2_ylndv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Real_Sub" unique_id=1565459029]
+transform = Transform3D(9.243612, 0, 0, 0, 3.4186203, 0, 0, 0, 3.5422978, 0, 0, 0)
+mesh = SubResource("BoxMesh_1pqt4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Real_Sub" unique_id=1698410215]
+transform = Transform3D(5.5783315, 0, 0, 0, 3.4186203, 0, 0, 0, 3.5422978, -0.028173447, 0, -5.684342e-13)
+shape = SubResource("BoxShape3D_ylndv")
+
+[node name="MainWindowCam" type="SubViewport" parent="Real_Sub" unique_id=1730299742]
+handle_input_locally = false
+render_target_clear_mode = 2
+render_target_update_mode = 4
+
+[node name="Cam" type="Camera3D" parent="Real_Sub/MainWindowCam" unique_id=478533778]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -26.89866)
+environment = SubResource("Environment_6mkbk")
+attributes = SubResource("CameraAttributesPractical_1pqt4")
+doppler_tracking = 2
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Real_Sub/MainWindowCam/Cam" unique_id=744364416]
+transform = Transform3D(0.6597394, 0.6805009, -0.3188455, -0.61237264, 0.732747, 0.2967854, 0.43559584, -0.00054878305, 0.90014225, 1.373064, -0.79775023, -1.3276672)
+light_energy = 16.0
+light_indirect_energy = 2.587
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Real_Sub/MainWindowCam/Cam" unique_id=1930475680]
+transform = Transform3D(0.76893467, 0.6392742, 0.00825005, -0.22037448, 0.25291425, 0.942056, 0.6001455, -0.7261976, 0.33535424, -0.026935948, 1.976088, -1.2090683)
+light_energy = 16.0
+light_indirect_energy = 2.587
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Real_Sub/MainWindowCam/Cam" unique_id=1446140383]
+transform = Transform3D(0.77451897, 0.48079872, 0.41103894, -0.61237264, 0.7327471, 0.2967854, -0.15849353, -0.48157495, 0.86195445, -1.5337133, -0.79775023, -1.3276672)
+light_energy = 16.0
+light_indirect_energy = 2.587
+
+[node name="SpotLight3D5" type="OmniLight3D" parent="Real_Sub/MainWindowCam/Cam" unique_id=2088892454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.118618265, -0.79775023, -3.9277668)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_size = 0.329
+shadow_enabled = true
+distance_fade_enabled = true
+omni_range = 100.0
+
+[node name="MainCamPoint" type="Marker3D" parent="Real_Sub" unique_id=283411051]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.611725, 0, -7.755682e-08)
+
+[node name="AftHitBox" type="Area3D" parent="Real_Sub" unique_id=178918366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9148865, 0, 3.9990937e-08)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Real_Sub/AftHitBox" unique_id=1529665611]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6663532, -0.007385254, -0.04165647)
+shape = SubResource("BoxShape3D_6mkbk")
+
+[node name="MidHitBox2" type="Area3D" parent="Real_Sub" unique_id=910260075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7247963, 0, -1.1910481e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Real_Sub/MidHitBox2" unique_id=1093348691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6663532, -0.007385254, -0.04165647)
+shape = SubResource("BoxShape3D_6mkbk")
+
+[node name="ForHitBox3" type="Area3D" parent="Real_Sub" unique_id=1263880900]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2.622685e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Real_Sub/ForHitBox3" unique_id=1034044236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6663532, -0.007385254, -0.04165647)
+shape = SubResource("BoxShape3D_6mkbk")
+
+[node name="AreaCheckBox" type="Area3D" parent="Real_Sub" unique_id=319003008]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Real_Sub/AreaCheckBox" unique_id=328330442]
+shape = SubResource("BoxShape3D_rcmm0")
+
+[node name="Node3D" parent="." unique_id=69286103 groups=["Map"] instance=ExtResource("5_1pqt4")]
+
+[node name="TaskManger" type="Node3D" parent="." unique_id=1818109146]
+script = ExtResource("9_c3sht")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1679686785]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1874492669]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control" unique_id=600710348]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_im7rv")
+
+[connection signal="discovered_new_poi" from="PlayerSpace/Fake_SuB" to="TaskManger" method="_discovered_new_poi"]
+[connection signal="body_entered" from="PlayerSpace/Fake_SuB/Cam" to="PlayerSpace/Fake_SuB/Cam" method="_on_body_entered"]
+[connection signal="body_exited" from="PlayerSpace/Fake_SuB/Cam" to="PlayerSpace/Fake_SuB/Cam" method="_on_body_exited"]
+[connection signal="request_take_pic" from="PlayerSpace/Fake_SuB/Cam" to="PlayerSpace/Fake_SuB" method="_on_area_3d_request_take_pic"]
+[connection signal="body_entered" from="PlayerSpace/Fake_SuB/Helm" to="PlayerSpace/Fake_SuB/Helm" method="_on_body_entered"]
+[connection signal="body_exited" from="PlayerSpace/Fake_SuB/Helm" to="PlayerSpace/Fake_SuB/Helm" method="_on_body_exited"]
+[connection signal="enter_helm" from="PlayerSpace/Fake_SuB/Helm" to="PlayerSpace/Fake_SuB" method="_on_helm_enter_helm"]
+[connection signal="enter_undiscovered_poi" from="Real_Sub" to="TaskManger" method="_enter_undiscovered_poi"]
+[connection signal="body_entered" from="Real_Sub/AftHitBox" to="Real_Sub" method="_on_aft_hit_box_body_entered"]
+[connection signal="body_entered" from="Real_Sub/MidHitBox2" to="Real_Sub" method="_on_mid_hit_box_2_body_entered"]
+[connection signal="body_entered" from="Real_Sub/ForHitBox3" to="Real_Sub" method="_on_for_hit_box_3_body_entered"]
+[connection signal="area_entered" from="Real_Sub/AreaCheckBox" to="Real_Sub" method="_on_area_check_box_area_entered"]
+[connection signal="area_exited" from="Real_Sub/AreaCheckBox" to="Real_Sub" method="_on_area_check_box_area_exited"]

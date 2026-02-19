@@ -9,7 +9,7 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 var is_poilting := false
-
+var allow_movement:=false
 #Stats
 var depth :=0.00
 var power_settings:=1
@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	if is_poilting:
+	if is_poilting and allow_movement:
 	
 		# Add the gravity.
 		#if not is_on_floor():

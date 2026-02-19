@@ -1,4 +1,4 @@
-extends Node3D
+class_name fake_sub extends Node3D
 
 @onready var window_blocker: CSGCylinder3D = $Window_Blocker
 @onready var real_sub: RealSub = $"../../Real_Sub"
@@ -11,7 +11,7 @@ signal discovered_new_poi(id:int)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	_toogle_main_window()
+	pass
 
 func _toogle_main_window():
 	if not is_main_window_open:

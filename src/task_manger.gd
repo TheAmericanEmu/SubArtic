@@ -1,6 +1,10 @@
 extends Node3D
 
-@onready var radio_speaker: AudioStreamPlayer3D = $"../PlayerSpace/Fake_SuB/radio_speaker"
+@onready var radio_speaker_obj: radio_speaker = $"../PlayerSpace/Fake_SuB/radio_speaker"
+@onready var fake_su_b: fake_sub = $"../PlayerSpace/Fake_SuB"
+@onready var black_screen: Panel = $"../CanvasLayer/Hud/BlackScreen"
+@onready var lift_noise: AudioStreamPlayer3D = $"../PlayerSpace/Fake_SuB/Lift_noise"
+@onready var real_sub: RealSub = $"../Real_Sub"
 
 
 var main_poi_recored:= 0
@@ -10,9 +14,23 @@ var side_poi_recored:=0
 var total_side_poi:=0
 
 # Called when the node enters the scene tree for the first time.
+
+func _end_seq():
+	lift_noise.stop()
+	fake_su_b._toogle_main_window()
+	real_sub.allow_movement=true
+	
+func _start_seq():
+	var unfade_black :=  get_tree().create_tween()
+	lift_noise.play()
+	unfade_black.tween_property(black_screen,"modulate",Color(0,0,0,0),2)
+	radio_speaker_obj.play_audio_seq([load("res://Data/sounds/voicelines/open_line_1.wav"),load("res://Data/sounds/voicelines/opening_line_2.wav"),load("res://Data/sounds/voicelines/Opening_line_3.wav"),load("res://Data/sounds/voicelines/opening_line 4.wav")],self._end_seq)
+	
+	
+
 func _ready() -> void:
 	randomize()
-	
+
 	
 	#Count all Points
 	for node in get_tree().get_nodes_in_group("POI"):
@@ -21,7 +39,8 @@ func _ready() -> void:
 				total_main_poi+=1
 			else:
 				total_side_poi+=1
-
+	
+	_start_seq()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -36,8 +55,7 @@ func _enter_undiscovered_poi() -> void:
 		stream = load("res://Data/sounds/voicelines/new_poi_0.wav")
 	elif ran == 1:
 		stream = load("res://Data/sounds/voicelines/new_poi_1.wav")
-	radio_speaker.stream=stream
-	radio_speaker.play()
+	radio_speaker_obj.play_audio_seq([stream])
 
 
 func _discovered_new_poi(id:int) -> void:
@@ -62,13 +80,6 @@ func _discovered_new_poi(id:int) -> void:
 	if true:
 		stream = load("res://Data/sounds/voicelines/discovered_poi.wav")
 	
-	radio_speaker.stream=stream
-	radio_speaker.play()
-	await radio_speaker.finished
-	radio_speaker.stream=place_voice_line
-	radio_speaker.play()
-	await radio_speaker.finished
-	radio_speaker.stream=end_of_seq_line
-	radio_speaker.play()
+	radio_speaker_obj.play_audio_seq([stream,place_voice_line,end_of_seq_line])
 	
 	

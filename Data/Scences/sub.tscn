@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://buv7u1vpinn0t" path="res://src/photo_spot.gd" id="4_wm6fd"]
 [ext_resource type="PackedScene" uid="uid://j63n404ov600" path="res://Data/objects/Map.tscn" id="5_1pqt4"]
 [ext_resource type="Script" uid="uid://oar3d7retwq5" path="res://src/helm_interact_point.gd" id="5_rcmm0"]
+[ext_resource type="Script" uid="uid://dwk56ghholdp3" path="res://src/radio_speaker.gd" id="6_im7rv"]
+[ext_resource type="AudioStream" uid="uid://c5u6sshicpv1p" path="res://Data/sounds/SoundEffects/descent.wav" id="7_v08oc"]
 [ext_resource type="Script" uid="uid://byu58ips5gnwv" path="res://src/task_manger.gd" id="9_c3sht"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_715lt"]
@@ -74,6 +76,9 @@ size = Vector3(2.7495728, 3.8150635, 3.8999634)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rcmm0"]
 size = Vector3(10.509766, 4.275635, 4.571289)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_im7rv"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="Sub" type="Node3D" unique_id=443815960]
 
@@ -142,7 +147,6 @@ material = ExtResource("2_6mkbk")
 
 [node name="Window_Blocker" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB" unique_id=211580294]
 transform = Transform3D(-4.3711346e-08, 0.115417175, 0, -1, -5.0450506e-09, 0, 0, 0, 1, -0.9920044, 0.10277064, 0)
-visible = false
 use_collision = true
 radius = 0.2
 height = 0.2
@@ -228,6 +232,12 @@ shape = SubResource("BoxShape3D_wm6fd")
 [node name="radio_speaker" type="AudioStreamPlayer3D" parent="PlayerSpace/Fake_SuB" unique_id=1633211420]
 transform = Transform3D(0.23964986, 0.012147692, 0, -0.011343522, 0.25663927, 0, 0, 0, 0.2569266, -0.9283905, 0.3342938, 0)
 volume_db = 80.0
+script = ExtResource("6_im7rv")
+
+[node name="Lift_noise" type="AudioStreamPlayer3D" parent="PlayerSpace/Fake_SuB" unique_id=931849442]
+transform = Transform3D(0.2399182, 0, 0, 0, 0.2569266, 0, 0, 0, 0.2569266, 0.49378967, 0.5262801, 0)
+stream = ExtResource("7_v08oc")
+volume_db = -17.313
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="PlayerSpace" unique_id=1902696497 node_paths=PackedStringArray("cam", "real_sub")]
 transform = Transform3D(-1, 0, 4.5695582e-08, 0, 1, 0, -4.569558e-08, 0, -1.0000001, -2.423153, 0, 0)
@@ -249,7 +259,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5870817, 0)
 current = true
 
 [node name="Real_Sub" type="CharacterBody3D" parent="." unique_id=1852088454]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -138.43443, -122.144844, 111.58371)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 28.367144, 0)
 script = ExtResource("2_ylndv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Real_Sub" unique_id=1565459029]
@@ -328,6 +338,25 @@ shape = SubResource("BoxShape3D_rcmm0")
 
 [node name="TaskManger" type="Node3D" parent="." unique_id=1818109146]
 script = ExtResource("9_c3sht")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1679686785]
+
+[node name="Hud" type="Control" parent="CanvasLayer" unique_id=1874492669]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackScreen" type="Panel" parent="CanvasLayer/Hud" unique_id=600710348]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_im7rv")
 
 [connection signal="discovered_new_poi" from="PlayerSpace/Fake_SuB" to="TaskManger" method="_discovered_new_poi"]
 [connection signal="body_entered" from="PlayerSpace/Fake_SuB/Cam" to="PlayerSpace/Fake_SuB/Cam" method="_on_body_entered"]
