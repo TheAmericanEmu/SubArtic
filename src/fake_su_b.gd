@@ -4,11 +4,17 @@ class_name fake_sub extends Node3D
 @onready var real_sub: RealSub = $"../../Real_Sub"
 @onready var sub_comp: sub_hud = $Hud/Control
 @onready var character_body_3d: player = $"../CharacterBody3D"
+@onready var helm: CSGCylinder3D = $Node3D/Helm
 
 var is_main_window_open :=false
 
 signal discovered_new_poi(id:int)
 
+func _input(event: InputEvent) -> void:
+	if event.is_action("left"):
+		helm.rotation_degrees.x-=-1
+	if event.is_action("right"):
+		helm.rotation_degrees.x+=-1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -28,8 +34,11 @@ func _update_computer():
 	sub_comp.speed=real_sub.power_settings
 	sub_comp.power_left=real_sub.power_left
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
+
 func _process(delta: float) -> void:
 	_update_computer()
+	
 
 
 func _on_area_3d_request_take_pic() -> void:

@@ -11,6 +11,7 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("use") and is_player_in:
 		enter_helm.emit()
+		Hud.set_ineratcion_text("")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -20,8 +21,9 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body is player:
 		is_player_in=true
-
+		Hud.set_ineratcion_text("Press Space To interact with Control System")
 
 func _on_body_exited(body: Node3D) -> void:
 	if body is player:
 		is_player_in=false
+		Hud.set_ineratcion_text("")

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://si2pvqhx3lpd"]
+
+[ext_resource type="Script" uid="uid://qrhlo188qled" path="res://src/hud.gd" id="1_evixl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_im7rv"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_v08oc"]
+font_size = 32
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=624475563]
+script = ExtResource("1_evixl")
+
+[node name="Hud" type="Control" parent="." unique_id=198013420]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackScreen" type="Panel" parent="Hud" unique_id=1958584996]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_im7rv")
+
+[node name="Interaction_Label" type="Label" parent="Hud" unique_id=546072566]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_v08oc")

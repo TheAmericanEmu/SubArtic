@@ -20,8 +20,9 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body is player:
 		is_player_in=true
-
+		Hud.set_ineratcion_text("Press Space To interact with DART System")
 
 func _on_body_exited(body: Node3D) -> void:
 	if body is player:
 		is_player_in=false
+		Hud.set_ineratcion_text("")

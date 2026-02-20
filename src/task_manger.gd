@@ -12,21 +12,27 @@ var total_main_poi:int=0
 
 var side_poi_recored:=0
 var total_side_poi:=0
-
+var is_opening_scence:=false
 # Called when the node enters the scene tree for the first time.
 
 func _end_seq():
 	lift_noise.stop()
 	fake_su_b._toogle_main_window()
 	real_sub.allow_movement=true
-	
+	is_opening_scence=false
+
 func _start_seq():
+	is_opening_scence=true
 	var unfade_black :=  get_tree().create_tween()
 	lift_noise.play()
-	unfade_black.tween_property(black_screen,"modulate",Color(0,0,0,0),2)
+	unfade_black.tween_property(Hud.black_screen,"modulate",Color(0,0,0,0),2)
 	radio_speaker_obj.play_audio_seq([load("res://Data/sounds/voicelines/open_line_1.wav"),load("res://Data/sounds/voicelines/opening_line_2.wav"),load("res://Data/sounds/voicelines/Opening_line_3.wav"),load("res://Data/sounds/voicelines/opening_line 4.wav")],self._end_seq)
 	
-	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("escape") and is_opening_scence:
+		_end_seq()
+		if radio_speaker_obj.playing:
+			radio_speaker_obj.stop()
 
 func _ready() -> void:
 	randomize()
