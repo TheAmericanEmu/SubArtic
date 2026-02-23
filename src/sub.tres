@@ -1,0 +1,7 @@
+[gd_resource type="VisualShader" format=3 uid="uid://bljcj13g056ub"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_eaejf"]
+
+[resource]
+nodes/vertex/2/node = SubResource("VisualShaderNodeTexture_eaejf")
+nodes/vertex/2/position = Vector2(32, 400)

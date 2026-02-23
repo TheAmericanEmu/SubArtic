@@ -2,7 +2,6 @@ extends Node3D
 
 @onready var radio_speaker_obj: radio_speaker = $"../PlayerSpace/Fake_SuB/radio_speaker"
 @onready var fake_su_b: fake_sub = $"../PlayerSpace/Fake_SuB"
-@onready var black_screen: Panel = $"../CanvasLayer/Hud/BlackScreen"
 @onready var lift_noise: AudioStreamPlayer3D = $"../PlayerSpace/Fake_SuB/Lift_noise"
 @onready var real_sub: RealSub = $"../Real_Sub"
 
