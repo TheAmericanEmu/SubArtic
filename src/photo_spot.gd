@@ -5,33 +5,50 @@ var is_player_in :=false
 signal request_take_pic
 @onready var fake_su_b: fake_sub = $".."
 @onready var mesh_instance_3d: AnimatedSprite3D = $"../DART/MeshInstance3D"
-@onready var cam_feed: MeshInstance3D = $"../DART/CamFeed"
-@onready var sub_viewport: SubViewport = $"../DART/CamFeed/SubViewport"
+@onready var player_camera: Camera3D = $"../../CharacterBody3D/Cam/Camera"
+
+
 
 # Called when the node enters the scene tree for the first time.
 
+var is_player_in_dart_cam=false
 
-func get_cam_feed()->StandardMaterial3D:
-	var cam_feed_mat := StandardMaterial3D.new()
-	cam_feed_mat.setup_local_to_scene()
-	var mat_texture:= ViewportTexture.new()
-	mat_texture.setup_local_to_scene()
-	mat_texture.viewport_path=sub_viewport.get_path()
-	cam_feed_mat.albedo_texture=mat_texture
-	return cam_feed_mat
 
 func _ready() -> void:
 	pass # Replace with function body.
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("use") and is_player_in:
-		cam_feed.show()
+	if event.is_action_pressed("use") and is_player_in and fake_su_b.real_sub.current_poi.has_been_found==false :
+		is_player_in_dart_cam=true
 		fake_su_b.real_sub.current_poi.cam.make_current()
-		fake_su_b.real_sub.current_poi.ani_player.play("Cutscence")
-		request_take_pic.emit()
+		Hud.set_ineratcion_text("")
+		var cam=fake_su_b.real_sub.current_poi.cam
+		var cam_tween = create_tween()
+		cam_tween.tween_property(cam,"global_transform",cam.global_transform,1)
+		cam_tween.parallel()
+		var cam_rot_tween=create_tween()
+		cam_rot_tween.tween_property(cam,"global_rotation",cam.global_rotation,1)
+		cam_tween.stop()
+		cam.global_position=fake_su_b.real_sub.cam_launch_point.global_position
+		cam_tween.play()
+		CamHud.show()
+		Hud.hide()
+		cam_tween.finished.connect(func():
+
+			fake_su_b.real_sub.current_poi.ani_player.play("Cutscence")
+			)
+		fake_su_b.real_sub.current_poi.ani_player.animation_finished.connect(func(random_var):
+			CamHud._random_static=false
+			CamHud.visible=false
+			player_camera.make_current()
+			Hud.show()
+			)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if is_player_in_dart_cam:
+		var cam=fake_su_b.real_sub.current_poi.cam
+		CamHud.depth=cam.depth
 	pass
 
 

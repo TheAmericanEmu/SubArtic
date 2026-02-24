@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b6yu5fnq4hup7"]
+
+[ext_resource type="Script" uid="uid://v2mw5uuvkbt5" path="res://src/game_clock.gd" id="1_omohx"]
+
+[node name="GameClock" type="Node" unique_id=1392152293]
+script = ExtResource("1_omohx")
+
+[node name="Timer" type="Timer" parent="." unique_id=1395778798]
+autostart = true

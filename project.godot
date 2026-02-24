@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 Hud="*uid://si2pvqhx3lpd"
+CamHud="*uid://7d4nq76w2sg4"
+GameClock="*uid://b6yu5fnq4hup7"
 
 [global_group]
 

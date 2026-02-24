@@ -110,27 +110,6 @@ animations = [{
 "speed": 24.0
 }]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lppb2"]
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_v26c0"]
-texture = SubResource("NoiseTexture2D_lppb2")
-
-[sub_resource type="VisualShader" id="VisualShader_v8ttn"]
-nodes/vertex/2/node = SubResource("VisualShaderNodeTexture_v26c0")
-nodes/vertex/2/position = Vector2(0, 208)
-nodes/vertex/connections = PackedInt32Array(2, 0, 0, 6)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ne8mk"]
-render_priority = 0
-shader = SubResource("VisualShader_v8ttn")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8ttn"]
-resource_local_to_scene = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_lppb2"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_v8ttn")
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_rjpdc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ylndv"]
@@ -375,16 +354,6 @@ frame_progress = 0.6567566
 transform = Transform3D(1, 7.1054274e-15, 2.3547516e-19, 1.7763568e-15, 1.0000001, 0, -3.7057691e-22, -1.7763568e-15, 1, 0.009872541, 0.026214618, -0.053222656)
 size = Vector3(5.834015, 3.152893, 0.10449219)
 
-[node name="CamFeed" type="MeshInstance3D" parent="PlayerSpace/Fake_SuB/DART" unique_id=1099660439]
-transform = Transform3D(-2.0889242e-08, 0, -0.49999997, 0, 0.45393595, 0, 0.47789022, 0, -2.1855694e-08, 0, 0.17757525, 0)
-material_override = SubResource("ShaderMaterial_ne8mk")
-mesh = SubResource("QuadMesh_lppb2")
-
-[node name="SubViewport" type="SubViewport" parent="PlayerSpace/Fake_SuB/DART/CamFeed" unique_id=1649201918]
-
-[node name="Camera3D" type="Camera3D" parent="PlayerSpace/Fake_SuB/DART/CamFeed/SubViewport" unique_id=734961351]
-transform = Transform3D(-0.15871742, -0.9762583, 0.14740652, -0.71533686, 0.21661001, 0.66435933, -0.680516, 8.940697e-08, -0.73273325, -66.51715, -437.0755, 89.04737)
-
 [node name="CharacterBody3D" type="CharacterBody3D" parent="PlayerSpace" unique_id=1902696497 node_paths=PackedStringArray("cam", "real_sub")]
 transform = Transform3D(-1, 0, 4.5695582e-08, 0, 1, 0, -4.569558e-08, 0, -1.0000001, -2.423153, 0, 0)
 script = ExtResource("1_yum48")
@@ -479,6 +448,9 @@ shape = SubResource("BoxShape3D_6mkbk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Real_Sub/AreaCheckBox" unique_id=328330442]
 shape = SubResource("BoxShape3D_rcmm0")
+
+[node name="CamLaunchPoint" type="Marker3D" parent="Real_Sub" unique_id=119257107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.7448425, 0)
 
 [node name="Node3D" parent="." unique_id=69286103 groups=["Map"] instance=ExtResource("5_1pqt4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -29.327824, 0)

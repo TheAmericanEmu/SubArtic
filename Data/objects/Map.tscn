@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dwpny72bduwvs" path="res://src/poi.gd" id="4_pp586"]
 [ext_resource type="Texture2D" uid="uid://r7dv6rjd7nmq" path="res://Data/textures/Texturelabs_Water_136S.jpg" id="5_pveti"]
 [ext_resource type="ArrayMesh" uid="uid://de1hekwrssj6v" path="res://Data/objects/Submarine/submarine.obj" id="6_04q34"]
+[ext_resource type="Script" uid="uid://dha3r0neglvdf" path="res://src/Dart_Cam.gd" id="7_vqlux"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_es73t"]
 _surfaces = [{
@@ -53,10 +54,10 @@ tracks/0/path = NodePath("Camera3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.01, 2.68, 4.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.01, 2.68, 4.1, 5.25, 6.98, 8.330341, 8.600341, 8.850341),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-1.55723, 7.217162, 0), Vector3(-1.169796, 0.56145096, 0), Vector3(-1.169796, -2.8511524, 0), Vector3(-4.2617397, -5.5035496, 0)]
+"values": [Vector3(-1.55723, 7.217162, 0), Vector3(-1.169796, 0.56145096, 0), Vector3(-1.169796, -2.8511524, 0), Vector3(-4.2617397, -5.5035496, 0), Vector3(-6.660263, -4.5399914, -10.125993), Vector3(-15.019718, -6.548691, -10.125993), Vector3(-25.546614, -10.426893, -10.125993), Vector3(-25.546614, -10.426893, -10.125993), Vector3(-25.546614, -22.413145, -10.125993)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -65,10 +66,24 @@ tracks/1/path = NodePath("Camera3D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.01, 2.68, 4.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.01, 2.68, 4.1, 5.25, 6.98, 8.330341, 8.600341, 8.850341),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.4399484, 1.1782229e-08, -1.0471977), Vector3(-1.1491439, 1.7744018, -0.5505557), Vector3(-0.09918085, 0.25068632, 0.02804048)]
+"values": [Vector3(0, 0, 0), Vector3(-1.4399484, 1.1782229e-08, -1.0471977), Vector3(-1.1491439, 1.7744018, -0.5505557), Vector3(-0.09918085, 0.25068632, 0.02804048), Vector3(-0.0991808, 1.6805123, 0.028040465), Vector3(-0.09918081, 1.6805123, 0.028040461), Vector3(-0.09918081, 1.6805123, 0.028040461), Vector3(0.14759666, 1.5636907, -2.3232284), Vector3(0.14759663, 1.5636907, -2.3232284)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(7.733333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"tigger_static"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_vqlux"]
@@ -103,6 +118,12 @@ _data = {
 &"Cutscence": SubResource("Animation_04q34"),
 &"RESET": SubResource("Animation_vqlux")
 }
+
+[sub_resource type="Environment" id="Environment_04q34"]
+background_mode = 1
+background_color = Color(0.24123287, 0.46388268, 1, 1)
+fog_enabled = true
+fog_light_color = Color(0.24123287, 0.46388268, 1, 1)
 
 [node name="Map" type="Node3D" unique_id=80653053]
 
@@ -261,14 +282,13 @@ is_main_POI = true
 transform = Transform3D(1, -2.2351742e-08, 0, -1.4901161e-08, 1, 0, -1.4901161e-08, 2.9802322e-08, 1, -6.1035156e-05, -17.453629, 0)
 shape = SubResource("BoxShape3D_vqlux")
 
-[node name="Cave" type="Area3D" parent="." unique_id=664248088 node_paths=PackedStringArray("ani_player", "viewport", "cam") groups=["POI"]]
+[node name="Cave" type="Area3D" parent="." unique_id=664248088 node_paths=PackedStringArray("ani_player", "cam") groups=["POI"]]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 221.96848, -216.37228, 198.50322)
 script = ExtResource("4_pp586")
 poi_name = "Cave"
 id = 3
 is_main_POI = true
 ani_player = NodePath("AnimationPlayer")
-viewport = NodePath("")
 cam = NodePath("Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cave" unique_id=996929555]
@@ -279,4 +299,6 @@ shape = SubResource("BoxShape3D_acq4a")
 libraries/ = SubResource("AnimationLibrary_r1aiu")
 
 [node name="Camera3D" type="Camera3D" parent="Cave" unique_id=1577979889]
-transform = Transform3D(0.10000002, 0, 0, 0, 0.10000001, 0, 0, 0, 0.100000024, -1.55723, 7.217162, 0)
+transform = Transform3D(0.10000001, 0, 0, 0, 0.10000002, 0, 0, 0, 0.1, -1.55723, 7.217162, 0)
+environment = SubResource("Environment_04q34")
+script = ExtResource("7_vqlux")

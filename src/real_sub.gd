@@ -1,7 +1,7 @@
 class_name RealSub extends CharacterBody3D
 
 @onready var main_cam: Camera3D = $MainWindowCam/Cam
-
+@onready var cam_launch_point: Marker3D = $CamLaunchPoint
 @onready var main_cam_point: Marker3D = $MainCamPoint
 
 # Called when the node enters the scene tree for the first time.

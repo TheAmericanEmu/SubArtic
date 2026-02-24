@@ -26,3 +26,6 @@ func discover_poi():
 		has_been_found=true
 		print(poi_name," Has been found")
 		poi_discovered.emit()
+
+func tigger_static():
+	CamHud._random_static=true

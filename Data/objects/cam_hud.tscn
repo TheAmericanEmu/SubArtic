@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://7d4nq76w2sg4"]
+
+[ext_resource type="FontFile" uid="uid://dj0tnf36fwsu8" path="res://Data/Fonts/HomeVideo-BLG6G.ttf" id="1_2nky1"]
+[ext_resource type="Script" uid="uid://0bh58aot7sfj" path="res://src/cam_hud.gd" id="1_4namc"]
+[ext_resource type="Texture2D" uid="uid://btx2nf22lm1gx" path="res://Data/textures/d3jmbjq-9d52e89c-e6eb-40ab-9517-8754ba9a3bcc-ezgif.com-gif-to-sprite-converter.png" id="2_mirpg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mirpg"]
+font = ExtResource("1_2nky1")
+font_size = 32
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bbreo"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5lin"]
+atlas = ExtResource("2_mirpg")
+region = Rect2(0, 0, 533, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbcig"]
+atlas = ExtResource("2_mirpg")
+region = Rect2(533, 0, 533, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk2ll"]
+atlas = ExtResource("2_mirpg")
+region = Rect2(1066, 0, 533, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3ox7"]
+atlas = ExtResource("2_mirpg")
+region = Rect2(1599, 0, 533, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_re55c"]
+atlas = ExtResource("2_mirpg")
+region = Rect2(2132, 0, 533, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4namc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5lin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbcig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk2ll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3ox7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_re55c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="CamHud" type="Control" unique_id=1131783337]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4namc")
+
+[node name="StaticText1" type="Label" parent="." unique_id=1941536605]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+text = "Cam Feed 1"
+label_settings = SubResource("LabelSettings_mirpg")
+
+[node name="Stats" type="Label" parent="." unique_id=1913446081]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Depth:"
+label_settings = SubResource("LabelSettings_mirpg")
+horizontal_alignment = 2
+
+[node name="Time" type="Label" parent="." unique_id=1656794724]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1152.0
+offset_top = -648.0
+offset_right = -960.0
+offset_bottom = -618.0
+grow_horizontal = 0
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_mirpg")
+
+[node name="Static" type="AnimatedSprite2D" parent="." unique_id=1367941470]
+self_modulate = Color(1, 1, 1, 0.11764706)
+material = SubResource("CanvasItemMaterial_bbreo")
+position = Vector2(591.00006, 314.00003)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_4namc")
+autoplay = "default"
+frame_progress = 0.22913174
