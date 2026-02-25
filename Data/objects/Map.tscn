@@ -28,6 +28,47 @@ data = PackedVector3Array(-480.46002, -588.418, -468.9225, -10.801941, -588.418,
 [sub_resource type="BoxShape3D" id="BoxShape3D_acq4a"]
 size = Vector3(14.2734375, 10.361328, 9.77832)
 
+[sub_resource type="Environment" id="Environment_04q34"]
+background_mode = 1
+background_color = Color(0.24123287, 0.46388268, 1, 1)
+fog_enabled = true
+fog_light_color = Color(0.24123287, 0.46388268, 1, 1)
+adjustment_enabled = true
+adjustment_saturation = 0.0
+
+[sub_resource type="Animation" id="Animation_r1aiu"]
+resource_name = "Cutscence"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6799999, 1.8, 2.9899998, 4.17, 5.5899997),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.07159424, 3.842082, -3.3901062), Vector3(0.07159424, 3.4584894, -9.700223), Vector3(-7.355301, 3.6414423, -7.59778), Vector3(-8.199533, 3.8358297, 1.5211849), Vector3(-3.7890015, 4.0285854, 9.037382), Vector3(8.795044, 4.26054, 4.8228703)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03187692, 0.7118769, 1.831877, 3.0218766, 4.201877, 5.6218767),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.33019885, 0, 0), Vector3(-0.33019882, -2.942468, 0), Vector3(-0.33019885, -2.2867477, -4.98552e-09), Vector3(-0.33019912, -1.5823328, -2.0788693e-08), Vector3(-0.33019915, -0.23378673, -2.107945e-08), Vector3(-0.33019912, 1.1452678, -1.0428538e-08)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7lnt"]
+_data = {
+&"Cutscence": SubResource("Animation_r1aiu")
+}
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04q34"]
 albedo_texture = ExtResource("5_pveti")
 uv1_scale = Vector3(10, 10, 10)
@@ -46,7 +87,7 @@ size = Vector3(150.9939, 134.90723, 159.25)
 
 [sub_resource type="Animation" id="Animation_04q34"]
 resource_name = "Cutscence"
-length = 9.033334
+length = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -54,10 +95,10 @@ tracks/0/path = NodePath("Camera3D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.01, 2.68, 4.1, 5.25, 6.98, 8.330341, 8.600341, 8.850341),
+"times": PackedFloat32Array(0, 1.9285554, 2.9804945, 4.654034, 6.05662, 7.9851756, 9.1965, 9.706531, 9.865915),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-1.55723, 7.217162, 0), Vector3(-1.169796, 0.56145096, 0), Vector3(-1.169796, -2.8511524, 0), Vector3(-4.2617397, -5.5035496, 0), Vector3(-6.660263, -4.5399914, -10.125993), Vector3(-15.019718, -6.548691, -10.125993), Vector3(-25.546614, -10.426893, -10.125993), Vector3(-25.546614, -10.426893, -10.125993), Vector3(-25.546614, -22.413145, -10.125993)]
+"values": [Vector3(0.07159424, 3.842082, -3.3901062), Vector3(0.07159424, 3.8420792, -2.0443535), Vector3(0.07159424, -5.5593853, -2.0443535), Vector3(-4.5697556, -5.5593853, -2.0443535), Vector3(-4.5697556, -5.5593853, -11.525527), Vector3(-11.111267, -6.1385994, -11.525529), Vector3(-27.010696, -10.551367, -11.525529), Vector3(-27.010696, -10.551367, -11.525529), Vector3(-27.010696, -22.696638, -11.525529)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -66,10 +107,10 @@ tracks/1/path = NodePath("Camera3D:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.01, 2.68, 4.1, 5.25, 6.98, 8.330341, 8.600341, 8.850341),
+"times": PackedFloat32Array(0, 1.9285554, 2.9804945, 4.654034, 6.05662, 7.9851756, 9.1965, 9.706531, 9.865915),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.4399484, 1.1782229e-08, -1.0471977), Vector3(-1.1491439, 1.7744018, -0.5505557), Vector3(-0.09918085, 0.25068632, 0.02804048), Vector3(-0.0991808, 1.6805123, 0.028040465), Vector3(-0.09918081, 1.6805123, 0.028040461), Vector3(-0.09918081, 1.6805123, 0.028040461), Vector3(0.14759666, 1.5636907, -2.3232284), Vector3(0.14759663, 1.5636907, -2.3232284)]
+"values": [Vector3(-0.330199, 2.92498, 0), Vector3(-0.33019897, 1.8578856, -1.2307213e-08), Vector3(-0.33019897, 1.8578855, -1.2307213e-08), Vector3(-0.33019897, 0.14957465, -5.1705737e-09), Vector3(-0.330199, 1.5447559, -4.530075e-09), Vector3(-0.330199, 1.5447559, -4.530075e-09), Vector3(-0.330199, 1.5447559, -4.530075e-09), Vector3(-0.9872225, -1.5260801, 3.0958247), Vector3(0.64014673, 1.9952242, -0.41201994)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -78,7 +119,7 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(7.733333),
+"times": PackedFloat32Array(8.066667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -98,7 +139,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.55723, 7.217162, 0)]
+"values": [Vector3(0.07159424, 3.842082, -3.3901062)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -110,7 +151,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(-0.33019885, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r1aiu"]
@@ -118,12 +159,6 @@ _data = {
 &"Cutscence": SubResource("Animation_04q34"),
 &"RESET": SubResource("Animation_vqlux")
 }
-
-[sub_resource type="Environment" id="Environment_04q34"]
-background_mode = 1
-background_color = Color(0.24123287, 0.46388268, 1, 1)
-fog_enabled = true
-fog_light_color = Color(0.24123287, 0.46388268, 1, 1)
 
 [node name="Map" type="Node3D" unique_id=80653053]
 
@@ -228,14 +263,24 @@ shape = SubResource("ConcavePolygonShape3D_acq4a")
 [node name="City One" parent="." unique_id=1079765549 instance=ExtResource("3_acq4a")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -188.72849, -174.41594, 198.50322)
 
-[node name="Area3D" type="Area3D" parent="City One" unique_id=738465789 groups=["POI"]]
+[node name="Area3D" type="Area3D" parent="City One" unique_id=738465789 node_paths=PackedStringArray("ani_player", "cam") groups=["POI"]]
 script = ExtResource("4_pp586")
 poi_name = "Ruins of Accient City"
 is_main_POI = true
+ani_player = NodePath("../CityPlayer")
+cam = NodePath("../Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="City One/Area3D" unique_id=1481728677]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.3823786, 0)
 shape = SubResource("BoxShape3D_acq4a")
+
+[node name="Camera3D" type="Camera3D" parent="City One" unique_id=1465136913]
+transform = Transform3D(0.1, 0, 0, 0, 0.094597794, 0.032423116, 0, -0.032423116, 0.09459779, 0.07159424, 3.842082, -3.3901062)
+environment = SubResource("Environment_04q34")
+script = ExtResource("7_vqlux")
+
+[node name="CityPlayer" type="AnimationPlayer" parent="City One" unique_id=650704011]
+libraries/ = SubResource("AnimationLibrary_k7lnt")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=756144654]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 46.017494, 0)
@@ -288,17 +333,17 @@ script = ExtResource("4_pp586")
 poi_name = "Cave"
 id = 3
 is_main_POI = true
-ani_player = NodePath("AnimationPlayer")
+ani_player = NodePath("CavePlayer")
 cam = NodePath("Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cave" unique_id=996929555]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0954342, 4.3823776, 0)
 shape = SubResource("BoxShape3D_acq4a")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Cave" unique_id=55177133]
+[node name="CavePlayer" type="AnimationPlayer" parent="Cave" unique_id=55177133]
 libraries/ = SubResource("AnimationLibrary_r1aiu")
 
 [node name="Camera3D" type="Camera3D" parent="Cave" unique_id=1577979889]
-transform = Transform3D(0.10000001, 0, 0, 0, 0.10000002, 0, 0, 0, 0.1, -1.55723, 7.217162, 0)
+transform = Transform3D(0.10000001, 0, 0, 0, 0.09459779, 0.032423116, 0, -0.032423116, 0.094597794, 0.07159424, 3.842082, -3.3901062)
 environment = SubResource("Environment_04q34")
 script = ExtResource("7_vqlux")

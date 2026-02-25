@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://4q1r2nhakhtv" path="res://Data/textures/MetalPlates002_1K-JPG_Color.jpg" id="8_t0hcq"]
 [ext_resource type="Script" uid="uid://byu58ips5gnwv" path="res://src/task_manger.gd" id="9_c3sht"]
 [ext_resource type="Texture2D" uid="uid://btx2nf22lm1gx" path="res://Data/textures/d3jmbjq-9d52e89c-e6eb-40ab-9517-8754ba9a3bcc-ezgif.com-gif-to-sprite-converter.png" id="9_lppb2"]
+[ext_resource type="PackedScene" uid="uid://c4rccd6belu7m" path="res://Data/objects/crt.tscn" id="11_v26c0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_715lt"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -45,18 +46,6 @@ viewport_path = NodePath("Real_Sub/MainWindowCam")
 resource_local_to_scene = true
 blend_mode = 4
 albedo_texture = SubResource("ViewportTexture_ylndv")
-emission_energy_multiplier = 8.79
-heightmap_texture = SubResource("ViewportTexture_1pqt4")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_7hphq"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_6mkbk"]
-viewport_path = NodePath("PlayerSpace/Fake_SuB/Hud")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wm6fd"]
-resource_local_to_scene = true
-blend_mode = 4
-albedo_texture = SubResource("ViewportTexture_6mkbk")
 emission_energy_multiplier = 8.79
 heightmap_texture = SubResource("ViewportTexture_1pqt4")
 
@@ -109,6 +98,18 @@ animations = [{
 "name": &"default",
 "speed": 24.0
 }]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7hphq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6mkbk"]
+viewport_path = NodePath("PlayerSpace/Fake_SuB/Hud")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wm6fd"]
+resource_local_to_scene = true
+blend_mode = 4
+albedo_texture = SubResource("ViewportTexture_6mkbk")
+emission_energy_multiplier = 8.79
+heightmap_texture = SubResource("ViewportTexture_1pqt4")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_rjpdc"]
 
@@ -258,11 +259,6 @@ transform = Transform3D(-8.742273e-09, 0.19999976, -8.742273e-09, 0, -8.742276e-
 mesh = SubResource("PlaneMesh_yum48")
 surface_material_override/0 = SubResource("StandardMaterial3D_715lt")
 
-[node name="Sub_Computer" type="MeshInstance3D" parent="PlayerSpace/Fake_SuB" unique_id=1336111389]
-transform = Transform3D(0.05083632, 0.22776003, -3.028412e-09, 4.425309e-23, -1.14958745e-08, -0.08, -0.08805112, 0.13149732, -1.7484543e-09, -0.8769214, 0.12109735, -0.24055463)
-mesh = SubResource("PlaneMesh_7hphq")
-surface_material_override/0 = SubResource("StandardMaterial3D_wm6fd")
-
 [node name="Hud" type="SubViewport" parent="PlayerSpace/Fake_SuB" unique_id=346411124]
 
 [node name="Control" parent="PlayerSpace/Fake_SuB/Hud" unique_id=202643959 instance=ExtResource("2_7hphq")]
@@ -353,6 +349,14 @@ frame_progress = 0.6567566
 [node name="CSGBox3D" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/DART/MeshInstance3D" unique_id=212959384]
 transform = Transform3D(1, 7.1054274e-15, 2.3547516e-19, 1.7763568e-15, 1.0000001, 0, -3.7057691e-22, -1.7763568e-15, 1, 0.009872541, 0.026214618, -0.053222656)
 size = Vector3(5.834015, 3.152893, 0.10449219)
+
+[node name="CRT" parent="PlayerSpace/Fake_SuB" unique_id=1334030640 instance=ExtResource("11_v26c0")]
+transform = Transform3D(0.1596602, 0, 0.19177447, 0, 0.25692663, 0, -0.17907915, 0, 0.170979, -0.90400696, 0.13992362, -0.3140918)
+
+[node name="Sub_Computer" type="MeshInstance3D" parent="PlayerSpace/Fake_SuB/CRT" unique_id=1336111389]
+transform = Transform3D(0.3604311, 0, 0, 0, -4.36406e-08, -0.4286871, 0, 0.9983806, -1.8738511e-08, 0.011657715, -0.010257721, 0.46451914)
+mesh = SubResource("PlaneMesh_7hphq")
+surface_material_override/0 = SubResource("StandardMaterial3D_wm6fd")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="PlayerSpace" unique_id=1902696497 node_paths=PackedStringArray("cam", "real_sub")]
 transform = Transform3D(-1, 0, 4.5695582e-08, 0, 1, 0, -4.569558e-08, 0, -1.0000001, -2.423153, 0, 0)
