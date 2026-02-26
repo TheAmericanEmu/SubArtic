@@ -85,6 +85,67 @@ data = PackedVector3Array(0, 0.6685, -6.3887997, 0.063099995, 0.6685, -6.342, 0,
 [sub_resource type="BoxShape3D" id="BoxShape3D_vqlux"]
 size = Vector3(150.9939, 134.90723, 159.25)
 
+[sub_resource type="Animation" id="Animation_k7lnt"]
+resource_name = "Cutscence"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.98, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(70.66127, -14.132584, -102.2923), Vector3(25.312897, 0.870224, -40.990417), Vector3(17.117828, -11.019287, -20.467712), Vector3(-6.1183167, -20.618393, -35.307556), Vector3(-50.868744, -39.10524, -63.887543)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.98, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.022340275, 2.4292371, 2.7595716), Vector3(-0.02234041, 2.4292371, 2.7595716), Vector3(0.30621848, 1.5141119, -2.5097997), Vector3(0.32567674, 2.9332633, 1.8455253), Vector3(0.18391924, -2.805942, 2.296232)]
+}
+
+[sub_resource type="Animation" id="Animation_6d58i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(70.66127, -14.132584, -102.2923)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.0465622, 1.8779677, -2.8634496)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kwakk"]
+_data = {
+&"Cutscence": SubResource("Animation_k7lnt"),
+&"RESET": SubResource("Animation_6d58i")
+}
+
 [sub_resource type="Animation" id="Animation_04q34"]
 resource_name = "Cutscence"
 length = 10.0
@@ -316,16 +377,26 @@ mesh = ExtResource("6_04q34")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sub/StaticBody3D" unique_id=1993502110]
 shape = SubResource("ConcavePolygonShape3D_04q34")
 
-[node name="Area3D" type="Area3D" parent="Sub" unique_id=1365646921 groups=["POI"]]
+[node name="Area3D" type="Area3D" parent="Sub" unique_id=1365646921 node_paths=PackedStringArray("ani_player", "cam") groups=["POI"]]
 transform = Transform3D(1, -2.2351742e-08, 0, -1.4901161e-08, 1, 0, -1.4901161e-08, 2.9802322e-08, 1, 7.0219727, 26.358047, -28.044586)
 script = ExtResource("4_pp586")
 poi_name = "RV Cyclopes"
 id = 2
 is_main_POI = true
+ani_player = NodePath("../Sub Ani")
+cam = NodePath("../Camera3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sub/Area3D" unique_id=2138215947]
 transform = Transform3D(1, -2.2351742e-08, 0, -1.4901161e-08, 1, 0, -1.4901161e-08, 2.9802322e-08, 1, -6.1035156e-05, -17.453629, 0)
 shape = SubResource("BoxShape3D_vqlux")
+
+[node name="Sub Ani" type="AnimationPlayer" parent="Sub" unique_id=183137299]
+libraries/ = SubResource("AnimationLibrary_kwakk")
+
+[node name="Camera3D" type="Camera3D" parent="Sub" unique_id=1079180010]
+transform = Transform3D(0.5173146, 0.7104515, 0.4771207, -0.13743633, -0.48131248, 0.8657075, 0.8446873, -0.51341695, -0.15134814, 70.66127, -14.132584, -102.2923)
+environment = SubResource("Environment_04q34")
+script = ExtResource("7_vqlux")
 
 [node name="Cave" type="Area3D" parent="." unique_id=664248088 node_paths=PackedStringArray("ani_player", "cam") groups=["POI"]]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 221.96848, -216.37228, 198.50322)
@@ -344,6 +415,6 @@ shape = SubResource("BoxShape3D_acq4a")
 libraries/ = SubResource("AnimationLibrary_r1aiu")
 
 [node name="Camera3D" type="Camera3D" parent="Cave" unique_id=1577979889]
-transform = Transform3D(0.10000001, 0, 0, 0, 0.09459779, 0.032423116, 0, -0.032423116, 0.094597794, 0.07159424, 3.842082, -3.3901062)
+transform = Transform3D(0.10000001, 0, 0, 0, 0.09459779, 0.032423116, 0, -0.032423116, 0.09459779, 0.07159424, 3.842082, -3.3901062)
 environment = SubResource("Environment_04q34")
 script = ExtResource("7_vqlux")

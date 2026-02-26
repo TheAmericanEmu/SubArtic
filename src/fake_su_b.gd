@@ -33,6 +33,9 @@ func _update_computer():
 	sub_comp.depth=real_sub.depth
 	sub_comp.speed=real_sub.power_settings
 	sub_comp.power_left=real_sub.power_left
+	sub_comp.fornt_health=real_sub.for_health
+	sub_comp.mid_heath=real_sub.mid_health
+	sub_comp.aft_health=real_sub.aft_health
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 

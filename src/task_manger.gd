@@ -15,10 +15,11 @@ var is_opening_scence:=false
 # Called when the node enters the scene tree for the first time.
 
 func _end_seq():
-	lift_noise.stop()
-	fake_su_b._toogle_main_window()
-	real_sub.allow_movement=true
-	is_opening_scence=false
+	if is_opening_scence==true:
+		lift_noise.stop()
+		fake_su_b._toogle_main_window()
+		real_sub.allow_movement=true
+		is_opening_scence=false
 
 func _start_seq():
 	is_opening_scence=true
@@ -32,6 +33,7 @@ func _input(event: InputEvent) -> void:
 		_end_seq()
 		if radio_speaker_obj.playing:
 			radio_speaker_obj.stop()
+			radio_speaker_obj.play_audio_seq([])
 
 func _ready() -> void:
 	randomize()
@@ -44,7 +46,7 @@ func _ready() -> void:
 				total_main_poi+=1
 			else:
 				total_side_poi+=1
-	
+
 	_start_seq()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

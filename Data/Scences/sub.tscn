@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://dwk56ghholdp3" path="res://src/radio_speaker.gd" id="6_im7rv"]
 [ext_resource type="AudioStream" uid="uid://c5u6sshicpv1p" path="res://Data/sounds/SoundEffects/descent.wav" id="7_v08oc"]
 [ext_resource type="Script" uid="uid://bbpldt7w7s2hc" path="res://src/random_sound_effects.gd" id="8_lppb2"]
-[ext_resource type="Texture2D" uid="uid://4q1r2nhakhtv" path="res://Data/textures/MetalPlates002_1K-JPG_Color.jpg" id="8_t0hcq"]
 [ext_resource type="Script" uid="uid://byu58ips5gnwv" path="res://src/task_manger.gd" id="9_c3sht"]
 [ext_resource type="Texture2D" uid="uid://btx2nf22lm1gx" path="res://Data/textures/d3jmbjq-9d52e89c-e6eb-40ab-9517-8754ba9a3bcc-ezgif.com-gif-to-sprite-converter.png" id="9_lppb2"]
 [ext_resource type="PackedScene" uid="uid://c4rccd6belu7m" path="res://Data/objects/crt.tscn" id="11_v26c0"]
@@ -50,11 +49,7 @@ emission_energy_multiplier = 8.79
 heightmap_texture = SubResource("ViewportTexture_1pqt4")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wm6fd"]
-size = Vector3(0.35864258, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v26c0"]
-albedo_texture = ExtResource("8_t0hcq")
-uv1_scale = Vector3(3, 3, 3)
+size = Vector3(0.50598145, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8ttn"]
 atlas = ExtResource("9_lppb2")
@@ -268,7 +263,7 @@ transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 1.4608002, 0, 0)
 script = ExtResource("4_wm6fd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerSpace/Fake_SuB/Cam" unique_id=1659033969]
-transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.9999997, 0, 0, 0, 1.0000025, 0, 0, 0, 1.0000025, -0.07366943, 0, 0)
 shape = SubResource("BoxShape3D_wm6fd")
 
 [node name="Helm" type="Area3D" parent="PlayerSpace/Fake_SuB" unique_id=1612783822]
@@ -319,42 +314,37 @@ height = 0.012512207
 [node name="DART" type="Node3D" parent="PlayerSpace/Fake_SuB" unique_id=2002542877]
 transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 1.5945435, -0.17968425, 0)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/DART" unique_id=276620509]
-transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.027236938, 0.0075448602, 0)
-size = Vector3(0.33822924, 0.41882324, 0.3095703)
-material = SubResource("StandardMaterial3D_v26c0")
+[node name="CRT2" parent="PlayerSpace/Fake_SuB/DART" unique_id=1334030640 instance=ExtResource("11_v26c0")]
+transform = Transform3D(0.18363447, 0, -0.16534494, 0, 0.25692663, 0, 0.15439935, 0, 0.19665287, -0.045455933, 0.2441497, -0.1973616)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/DART/CSGBox3D" unique_id=693191231]
-transform = Transform3D(0.030031886, 0.999549, 0, -0.9995479, 0.030033251, 0, 0, 0, 1, 0.12724304, 0.22143133, 0)
-operation = 2
-size = Vector3(0.2258468, 0.37420654, 0.54785156)
-material = SubResource("StandardMaterial3D_v26c0")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/DART/CSGBox3D/CSGBox3D3" unique_id=1971962224]
-transform = Transform3D(0.05367896, -0.9986019, 0, 0.998571, 0.05367521, 0, 0, 0, 1.0000598, 0.12068081, -0.23091125, 0)
-size = Vector3(0.27687266, 0.27165222, 0.54785156)
-material = SubResource("StandardMaterial3D_v26c0")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/DART/CSGBox3D/CSGBox3D3" unique_id=1511624553]
-transform = Transform3D(-0.7526465, -0.6584682, 0, 0.6584514, -0.75267273, 0, 0, 0, 1.0000668, 0.19210196, -0.36317444, 0)
-size = Vector3(0.41187382, 0.3448105, 0.54785156)
-material = SubResource("StandardMaterial3D_v26c0")
-
-[node name="MeshInstance3D" type="AnimatedSprite3D" parent="PlayerSpace/Fake_SuB/DART" unique_id=1612817826]
-transform = Transform3D(4.24455e-16, 7.0341564e-09, -0.27735686, 0.079782836, -7.034164e-09, 0, -3.4874181e-09, -0.16092281, -1.2123654e-08, 0.007675171, 0.19361292, 0)
+[node name="MeshInstance3D" type="AnimatedSprite3D" parent="PlayerSpace/Fake_SuB/DART/CRT2" unique_id=1612817826]
+transform = Transform3D(-0.14455158, -5.3487605e-09, -3.7252903e-09, 1.7949883e-09, -0.28715938, 0, -2.2351742e-08, -6.661338e-16, 0.097418144, -0.01159668, -0.00683254, 0.46636963)
 sprite_frames = SubResource("SpriteFrames_d7cnb")
 autoplay = "default"
-frame_progress = 0.6567566
+frame_progress = 0.35229415
 
-[node name="CSGBox3D" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/DART/MeshInstance3D" unique_id=212959384]
-transform = Transform3D(1, 7.1054274e-15, 2.3547516e-19, 1.7763568e-15, 1.0000001, 0, -3.7057691e-22, -1.7763568e-15, 1, 0.009872541, 0.026214618, -0.053222656)
-size = Vector3(5.834015, 3.152893, 0.10449219)
+[node name="CSGBox3D" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/DART" unique_id=833362218]
+transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.120529175, 0.0482357, -0.09555053)
+size = Vector3(0.27563477, 0.1640625, 0.29437256)
+material = ExtResource("2_6mkbk")
 
-[node name="CRT" parent="PlayerSpace/Fake_SuB" unique_id=1334030640 instance=ExtResource("11_v26c0")]
-transform = Transform3D(0.1596602, 0, 0.19177447, 0, 0.25692663, 0, -0.17907915, 0, 0.170979, -0.90400696, 0.13992362, -0.3140918)
+[node name="CSGBox3D2" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/DART/CSGBox3D" unique_id=237502367]
+transform = Transform3D(0.91121644, 0.4119279, 0, -0.41192818, 0.91121644, 0, 0, 0, 1, -0.0398407, -0.08809611, -0.004919097)
+operation = 2
+size = Vector3(0.27563477, 0.119140625, 0.34405136)
+material = ExtResource("2_6mkbk")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/DART/CSGBox3D" unique_id=562498204]
+transform = Transform3D(0.91121644, 0.4119279, 0, -0.41192818, 0.91121644, 0, 0, 0, 1, -0.019302368, -0.07220027, -0.0049191117)
+operation = 2
+size = Vector3(0.39642334, 0.16503906, 0.24975586)
+material = ExtResource("2_6mkbk")
+
+[node name="CRT" parent="PlayerSpace/Fake_SuB" unique_id=246017689 instance=ExtResource("11_v26c0")]
+transform = Transform3D(0.19922984, 0, 0.23808333, 0, 0.25692663, 0, -0.22346154, 0, 0.2122663, -0.90400696, 0.13992362, -0.3140918)
 
 [node name="Sub_Computer" type="MeshInstance3D" parent="PlayerSpace/Fake_SuB/CRT" unique_id=1336111389]
-transform = Transform3D(0.3604311, 0, 0, 0, -4.36406e-08, -0.4286871, 0, 0.9983806, -1.8738511e-08, 0.011657715, -0.010257721, 0.46451914)
+transform = Transform3D(0.3604311, 0, 0, 0, -4.36406e-08, -0.4286871, 0, 0.9983806, -1.8738508e-08, 0.011657715, -0.010257721, 0.46451914)
 mesh = SubResource("PlaneMesh_7hphq")
 surface_material_override/0 = SubResource("StandardMaterial3D_wm6fd")
 

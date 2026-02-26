@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://c4rccd6belu7m"]
 
+[ext_resource type="Texture2D" uid="uid://4q1r2nhakhtv" path="res://Data/textures/MetalPlates002_1K-JPG_Color.jpg" id="1_ki4w7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e11gj"]
+albedo_texture = ExtResource("1_ki4w7")
+
 [node name="CRT" type="Node3D" unique_id=1334030640]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1896252111]
+material_override = SubResource("StandardMaterial3D_e11gj")
 size = Vector3(0.8046875, 0.88183594, 1)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=1947670893]
@@ -21,9 +27,14 @@ operation = 2
 size = Vector3(1.045166, 0.76831055, 1.0971527)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D" unique_id=1692821594]
-transform = Transform3D(1, 0, 0, 0, 0.99999934, -0.0010820925, 0, 0.0010820925, 0.99999934, 0.4367218, -0.055808365, -0.44532126)
+transform = Transform3D(0.98951316, 0.00015630022, 0.14444247, 0, 0.99999934, -0.0010820925, -0.14444256, 0.0010707448, 0.9895125, 0.38242388, -0.055892844, -0.35981527)
 operation = 2
-size = Vector3(0.17172241, 1.1811523, 1.2253113)
+size = Vector3(0.16353607, 1.1811523, 1.3814526)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGBox3D" unique_id=1884982285]
+transform = Transform3D(0.9880568, -0.00016673919, -0.15408945, 4.4981463e-11, 0.99999934, -0.0010820925, 0.15408957, 0.0010691689, 0.9880562, -0.4032048, -0.05616162, -0.1143951)
+operation = 2
+size = Vector3(0.16353607, 1.1811523, 1.8782263)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D" unique_id=1868122378]
 transform = Transform3D(1, 0, 0, 0, 0.99999934, -0.0010820925, 0, 0.0010820925, 0.99999934, -0.4570154, -0.055808365, -0.44532126)

@@ -74,12 +74,14 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func do_collison(body:StaticBody3D,sec:int):
+	
+	
 	if sec==0:
-		for_health-=1
+		for_health-=(1*self.velocity).length()
 	elif sec==1:
-		mid_health-=1
+		mid_health-=(1*self.velocity).length()
 	else:
-		aft_health-=1
+		aft_health-=(1*self.velocity).length()
 	print(for_health,"-----",mid_health,"-----",aft_health)
 func _on_aft_hit_box_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Map"):

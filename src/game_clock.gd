@@ -1,6 +1,6 @@
 class_name game_clock extends Node
 
-var current_unix_time :int = 2415028820
+var current_unix_time :int = 300670200
 @onready var timer: Timer = $Timer
 
 # Called when the node enters the scene tree for the first time.

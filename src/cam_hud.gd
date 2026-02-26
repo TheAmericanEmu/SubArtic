@@ -22,6 +22,9 @@ func _process(delta: float) -> void:
 	else:
 		static_img.hide()
 		
-	time_label.text=Time.get_datetime_string_from_unix_time(GameClock.current_unix_time,true)
+	var time_dict = Time.get_datetime_dict_from_unix_time(GameClock.current_unix_time)
+	var time_Str = "%02d:%02d:%02d" % [time_dict.hour, time_dict.minute, time_dict.second]
+	time_label.text=time_Str
+	
 	stats_label.text = "Depth: "+str(depth)+" Battery: 95%"
 		
