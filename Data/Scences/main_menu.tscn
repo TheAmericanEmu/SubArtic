@@ -1,0 +1,764 @@
+[gd_scene format=3 uid="uid://bfbvgginv88"]
+
+[ext_resource type="Material" uid="uid://byg1caxpd8nam" path="res://Data/Mat/Brass.tres" id="1_fmyga"]
+[ext_resource type="PackedScene" uid="uid://c4rccd6belu7m" path="res://Data/objects/crt.tscn" id="2_rnhts"]
+[ext_resource type="PackedScene" uid="uid://bhexbtaua4erj" path="res://Data/objects/sub_hud.tscn" id="3_h71b2"]
+[ext_resource type="Script" uid="uid://cw3lyjvwm5gjq" path="res://src/sub_hud.gd" id="4_h71b2"]
+[ext_resource type="Texture2D" uid="uid://bjyxb4sfqt8ga" path="res://Data/textures/radar-ezgif.com-gif-to-sprite-converter.png" id="5_wg3xs"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wg3xs"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1bay0"]
+viewport_path = NodePath("Hud")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_v7f1b"]
+viewport_path = NodePath("Real_Sub/MainWindowCam")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yek8v"]
+resource_local_to_scene = true
+blend_mode = 4
+albedo_texture = SubResource("ViewportTexture_1bay0")
+emission_energy_multiplier = 8.79
+heightmap_texture = SubResource("ViewportTexture_v7f1b")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_h71b2"]
+viewport_path = NodePath("Radar")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wg3xs"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_h71b2")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1bay0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7f1b"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(0, 0, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yek8v"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(498, 0, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4l5b"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(996, 0, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkime"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1494, 0, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqxpr"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1992, 0, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j56e"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(0, 498, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p203k"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(498, 498, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5np3"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(996, 498, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8wduh"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1494, 498, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fog05"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1992, 498, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8unhh"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(0, 996, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np4n4"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(498, 996, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1iqa6"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(996, 996, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpyb3"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1494, 996, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8ctf"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1992, 996, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jirf1"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(0, 1494, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6akf"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(498, 1494, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_km276"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(996, 1494, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne2q0"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1494, 1494, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcjbj"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1992, 1494, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xywjw"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(0, 1992, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30636"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(498, 1992, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl1dn"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(996, 1992, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qeau"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1494, 1992, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w42xf"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1992, 1992, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wven"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(0, 2490, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa1yg"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(498, 2490, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpc6v"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(996, 2490, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7cpl"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1494, 2490, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wg8p"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1992, 2490, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0iki"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(0, 2988, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqbew"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(498, 2988, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shqt1"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(996, 2988, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2f6lj"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1494, 2988, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksnnt"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1992, 2988, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it8vy"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(0, 3486, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wseo"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(498, 3486, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxtwi"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(996, 3486, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_erpoy"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1494, 3486, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a2c52"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1992, 3486, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tajhl"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(0, 3984, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu0rb"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(498, 3984, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2o7b"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(996, 3984, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfuvg"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1494, 3984, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2gp7"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1992, 3984, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_873md"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(0, 4482, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mr5hv"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(498, 4482, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3jnl"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(996, 4482, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itroe"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1494, 4482, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hh4x"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1992, 4482, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t60gg"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(0, 4980, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j20rt"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(498, 4980, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdhvi"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(996, 4980, 498, 498)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7bd3"]
+atlas = ExtResource("5_wg3xs")
+region = Rect2(1494, 4980, 498, 498)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gb2qf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7f1b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yek8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4l5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkime")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqxpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j56e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p203k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5np3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8wduh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fog05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8unhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np4n4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1iqa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpyb3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8ctf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jirf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6akf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_km276")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne2q0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcjbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xywjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30636")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl1dn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qeau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w42xf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wven")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pa1yg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpc6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7cpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wg8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0iki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqbew")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shqt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2f6lj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksnnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it8vy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wseo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxtwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_erpoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a2c52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tajhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu0rb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2o7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfuvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2gp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_873md")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mr5hv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3jnl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itroe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hh4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t60gg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j20rt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdhvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7bd3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="Shader" id="Shader_4namc"]
+code = "// CRT Shader for Godot Engine
+// Simulates the look of old CRT displays with various customizable effects
+shader_type canvas_item;
+
+// Built-in texture for screen sampling
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture;
+
+// Base resolution for pixel-perfect effects (lower values = larger pixels)
+uniform vec2 resolution = vec2(320.0, 180.0);
+
+// ===== Effect Controls =====
+// Each parameter has a sensible default and range hint for the Godot editor
+
+// Scanline effect (dark lines between pixel rows)
+uniform float scan_line_amount : hint_range(0.0, 1.0) = 1.0;
+uniform float scan_line_strength : hint_range(-12.0, -1.0) = -8.0;
+
+// Screen curvature/warp effect
+uniform float warp_amount : hint_range(0.0, 5.0) = 0.1;
+
+// Visual noise/interference
+uniform float noise_amount : hint_range(0.0, 0.3) = 0.03;
+uniform float interference_amount : hint_range(0.0, 1.0) = 0.2;
+
+// Shadow mask/grille (simulates color phosphor patterns)
+uniform float grille_amount : hint_range(0.0, 1.0) = 0.1;
+uniform float grille_size : hint_range(1.0, 5.0) = 1.0;
+
+// Vignette (darkening at screen edges)
+uniform float vignette_amount : hint_range(0.0, 2.0) = 0.6;
+uniform float vignette_intensity : hint_range(0.0, 1.0) = 0.4;
+
+// Chromatic aberration (color separation)
+uniform float aberation_amount : hint_range(0.0, 1.0) = 0.5;
+
+// Rolling line effect (simulates VHS/analog interference)
+uniform float roll_line_amount : hint_range(0.0, 1.0) = 0.3;
+uniform float roll_speed : hint_range(-8.0, 8.0) = 1.0;
+
+// Pixel sharpness/softness
+uniform float pixel_strength : hint_range(-4.0, 0.0) = -2.0;
+
+// ===== Utility Functions =====
+
+/**
+ * Generates a pseudo-random float between 0 and 1 based on input coordinates
+ */
+float random(vec2 uv) {
+    return fract(cos(uv.x * 83.4827 + uv.y * 92.2842) * 43758.5453123);
+}
+
+/**
+ * Samples a pixel from the screen texture with optional offset and noise
+ * Handles edge cases and applies noise if enabled
+ */
+vec3 fetch_pixel(vec2 uv, vec2 off) {
+    // Calculate pixel position with offset and snap to pixel grid
+    vec2 pos = floor(uv * resolution + off) / resolution + vec2(0.5) / resolution;
+
+    // Apply noise if enabled
+    float noise = 0.0;
+    if (noise_amount > 0.0) {
+        noise = random(pos + fract(TIME)) * noise_amount;
+    }
+
+    // Clamp to screen bounds (return black if outside)
+    if (max(abs(pos.x - 0.5), abs(pos.y - 0.5)) > 0.5) {
+        return vec3(0.0);
+    }
+
+    // Sample the texture with mipmap bias for sharper pixels
+    return texture(SCREEN_TEXTURE, pos, -16.0).rgb + noise;
+}
+
+// ===== Pixel and Scanline Processing =====
+
+/**
+ * Calculates distance from current pixel to nearest texel center
+ * Used for sub-pixel filtering and anti-aliasing
+ */
+vec2 Dist(vec2 pos) { 
+    pos = pos * resolution;
+    return -((pos - floor(pos)) - vec2(0.5));
+}
+    
+/**
+ * 1D Gaussian function for smooth filtering
+ */
+float Gaus(float pos, float scale) { 
+    return exp2(scale * pos * pos); 
+}
+
+/**
+ * 3-tap Gaussian filter along horizontal line
+ * Creates smooth horizontal blending between pixels
+ */
+vec3 Horz3(vec2 pos, float off) {
+    // Sample three horizontally adjacent pixels
+    vec3 b = fetch_pixel(pos, vec2(-1.0, off));
+    vec3 c = fetch_pixel(pos, vec2( 0.0, off));
+    vec3 d = fetch_pixel(pos, vec2( 1.0, off));
+    
+    // Calculate weights based on distance from pixel center
+    float dst = Dist(pos).x;
+    float wb = Gaus(dst - 1.0, pixel_strength);
+    float wc = Gaus(dst + 0.0, pixel_strength);
+    float wd = Gaus(dst + 1.0, pixel_strength);
+    
+    // Return weighted average of samples
+    return (b * wb + c * wc + d * wd) / (wb + wc + wd);
+}
+
+/**
+ * Calculates scanline weight for a given position and offset
+ * Creates the dark lines between pixel rows
+ */
+float Scan(vec2 pos, float off) {
+    float dst = Dist(pos).y;
+    return Gaus(dst + off, scan_line_strength);
+}
+
+/**
+ * Applies scanline effect by blending multiple horizontal samples
+ * Combines three scanlines with gaussian weights for smooth transitions
+ */
+vec3 Tri(vec2 pos) {
+    vec3 clr = fetch_pixel(pos, vec2(0.0));
+    
+    if (scan_line_amount > 0.0) {
+        // Sample three vertically adjacent scanlines
+        vec3 a = Horz3(pos, -1.0);
+        vec3 b = Horz3(pos,  0.0);
+        vec3 c = Horz3(pos,  1.0);
+
+        // Calculate scanline weights
+        float wa = Scan(pos, -1.0);
+        float wb = Scan(pos,  0.0);
+        float wc = Scan(pos,  1.0);
+
+        // Blend between original and scanline-affected color
+        vec3 scanlines = a * wa + b * wb + c * wc;
+        clr = mix(clr, scanlines, scan_line_amount);
+    }
+    
+    return clr;
+}
+
+// ===== Screen Warping and Distortion Effects =====
+
+/**
+ * Applies a spherize/bulge distortion to simulate CRT screen curvature
+ * Warps UV coordinates more severely towards screen edges
+ */
+vec2 warp(vec2 uv) {
+    // Calculate distance from center and apply non-linear warping
+    vec2 delta = uv - 0.5;
+    float delta2 = dot(delta.xy, delta.xy);
+    float delta4 = delta2 * delta2;
+    float delta_offset = delta4 * warp_amount;
+    
+    // Apply warping and normalize back to 0-1 range
+    vec2 warped = uv + delta * delta_offset;
+    return (warped - 0.5) / mix(1.0, 1.2, warp_amount/5.0) + 0.5;
+}
+
+/**
+ * Applies vignette effect (darkening at screen edges)
+ * Uses a smooth falloff based on distance from center
+ */
+float vignette(vec2 uv) {
+    // Create circular falloff from center
+    uv *= 1.0 - uv.xy;
+    float vignette = uv.x * uv.y * 15.0;
+    
+    // Apply intensity controls
+    return pow(vignette, vignette_intensity * vignette_amount);
+}
+
+/**
+ * Simulates a shadow mask/grille pattern like those found in CRT displays
+ * Creates color separation similar to real phosphor patterns
+ */
+vec3 grille(vec2 uv) {
+    float unit = PI / 3.0;
+    float scale = 2.0 * unit / grille_size;
+    
+    // Create offset color patterns for RGB channels
+    float r = smoothstep(0.5, 0.8, cos(uv.x * scale - unit));
+    float g = smoothstep(0.5, 0.8, cos(uv.x * scale + unit));
+    float b = smoothstep(0.5, 0.8, cos(uv.x * scale + 3.0 * unit));
+    
+    // Blend between original color and grille pattern
+    return mix(vec3(1.0), vec3(r, g, b), grille_amount);
+}
+
+/**
+ * Creates rolling horizontal interference lines
+ * Simulates analog signal interference or VHS artifacts
+ */
+float roll_line(vec2 uv) {
+    // Create complex wave pattern that moves with time
+    float x = uv.y * 3.0 - TIME * roll_speed;
+    float f = cos(x) * cos(x * 2.35 + 1.1) * cos(x * 4.45 + 2.3);
+    
+    // Threshold and smooth the wave to create distinct lines
+    float roll_line = smoothstep(0.5, 0.9, f);
+    return roll_line * roll_line_amount;
+}
+
+// ===== Main Shader Function =====
+
+void fragment() {
+    // Get screen coordinates and apply screen warping
+    vec2 pix = FRAGCOORD.xy;
+    vec2 pos = warp(SCREEN_UV);
+    
+    // Generate rolling interference lines if enabled
+    float line = 0.0;
+    if (roll_line_amount > 0.0) {
+        line = roll_line(pos);
+    }
+
+    // Apply horizontal interference/jitter
+    vec2 sq_pix = floor(pos * resolution) / resolution + vec2(0.5) / resolution;
+    if (interference_amount + roll_line_amount > 0.0) {
+        float interference = random(sq_pix.yy + fract(TIME));
+        pos.x += (interference * (interference_amount + line * 6.0)) / resolution.x;
+    }
+
+    // Get base color with scanline processing
+    vec3 clr = Tri(pos);
+    
+    // Apply chromatic aberration (color separation)
+    if (aberation_amount > 0.0) {
+        float chromatic = aberation_amount + line * 2.0;  // Enhanced by rolling lines
+        vec2 chromatic_x = vec2(chromatic, 0.0) / resolution.x;
+        vec2 chromatic_y = vec2(0.0, chromatic/2.0) / resolution.y;
+        
+        // Sample RGB channels with slight offsets
+        float r = Tri(pos - chromatic_x).r;  // Red shifted left
+        float g = Tri(pos + chromatic_y).g;  // Green shifted down
+        float b = Tri(pos + chromatic_x).b;  // Blue shifted right
+        clr = vec3(r, g, b);
+    }
+    
+    // Apply shadow mask/grille effect
+    if (grille_amount > 0.0) {
+        clr *= grille(pix);
+    }
+    
+    // Adjust overall brightness based on effects
+    clr *= 1.0 + scan_line_amount * 0.6 + line * 3.0 + grille_amount * 2.0;
+    
+    // Apply vignette (darken edges)
+    if (vignette_amount > 0.0) {
+        clr *= vignette(pos);
+    }
+    
+    // Output final color
+    COLOR.rgb = clr;
+    COLOR.a = 1.0;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3aac4"]
+shader = SubResource("Shader_4namc")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/scan_line_strength = -7.199999772
+shader_parameter/warp_amount = 1.118000053105
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.0
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.2050000097375
+shader_parameter/vignette_intensity = 0.8800000418
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.346000016435
+shader_parameter/roll_speed = 1.0000004274999998
+shader_parameter/pixel_strength = -4.0
+
+[node name="Main_Menu" type="Node3D" unique_id=788266356]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=790060103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8793457, 0)
+size = Vector3(5, 2.1586914, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=385800169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3095703, -0.45013428, -1.0053711)
+operation = 2
+size = Vector3(2.171875, 0.9901123, 2.4814453)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=117650205]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31461364, -0.008567259, -1.9469154)
+material_override = ExtResource("1_fmyga")
+size = Vector3(0.4609375, 0.35595703, 0.68115234)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D2" unique_id=573684436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.087402344, -0.014831543, -0.06304932)
+operation = 2
+size = Vector3(0.6357422, 0.32629395, 0.5772705)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D2" unique_id=396772876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0053100586, 0.101882935, 0.2853949)
+size = Vector3(0.47155762, 0.09286499, 0.09976578)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D2" unique_id=821226608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0053100586, -0.0012564361, 0.2853949)
+size = Vector3(0.47155762, 0.09286499, 0.09976578)
+
+[node name="CRT3" parent="." unique_id=1334030640 instance=ExtResource("2_rnhts")]
+transform = Transform3D(0.2059119, 0, -0.2315399, 0, 0.2569266, 0, 0.21731976, 0, 0.21938536, -0.34619457, 0.28115237, -2.195338)
+
+[node name="Sub_Computer" type="MeshInstance3D" parent="CRT3" unique_id=853583487]
+transform = Transform3D(0.3604311, 0, 0, 0, -4.36406e-08, -0.4286871, 0, 0.9983806, -1.8738508e-08, 0.011657715, -0.010257721, 0.46451914)
+mesh = SubResource("PlaneMesh_wg3xs")
+surface_material_override/0 = SubResource("StandardMaterial3D_yek8v")
+
+[node name="CRT4" parent="." unique_id=1752910458 instance=ExtResource("2_rnhts")]
+transform = Transform3D(-1.3086258e-08, 0, -0.31896815, 0, 0.2569266, 0, 0.2993787, 0, -1.39425405e-08, -0.2365253, 0.28115237, -1.9096749)
+
+[node name="Sub_Computer" type="MeshInstance3D" parent="CRT4" unique_id=1271936130]
+transform = Transform3D(0.36771372, -1.7763568e-15, 1.5881868e-22, 0, -2.1855687e-08, -0.39935705, 1.7763568e-15, 0.49999988, -1.7456452e-08, 0.011657715, -0.010257721, 0.46451902)
+material_override = SubResource("StandardMaterial3D_wg3xs")
+mesh = SubResource("PlaneMesh_1bay0")
+
+[node name="Hud" type="SubViewport" parent="." unique_id=1628167505]
+
+[node name="Control" parent="Hud" unique_id=1760680745 instance=ExtResource("3_h71b2")]
+
+[node name="Radar" type="SubViewport" parent="." unique_id=1480969380]
+
+[node name="Control" type="CanvasLayer" parent="Radar" unique_id=305255336]
+script = ExtResource("4_h71b2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Radar/Control" unique_id=1493870828]
+position = Vector2(256, 256)
+sprite_frames = SubResource("SpriteFrames_gb2qf")
+frame_progress = 0.8476676
+
+[node name="Panel" type="ColorRect" parent="Radar/Control" unique_id=818311474]
+material = SubResource("ShaderMaterial_3aac4")
+offset_left = -66.99994
+offset_top = -84.0
+offset_right = 1290.0
+offset_bottom = 707.0

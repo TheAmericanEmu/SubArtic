@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://byu58ips5gnwv" path="res://src/task_manger.gd" id="9_c3sht"]
 [ext_resource type="Texture2D" uid="uid://btx2nf22lm1gx" path="res://Data/textures/d3jmbjq-9d52e89c-e6eb-40ab-9517-8754ba9a3bcc-ezgif.com-gif-to-sprite-converter.png" id="9_lppb2"]
 [ext_resource type="PackedScene" uid="uid://c4rccd6belu7m" path="res://Data/objects/crt.tscn" id="11_v26c0"]
+[ext_resource type="Material" uid="uid://byg1caxpd8nam" path="res://Data/Mat/Brass.tres" id="13_v26c0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_715lt"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -94,6 +95,9 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_v26c0"]
+data = PackedVector3Array(-0.13781738, 0.02157013, -0.14718628, -0.13781738, 0.071935855, -0.12979704, -0.13781738, 0.02157013, -0.12979704, -0.13781738, 0.08203125, -0.14718628, -0.13781738, 0.071935855, -0.12979704, -0.13781738, 0.02157013, -0.14718628, -0.13781738, 0.08203125, -0.14718628, -0.13781738, 0.071935855, 0.11995882, -0.13781738, 0.071935855, -0.12979704, -0.13781738, 0.08203125, -0.14718628, -0.13781738, 0.02157013, -0.14718628, 0.091356725, -0.08203125, -0.14718628, -0.13781738, 0.071935855, 0.11995882, -0.13781738, 0.02157013, 0.14718628, -0.13781738, 0.02157013, 0.11995882, -0.13781738, 0.08203125, -0.14718628, -0.13781738, 0.08203125, 0.14718628, -0.13781738, 0.071935855, 0.11995882, -0.13781738, 0.08203125, 0.14718628, -0.13781738, 0.02157013, 0.14718628, -0.13781738, 0.071935855, 0.11995882, -0.13781738, 0.08203125, 0.14718628, 0.091356725, -0.08203125, 0.14718628, -0.13781738, 0.02157013, 0.14718628, -0.13781738, 0.08203125, -0.14718628, 0.13781738, 0.08203125, 0.14718628, -0.13781738, 0.08203125, 0.14718628, -0.13781738, 0.08203125, -0.14718628, 0.091356725, -0.08203125, -0.14718628, 0.13781738, -0.08203125, -0.14718628, 0.13781738, -0.08203125, -0.14718628, 0.091356725, -0.08203125, -0.14718628, 0.091356725, -0.08203125, -0.12979704, 0.13781738, -0.08203125, -0.14718628, 0.091356725, -0.08203125, -0.12979704, 0.13781738, -0.08203125, -0.12979704, 0.13781738, -0.08203125, -0.14718628, 0.13781738, -0.08203125, -0.12979704, 0.13781738, 0.08203125, -0.14718628, 0.13781738, 0.08203125, -0.14718628, 0.13781738, -0.08203125, -0.12979704, 0.13781738, -0.0526687, -0.12979704, 0.13781738, -0.08203125, 0.11995882, 0.091356725, -0.08203125, 0.11995882, 0.091356725, -0.08203125, 0.14718628, 0.13781738, -0.08203125, 0.14718628, 0.13781738, -0.08203125, 0.11995882, 0.091356725, -0.08203125, 0.14718628, 0.13781738, -0.08203125, 0.14718628, 0.13781738, -0.0526687, 0.11995882, 0.13781738, -0.08203125, 0.11995882, 0.13781738, 0.08203125, 0.14718628, 0.13781738, -0.0526687, -0.12979704, 0.13781738, -0.0526687, 0.11995882, 0.13781738, -0.08203125, 0.14718628, 0.091356725, -0.08203125, 0.14718628, 0.13781738, 0.08203125, 0.14718628, 0.13781738, -0.08203125, 0.14718628, 0.13781738, 0.08203125, 0.14718628, 0.13781738, -0.0526687, 0.11995882, -0.13781738, 0.08203125, -0.14718628, 0.13781738, -0.08203125, -0.14718628, 0.13781738, 0.08203125, -0.14718628, -0.13781738, 0.08203125, -0.14718628, 0.13781738, 0.08203125, -0.14718628, 0.13781738, 0.08203125, 0.14718628, 0.13781738, 0.08203125, -0.14718628, 0.13781738, -0.0526687, -0.12979704, 0.13781738, 0.08203125, 0.14718628, -0.13781738, 0.08203125, 0.14718628, 0.13781738, 0.08203125, 0.14718628, 0.091356725, -0.08203125, 0.14718628, -0.13781738, 0.02157013, -0.12979704, 0.091356725, -0.08203125, -0.12979704, -0.13781738, 0.02157013, -0.14718628, -0.13781738, 0.02157013, 0.14718628, 0.091356725, -0.08203125, 0.14718628, -0.13781738, 0.02157013, 0.11995882, 0.091356725, -0.08203125, -0.12979704, 0.091356725, -0.08203125, -0.14718628, -0.13781738, 0.02157013, -0.14718628, 0.091356725, -0.08203125, 0.14718628, 0.091356725, -0.08203125, 0.11995882, -0.13781738, 0.02157013, 0.11995882, -0.13781738, 0.02157013, -0.12979704, -0.13781738, 0.071935855, -0.12979704, 0.091356725, -0.08203125, -0.12979704, -0.13781738, 0.071935855, 0.11995882, 0.13781738, -0.0526687, -0.12979704, -0.13781738, 0.071935855, -0.12979704, -0.13781738, 0.071935855, 0.11995882, -0.13781738, 0.02157013, 0.11995882, 0.13781738, -0.0526687, 0.11995882, 0.091356725, -0.08203125, -0.12979704, -0.13781738, 0.071935855, -0.12979704, 0.13781738, -0.08203125, -0.12979704, 0.13781738, -0.08203125, -0.12979704, -0.13781738, 0.071935855, -0.12979704, 0.13781738, -0.0526687, -0.12979704, -0.13781738, 0.071935855, 0.11995882, 0.13781738, -0.0526687, 0.11995882, 0.13781738, -0.0526687, -0.12979704, -0.13781738, 0.02157013, 0.11995882, 0.091356725, -0.08203125, 0.11995882, 0.13781738, -0.0526687, 0.11995882, 0.13781738, -0.08203125, 0.11995882, 0.13781738, -0.0526687, 0.11995882, 0.091356725, -0.08203125, 0.11995882)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_7hphq"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6mkbk"]
@@ -111,8 +115,6 @@ heightmap_texture = SubResource("ViewportTexture_1pqt4")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ylndv"]
 height = 2.4550781
 
-[sub_resource type="BoxMesh" id="BoxMesh_1pqt4"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_ylndv"]
 size = Vector3(1.6753235, 1, 1)
 
@@ -129,6 +131,16 @@ size = Vector3(2.7495728, 3.8150635, 3.8999634)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rcmm0"]
 size = Vector3(10.509766, 4.275635, 4.571289)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_v26c0"]
+viewport_path = NodePath("PlayerSpace/Fake_SuB/View_Into_Sub")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8ttn"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_v26c0")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_en8mb"]
+material = SubResource("StandardMaterial3D_v8ttn")
 
 [node name="Sub" type="Node3D" unique_id=443815960]
 
@@ -197,6 +209,7 @@ material = ExtResource("2_6mkbk")
 
 [node name="Window_Blocker" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB" unique_id=211580294]
 transform = Transform3D(-4.3711346e-08, 0.115417175, 0, -1, -5.0450506e-09, 0, 0, 0, 1, -0.9920044, 0.10277064, 0)
+visible = false
 use_collision = true
 radius = 0.2
 height = 0.2
@@ -340,6 +353,12 @@ operation = 2
 size = Vector3(0.39642334, 0.16503906, 0.24975586)
 material = ExtResource("2_6mkbk")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="PlayerSpace/Fake_SuB/DART" unique_id=2023099062]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="PlayerSpace/Fake_SuB/DART/StaticBody3D" unique_id=250740126]
+transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.120529175, 0.0482357, -0.09555053)
+shape = SubResource("ConcavePolygonShape3D_v26c0")
+
 [node name="CRT" parent="PlayerSpace/Fake_SuB" unique_id=246017689 instance=ExtResource("11_v26c0")]
 transform = Transform3D(0.19922984, 0, 0.23808333, 0, 0.25692663, 0, -0.22346154, 0, 0.2122663, -0.90400696, 0.13992362, -0.3140918)
 
@@ -347,6 +366,11 @@ transform = Transform3D(0.19922984, 0, 0.23808333, 0, 0.25692663, 0, -0.22346154
 transform = Transform3D(0.3604311, 0, 0, 0, -4.36406e-08, -0.4286871, 0, 0.9983806, -1.8738508e-08, 0.011657715, -0.010257721, 0.46451914)
 mesh = SubResource("PlaneMesh_7hphq")
 surface_material_override/0 = SubResource("StandardMaterial3D_wm6fd")
+
+[node name="View_Into_Sub" type="SubViewport" parent="PlayerSpace/Fake_SuB" unique_id=490413698]
+
+[node name="Camera3D" type="Camera3D" parent="PlayerSpace/Fake_SuB/View_Into_Sub" unique_id=2003437521]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -904.90643, 0.4296843, 0)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="PlayerSpace" unique_id=1902696497 node_paths=PackedStringArray("cam", "real_sub")]
 transform = Transform3D(-1, 0, 4.5695582e-08, 0, 1, 0, -4.569558e-08, 0, -1.0000001, -2.423153, 0, 0)
@@ -368,12 +392,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5870817, 0)
 current = true
 
 [node name="Real_Sub" type="CharacterBody3D" parent="." unique_id=1852088454]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 182.85452, -176.69391, 149.33337)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.85452, -176.69391, 149.33337)
 script = ExtResource("2_ylndv")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Real_Sub" unique_id=1565459029]
-transform = Transform3D(9.243612, 0, 0, 0, 3.4186203, 0, 0, 0, 3.5422978, 0, 0, 0)
-mesh = SubResource("BoxMesh_1pqt4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Real_Sub" unique_id=1698410215]
 transform = Transform3D(5.5783315, 0, 0, 0, 3.4186203, 0, 0, 0, 3.5422978, -0.028173447, 0, -5.684342e-13)
@@ -415,7 +435,7 @@ distance_fade_enabled = true
 omni_range = 100.0
 
 [node name="MainCamPoint" type="Marker3D" parent="Real_Sub" unique_id=283411051]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.611725, 0, -7.755682e-08)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.837097, 0, 0)
 
 [node name="AftHitBox" type="Area3D" parent="Real_Sub" unique_id=178918366]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9148865, 0, 3.9990937e-08)
@@ -445,6 +465,130 @@ shape = SubResource("BoxShape3D_rcmm0")
 
 [node name="CamLaunchPoint" type="Marker3D" parent="Real_Sub" unique_id=119257107]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.7448425, 0)
+
+[node name="Sub" type="Node3D" parent="Real_Sub" unique_id=956374506]
+transform = Transform3D(-1.7484555e-07, 0, -4, 0, 4, 0, 4, 0, -1.7484555e-07, 0, 0, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Real_Sub/Sub" unique_id=1521660470]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+material_override = ExtResource("2_6mkbk")
+height = 2.834961
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Real_Sub/Sub/CSGCylinder3D" unique_id=265265937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3582464, -0.07400679)
+material_override = ExtResource("2_6mkbk")
+operation = 2
+radius = 0.19580078
+height = 0.32861328
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Real_Sub/Sub" unique_id=1274707469]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.43066168, -0.24085462, 0)
+material_override = ExtResource("13_v26c0")
+radius = 0.2397461
+height = 1.671875
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Real_Sub/Sub/CSGCylinder3D2" unique_id=188669931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83922994, -2.9802322e-08)
+radius = 0.24262589
+radial_segments = 8
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Real_Sub/Sub/CSGCylinder3D2" unique_id=1973352071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.83793205, 2.9802322e-08)
+radius = 0.24262589
+radial_segments = 8
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Real_Sub/Sub" unique_id=1450134316]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.36933833, -0.24085462, 0)
+material_override = ExtResource("13_v26c0")
+radius = 0.2397461
+height = 1.671875
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Real_Sub/Sub/CSGCylinder3D3" unique_id=112147836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83922994, -2.9802322e-08)
+radius = 0.24262589
+radial_segments = 8
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Real_Sub/Sub/CSGCylinder3D3" unique_id=1384453266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.83793205, 2.9802322e-08)
+radius = 0.24262589
+radial_segments = 8
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Real_Sub/Sub" unique_id=523504995]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011474609, 0, -1.5738907)
+material_override = ExtResource("2_6mkbk")
+size = Vector3(0.02734375, 1.1350098, 0.3486328)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Real_Sub/Sub/CSGBox3D" unique_id=366819447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3166504)
+operation = 2
+size = Vector3(0.22045898, 0.32714844, 0.80322266)
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Real_Sub/Sub" unique_id=1409805442]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0.011474609, -1.0127467e-08, -1.057731)
+material_override = ExtResource("13_v26c0")
+radius = 0.017089844
+height = 1.5366211
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Real_Sub/Sub" unique_id=1118591540]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0.011474609, 1.5798156e-08, -1.4594873)
+material_override = ExtResource("2_6mkbk")
+radius = 0.17333984
+height = 0.09716797
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Real_Sub/Sub" unique_id=215197452]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0.011474609, -1.0127467e-08, -1.7943053)
+material_override = ExtResource("13_v26c0")
+radius = 0.041015625
+height = 0.046875
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Real_Sub/Sub/CSGCylinder3D6" unique_id=1903715186]
+transform = Transform3D(0.7358844, 2.9597294e-08, 0.67710716, -2.9597294e-08, 0.9999999, -1.1544856e-08, -0.67710716, -1.1544859e-08, 0.7358843, 0, 0.0065820217, 1.1514707e-08)
+radius = 0.21533203
+height = 0.001
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Real_Sub/Sub/CSGCylinder3D6/CSGCylinder3D5" unique_id=392822256]
+transform = Transform3D(-0.7071054, 3.0908033e-08, 0.7070969, -3.0908453e-08, 0.9999845, -7.461861e-08, -0.70710456, -7.461869e-08, -0.7070963, 0.014026275, 0, -0.0140263)
+operation = 2
+size = Vector3(0.5498047, 0.119140625, 0.037475586)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Real_Sub/Sub/CSGCylinder3D6/CSGCylinder3D5" unique_id=661996654]
+transform = Transform3D(0.7071067, 3.0908115e-08, 0.7070983, -3.0908435e-08, 0.9999851, -1.2802431e-08, -0.7071039, -1.280279e-08, 0.7070955, 0, 0, 0)
+material_override = ExtResource("13_v26c0")
+operation = 2
+size = Vector3(0.5498047, 0.119140625, 0.0390625)
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Real_Sub/Sub" unique_id=827402040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44529462, 0)
+material_override = ExtResource("2_6mkbk")
+radius = 0.17480469
+height = 0.13964844
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Real_Sub/Sub" unique_id=70299580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5040959, 0)
+material_override = ExtResource("13_v26c0")
+radius = 0.1459961
+height = 0.057250977
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Real_Sub/Sub/CSGCylinder3D8" unique_id=514041480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12995529, -0.010146797, 0.00014956295)
+size = Vector3(0.05899048, 0.08135986, 0.068115234)
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Real_Sub/Sub" unique_id=1883357051]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.07829089, 1.4208752)
+material_override = ExtResource("2_6mkbk")
+radius = 0.23730469
+height = 0.107421875
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Real_Sub/Sub/CSGCylinder3D9" unique_id=39580492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1105957, 0)
+material_override = ExtResource("2_6mkbk")
+operation = 2
+radius = 0.19580078
+height = 0.32861328
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Real_Sub/Sub" unique_id=2016727607]
+transform = Transform3D(0.22181207, 0, 0, 0, -4.3711385e-08, -0.20805714, 0, 0.99999994, -9.0944665e-09, 0, 0.08362198, 1.3617783)
+mesh = SubResource("PlaneMesh_en8mb")
 
 [node name="Node3D" parent="." unique_id=69286103 groups=["Map"] instance=ExtResource("5_1pqt4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -29.327824, 0)
