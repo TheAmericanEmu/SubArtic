@@ -22,7 +22,7 @@ uv1_triplanar = true
 [node name="DeskConsole" type="Node3D" unique_id=2064120215]
 
 [node name="CSGCombiner3D2" type="CSGCombiner3D" parent="." unique_id=824093468]
-material_override = ExtResource("1_4uxws")
+material_override = ExtResource("4_8xb12")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="CSGCombiner3D2" unique_id=1122120202]
 
