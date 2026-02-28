@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://ye22oo0e4jld"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_msdsj"]
+
+[sub_resource type="Animation" id="Animation_4bc4o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftWheel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5707964, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lj5sg"]
+resource_name = "ServerSpin"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftWheel:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5707964, 1.5707964, 1.5707964), Vector3(6.2831855, 1.5707964, 1.5707964)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8sywp"]
+_data = {
+&"RESET": SubResource("Animation_4bc4o"),
+&"ServerSpin": SubResource("Animation_lj5sg")
+}
+
+[node name="Server" type="Node3D" unique_id=18588676]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=684869830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+size = Vector3(1, 2.1191406, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=1456295418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.33847022, 0.3046875)
+operation = 2
+size = Vector3(0.86621094, 1.3183594, 1.2617188)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=2049222951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8375037, 0)
+size = Vector3(0.8769531, 0.034179688, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1382849944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38123834, 0)
+size = Vector3(0.8769531, 0.034179688, 1)
+
+[node name="LeftWheel" type="CSGCylinder3D" parent="." unique_id=291132392]
+transform = Transform3D(0.99999994, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.9999999, -4.3711385e-08, -0.26888096, 1.7118939, 0.47107244)
+radius = 0.18652344
+height = 0.16601563
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="LeftWheel" unique_id=813018353]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.055412322, 0)
+operation = 2
+radius = 0.19726563
+height = 0.033203125
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="LeftWheel/CSGCylinder3D3" unique_id=552330554]
+transform = Transform3D(1, 0, 0, 0, 1, 1.7763568e-13, 0, -1.7763568e-13, 1, 0, 0, 0)
+operation = 2
+radius = 0.16455078
+height = 0.033203125
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LeftWheel" unique_id=1792953501]
+transform = Transform3D(0.7783966, 2.7439967e-08, 0.62775856, -2.7440773e-08, 0.99997574, -9.686008e-09, -0.6277716, -9.686676e-09, 0.77837735, 0, 0.123260885, 0)
+operation = 2
+size = Vector3(0.080078125, 0.08496094, 0.25390625)
+
+[node name="RightWheel" type="CSGCylinder3D" parent="." unique_id=1555995806]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0.23111904, 1.7118939, 0.47107244)
+radius = 0.18652344
+height = 0.16601563
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="RightWheel" unique_id=2100215391]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.055412322, 0)
+operation = 2
+radius = 0.19726563
+height = 0.033203125
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="RightWheel/CSGCylinder3D3" unique_id=1991150779]
+transform = Transform3D(1, 0, 0, 0, 1, 1.7763568e-13, 0, -1.7763568e-13, 1, 0, 0, 0)
+operation = 2
+radius = 0.16455078
+height = 0.033203125
+
+[node name="CSGBox3D" type="CSGBox3D" parent="RightWheel" unique_id=1373544231]
+transform = Transform3D(0.7783966, 2.7439967e-08, 0.62775856, -2.7440773e-08, 0.99997574, -9.686008e-09, -0.6277716, -9.686676e-09, 0.77837735, 0, 0.123260885, 0)
+operation = 2
+size = Vector3(0.080078125, 0.08496094, 0.25390625)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=127232314]
+transform = Transform3D(1, 0, 0, 0, -9.403416e-10, 0.99999994, 0, -0.021512508, -4.3711385e-08, 0, 1.8962985, 0.47671992)
+mesh = SubResource("QuadMesh_msdsj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1084227395]
+libraries/ = SubResource("AnimationLibrary_8sywp")

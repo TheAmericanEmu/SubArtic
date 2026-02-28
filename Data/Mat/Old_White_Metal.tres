@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ykx7hb2fbpal"]
+
+[ext_resource type="Texture2D" uid="uid://cvtcpyiohnqx0" path="res://Data/textures/Texturelabs_Metal_268S.jpg" id="1_unyu8"]
+
+[resource]
+albedo_texture = ExtResource("1_unyu8")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
