@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://dw55wkaro4dek"]
+
+[ext_resource type="Material" uid="uid://b3jratmg8myh3" path="res://Data/Mat/metal_sub.tres" id="1_sxd0i"]
+[ext_resource type="Material" uid="uid://ykx7hb2fbpal" path="res://Data/Mat/Old_White_Metal.tres" id="2_rc4xn"]
+[ext_resource type="Material" uid="uid://byg1caxpd8nam" path="res://Data/Mat/Brass.tres" id="3_k0dfu"]
+
+[sub_resource type="Animation" id="Animation_senrp"]
+resource_name = "FanMove_Blow"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/CSGCylinder3D9:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.80356455, 1.4666667, 2.2702312, 2.6666667, 3.4702313, 3.8379273, 4.641492, 5.5809503, 6.384515, 6.796198, 7.5997624),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-6.2831855, 1.5707964, -1.5707964), Vector3(6.2831855, 1.5707964, -1.5707964), Vector3(-6.2831855, 1.5707964, -1.5707964), Vector3(6.2831855, 1.5707964, -1.5707964), Vector3(-6.2831855, 1.5707964, -1.5707964), Vector3(6.2831855, 1.5707964, -1.5707964), Vector3(-6.2831855, 1.5707964, -1.5707964), Vector3(6.2831855, 1.5707964, -1.5707964), Vector3(-6.2831855, 1.5707964, -1.5707964), Vector3(6.2831855, 1.5707964, -1.5707964), Vector3(-6.2831855, 1.5707964, -1.5707964), Vector3(6.2831855, 1.5707964, -1.5707964)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.0576695, 0), Vector3(0, 0, 0), Vector3(0, -0.991347, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_26edc"]
+resource_name = "Fan_Blow"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/CSGCylinder3D9:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.80356455, 1.4666667, 2.2702312, 2.6666667, 3.4702313, 3.8379273, 4.641492, 5.5809503, 6.384515, 6.796198, 7.5997624),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-6.2831855, 1.5707964, -1.5707964), Vector3(6.2831855, 1.5707964, -1.5707964), Vector3(-6.2831855, 1.5707964, -1.5707964), Vector3(6.2831855, 1.5707964, -1.5707964), Vector3(-6.2831855, 1.5707964, -1.5707964), Vector3(6.2831855, 1.5707964, -1.5707964), Vector3(-6.2831855, 1.5707964, -1.5707964), Vector3(6.2831855, 1.5707964, -1.5707964), Vector3(-6.2831855, 1.5707964, -1.5707964), Vector3(6.2831855, 1.5707964, -1.5707964), Vector3(-6.2831855, 1.5707964, -1.5707964), Vector3(6.2831855, 1.5707964, -1.5707964)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Head:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.0576695, 0), Vector3(0, 0, 0), Vector3(0, -0.991347, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3hms6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/CSGCylinder3D9:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.4835302, 1.5707968, -1.5707968)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_woypl"]
+_data = {
+&"FanMove_Blow": SubResource("Animation_senrp"),
+&"Fan_Blow": SubResource("Animation_26edc"),
+&"RESET": SubResource("Animation_3hms6")
+}
+
+[node name="Fan" type="Node3D" unique_id=239339012]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=33518188]
+material_override = ExtResource("1_sxd0i")
+radius = 0.19726563
+height = 0.028015137
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=1456704659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.012504578, 0)
+material_override = ExtResource("2_rc4xn")
+radius = 0.17529297
+height = 0.053024292
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="." unique_id=583912562]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31126022, 0)
+material_override = ExtResource("2_rc4xn")
+radius = 0.030761719
+height = 0.6505356
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=771272009]
+libraries/ = SubResource("AnimationLibrary_woypl")
+
+[node name="Head" type="Node3D" parent="." unique_id=448260318]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="Motor" type="CSGCylinder3D" parent="Head" unique_id=991668919]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0.03565359)
+material_override = ExtResource("2_rc4xn")
+radius = 0.14941406
+height = 0.21193218
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Head/Motor" unique_id=1841589637]
+transform = Transform3D(0.85, 0, 0, 0, 1, 0, 0, 0, 0.85, 0, 0.11105573, 0)
+radius = 0.11621094
+height = 0.040226698
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Head/Motor" unique_id=1588255135]
+transform = Transform3D(0.85, 0, 0, 0, 1, 0, 0, 0, 0.85, 0, -0.14480557, 0)
+radius = 0.14941406
+height = 0.15194929
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Head" unique_id=1912805873]
+transform = Transform3D(0.85, 0, 0, 0, -4.371139e-08, -0.85, 0, 1, -3.715468e-08, 0, 0, 0.19745126)
+radius = 0.01171875
+height = 0.072847724
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Head" unique_id=2033085214]
+transform = Transform3D(1.1954336, -2.376987e-09, 0.10458653, -0.10458653, -5.4442364e-08, 1.1954336, 2.376987e-09, -1.1999999, -5.4442364e-08, 0, 0, 0.20434439)
+material_override = ExtResource("3_k0dfu")
+radius = 0.041015625
+height = 0.046875
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Head/CSGCylinder3D9" unique_id=935484973]
+transform = Transform3D(0.7358844, 2.9597294e-08, 0.67710716, -2.9597294e-08, 0.9999999, -1.1544849e-08, -0.67710716, -1.1544856e-08, 0.7358843, 0, 0.0065820217, 0)
+material_override = ExtResource("3_k0dfu")
+radius = 0.21533203
+height = 0.001
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Head/CSGCylinder3D9/CSGCylinder3D8" unique_id=633342784]
+transform = Transform3D(-0.7071054, 3.0908033e-08, 0.7070969, -3.0908453e-08, 0.9999845, -7.461861e-08, -0.70710456, -7.461869e-08, -0.7070963, 0.014026275, 0, -0.0140263)
+operation = 2
+size = Vector3(0.5498047, 0.119140625, 0.037475586)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Head/CSGCylinder3D9/CSGCylinder3D8" unique_id=932069313]
+transform = Transform3D(0.7071067, 3.0908115e-08, 0.7070983, -3.0908435e-08, 0.9999851, -1.2802431e-08, -0.7071039, -1.280279e-08, 0.7070955, 0, 0, 0)
+material_override = ExtResource("3_k0dfu")
+operation = 2
+size = Vector3(0.5498047, 0.119140625, 0.0390625)

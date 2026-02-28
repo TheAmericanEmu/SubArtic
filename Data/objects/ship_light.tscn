@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://btd04nfyibry8"]
+
+[ext_resource type="Material" uid="uid://ykx7hb2fbpal" path="res://Data/Mat/Old_White_Metal.tres" id="1_adnv1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ri743"]
+albedo_color = Color(1, 1, 0.09411765, 1)
+emission_enabled = true
+emission = Color(8.040716, 6.4685707, 1.7855817, 1)
+
+[node name="Ship_Light" type="Node3D" unique_id=1885549112]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=599016506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012298584, 0)
+material_override = ExtResource("1_adnv1")
+size = Vector3(1.1447754, 0.31347656, 2.168213)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D2" unique_id=1723175018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10276154, 0)
+operation = 2
+size = Vector3(1, 0.19970703, 2.0253906)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D" unique_id=1715840925]
+transform = Transform3D(0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0, 1, 0.42975911, 0.07420024, -4.7326088e-05)
+operation = 2
+size = Vector3(1, 0.19970703, 2.1662598)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D2/CSGBox3D" unique_id=1130123151]
+transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, -0.45581993, 0.07415375, 0)
+operation = 2
+size = Vector3(1, 0.19970703, 2.1662598)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1193924621]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.28852624, -0.028860927, 0)
+material_override = SubResource("StandardMaterial3D_ri743")
+radius = 0.106933594
+height = 2.0976563
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=702429334]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.0078392625, -0.028860927, 0)
+material_override = SubResource("StandardMaterial3D_ri743")
+radius = 0.106933594
+height = 2.0488281
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="." unique_id=1819961905]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.31538722, -0.028860927, 0)
+material_override = SubResource("StandardMaterial3D_ri743")
+radius = 0.106933594
+height = 2.0458984
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1822613995]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+light_color = Color(13.507204, 13.416326, 0.0019713964, 1)
+light_energy = 6.403
+shadow_enabled = true
+spot_angle = 55.0

@@ -95,22 +95,6 @@ material_override = ExtResource("2_en8mb")
 operation = 2
 size = Vector3(0.5498047, 0.119140625, 0.0390625)
 
-[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="." unique_id=827402040]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44529462, 0)
-material_override = ExtResource("1_en8mb")
-radius = 0.17480469
-height = 0.13964844
-
-[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="." unique_id=70299580]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5040959, 0)
-material_override = ExtResource("2_en8mb")
-radius = 0.1459961
-height = 0.057250977
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCylinder3D8" unique_id=514041480]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12995529, -0.010146797, 0.00014956295)
-size = Vector3(0.05899048, 0.08135986, 0.068115234)
-
 [node name="CSGCylinder3D9" type="CSGCylinder3D" parent="." unique_id=1883357051]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.07829089, 1.4208752)
 material_override = ExtResource("1_en8mb")
@@ -123,6 +107,56 @@ material_override = ExtResource("1_en8mb")
 operation = 2
 radius = 0.19580078
 height = 0.32861328
+
+[node name="Hatch" type="Node3D" parent="." unique_id=279610974]
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Hatch" unique_id=827402040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44529462, 0)
+material_override = ExtResource("1_en8mb")
+radius = 0.17480469
+height = 0.13964844
+
+[node name="Hatch" type="Node3D" parent="Hatch" unique_id=66645781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Hatch/Hatch" unique_id=70299580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.004095912, 0)
+material_override = ExtResource("2_en8mb")
+radius = 0.1459961
+height = 0.057250977
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Hatch/Hatch/CSGCylinder3D8" unique_id=514041480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12995529, -0.010146797, 0.00014956295)
+size = Vector3(0.05899048, 0.08135986, 0.068115234)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Hatch/Hatch/CSGCylinder3D8/CSGBox3D" unique_id=1380807253]
+transform = Transform3D(1, 7.42085e-06, -3.642485e-05, 3.642485e-05, -3.6918067e-05, 1, 7.4208483e-06, -1, -3.6918067e-05, 0.00486061, -0.006115496, -0.00024414063)
+radius = 0.056640625
+height = 0.06982422
+sides = 6
+
+[node name="LockingWheel2" type="CSGCylinder3D" parent="Hatch/Hatch" unique_id=93489135]
+transform = Transform3D(-0.3, 3.960142e-15, -4.5298744e-08, 0, 0.3, 2.6226834e-08, 4.5298744e-08, 2.6226834e-08, -0.3, 0.0016927123, 0.044691086, -0.00031733513)
+material_override = ExtResource("2_en8mb")
+radius = 0.19482422
+height = 0.04284668
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Hatch/Hatch/LockingWheel2" unique_id=227885700]
+operation = 2
+radius = 0.17529297
+height = 0.04284668
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Hatch/Hatch/LockingWheel2" unique_id=1192026774]
+size = Vector3(0.03125, 0.026367188, 0.3623047)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Hatch/Hatch/LockingWheel2" unique_id=408906525]
+transform = Transform3D(-5.960464e-08, -4.371139e-08, -1, -4.3711392e-08, 1, -4.371139e-08, 1, 4.371139e-08, -5.9604645e-08, 0, 0, 0)
+size = Vector3(0.03125, 0.026367188, 0.3623047)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Hatch/Hatch/LockingWheel2" unique_id=1485893076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03765869, 0)
+radius = 0.026367188
+height = 0.12219238
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2016727607]
 transform = Transform3D(0.22181207, 0, 0, 0, -4.3711385e-08, -0.20805714, 0, 0.99999994, -9.0944665e-09, 0, 0.08362028, 1.3744766)

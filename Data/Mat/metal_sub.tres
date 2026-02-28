@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://b3jratmg8myh3"]
 
-[ext_resource type="Texture2D" uid="uid://ccvgy0hdcbufa" path="res://Data/textures/corten-steel-b-15748-in-architextures.jpg" id="1_wyx4j"]
+[ext_resource type="Texture2D" uid="uid://bbib6t8ej2c1e" path="res://Data/textures/BaseTextures/Metal/corten-steel-b-15748-in-architextures.jpg" id="1_wyx4j"]
 
 [resource]
 albedo_texture = ExtResource("1_wyx4j")

@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://dgnrafljigjnl"]
+
+[ext_resource type="Material" uid="uid://ykx7hb2fbpal" path="res://Data/Mat/Old_White_Metal.tres" id="1_fyi5q"]
+[ext_resource type="Material" uid="uid://b3jratmg8myh3" path="res://Data/Mat/metal_sub.tres" id="2_kfj88"]
+[ext_resource type="Material" uid="uid://byg1caxpd8nam" path="res://Data/Mat/Brass.tres" id="3_atagf"]
+[ext_resource type="PackedScene" uid="uid://kdmtl1fo0tn8" path="res://Data/objects/mug.tscn" id="4_kfj88"]
+[ext_resource type="PackedScene" uid="uid://btuxir1tkxxq4" path="res://Data/objects/radio.tscn" id="5_atagf"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fyi5q"]
+data = PackedVector3Array(-0.20385742, -0.5, -0.2841797, -0.20385742, 0.5, -0.2841797, -0.20385742, -0.5, 0.2841797, -0.20385742, -0.5, -0.2841797, 0.041870117, -0.5, 0.25671387, 0.041870117, -0.5, -0.25671387, -0.20385742, -0.5, -0.2841797, 0.20385742, -0.5, -0.2841797, -0.20385742, 0.5, -0.2841797, -0.20385742, -0.5, -0.2841797, -0.20385742, -0.5, 0.2841797, 0.041870117, -0.5, 0.25671387, -0.20385742, -0.5, 0.2841797, -0.07963026, 0.5, 0.2841797, 0.20385742, -0.5, 0.2841797, -0.20385742, 0.5, -0.2841797, -0.07963026, 0.5, -0.2841797, -0.20385742, 0.5, 0.2841797, -0.20385742, 0.5, -0.2841797, 0.20385742, 0.30395257, -0.2841797, -0.07963026, 0.5, -0.2841797, -0.20385742, -0.5, 0.2841797, -0.20385742, 0.5, -0.2841797, -0.20385742, 0.5, 0.2841797, -0.20385742, -0.5, 0.2841797, -0.20385742, 0.5, 0.2841797, -0.07963026, 0.5, 0.2841797, -0.20385742, 0.5, 0.2841797, -0.07963026, 0.5, -0.2841797, -0.07963026, 0.5, 0.2841797, -0.20385742, -0.5, -0.2841797, 0.041870117, -0.5, -0.25671387, 0.20385742, -0.5, -0.2841797, 0.20385742, -0.5, -0.2841797, 0.041870117, -0.5, -0.25671387, 0.20385742, -0.5, -0.25671387, 0.20385742, -0.5, -0.2841797, 0.20385742, -0.5, -0.25671387, 0.20385742, 0.30395257, -0.2841797, -0.20385742, -0.5, 0.2841797, 0.20385742, -0.5, 0.25671387, 0.041870117, -0.5, 0.25671387, -0.20385742, -0.5, 0.2841797, 0.20385742, -0.5, 0.2841797, 0.20385742, -0.5, 0.25671387, 0.20385742, -0.5, 0.2841797, 0.20385742, 0.24108887, 0.25671387, 0.20385742, -0.5, 0.25671387, -0.20385742, 0.5, -0.2841797, 0.20385742, -0.5, -0.2841797, 0.20385742, 0.30395257, -0.2841797, 0.20385742, 0.30395257, -0.2841797, 0.20385742, -0.5, -0.25671387, 0.20385742, 0.24108887, -0.25671387, 0.20385742, 0.30395257, 0.2841797, 0.20385742, 0.30395257, -0.2841797, 0.20385742, 0.24108887, -0.25671387, 0.20385742, -0.5, 0.2841797, -0.07963026, 0.5, 0.2841797, 0.20385742, 0.30395257, 0.2841797, 0.20385742, -0.5, 0.2841797, 0.20385742, 0.30395257, 0.2841797, 0.20385742, 0.24108887, 0.25671387, 0.20385742, 0.24108887, -0.25671387, 0.20385742, 0.24108887, 0.25671387, 0.20385742, 0.30395257, 0.2841797, 0.20385742, 0.30395257, 0.2841797, -0.07963026, 0.5, -0.2841797, 0.20385742, 0.30395257, -0.2841797, -0.07963026, 0.5, 0.2841797, -0.07963026, 0.5, -0.2841797, 0.20385742, 0.30395257, 0.2841797, 0.041870117, 0.24108887, -0.25671387, 0.20385742, -0.5, -0.25671387, 0.041870117, -0.5, -0.25671387, 0.041870117, 0.24108887, -0.25671387, 0.041870117, -0.5, -0.25671387, 0.041870117, -0.5, 0.25671387, 0.041870117, 0.24108887, -0.25671387, 0.20385742, 0.24108887, -0.25671387, 0.20385742, -0.5, -0.25671387, 0.041870117, 0.24108887, -0.25671387, 0.041870117, -0.5, 0.25671387, 0.041870117, 0.24108887, 0.25671387, 0.041870117, 0.24108887, 0.25671387, 0.041870117, -0.5, 0.25671387, 0.20385742, 0.24108887, 0.25671387, 0.041870117, -0.5, 0.25671387, 0.20385742, -0.5, 0.25671387, 0.20385742, 0.24108887, 0.25671387, 0.041870117, 0.24108887, -0.25671387, 0.041870117, 0.24108887, 0.25671387, 0.20385742, 0.24108887, -0.25671387, 0.041870117, 0.24108887, 0.25671387, 0.20385742, 0.24108887, 0.25671387, 0.20385742, 0.24108887, -0.25671387)
+
+[node name="Helm" type="Node3D" unique_id=1745636996]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=659849944]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12036133, 0, 0)
+material_override = ExtResource("1_fyi5q")
+size = Vector3(0.40771484, 1, 0.5683594)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=547200674]
+transform = Transform3D(-0.5687916, 0.8224817, 0, -0.8224817, -0.5687916, 0, 0, 0, 1, 0.17285258, 0.53770477, 0)
+operation = 2
+size = Vector3(0.34924316, 0.4536438, 0.5683594)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D" unique_id=259780865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.27093506, -0.15731812, 0)
+operation = 2
+size = Vector3(0.45812988, 0.79681396, 0.51342773)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=691026887]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1164104425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12036133, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_fyi5q")
+
+[node name="EOT" type="Node3D" parent="." unique_id=1600945269]
+transform = Transform3D(0.9999999, -5.960464e-08, 0, 5.960464e-08, 0.9999999, 0, 0, 0, 1, -0.123919725, 0.33067814, -0.30026293)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="EOT" unique_id=1616456246]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12116274, 0)
+material_override = ExtResource("2_kfj88")
+radius = 0.009277344
+height = 0.18457031
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="EOT" unique_id=372173023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 0.22311759, 0)
+material_override = ExtResource("3_atagf")
+radius = 0.0107421875
+height = 0.039855957
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="EOT/CSGCylinder3D4" unique_id=1656114345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.450581e-09, 0.018774986, 0)
+radius = 0.009454549
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="EOT" unique_id=108137918]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+material_override = ExtResource("3_atagf")
+radius = 0.09277344
+height = 0.028320313
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="EOT/CSGCylinder3D3" unique_id=1767052853]
+transform = Transform3D(0.9999952, 0, 2.842171e-13, 1.2493736e-20, 1, 2.0961011e-13, -2.842171e-13, 2.842171e-13, 0.9999952, 0, 0.015232652, 0)
+radius = 0.07861328
+height = 0.011108398
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=626764022]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.00669913, 0.20528436, 0)
+material_override = ExtResource("2_kfj88")
+radius = 0.010253906
+height = 0.21899414
+
+[node name="Wheel" type="CSGCombiner3D" parent="." unique_id=1080864221]
+transform = Transform3D(1.5, 0, 0, 0, -1.0980121, 1.0219443, 0, -1.0219443, -1.0980121, 0.1, 0.20461494, 0)
+material_override = ExtResource("3_atagf")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Wheel" unique_id=1844057576]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+radius = 0.22314453
+height = 0.018310547
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Wheel/CSGCylinder3D2" unique_id=1524120757]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0039790273, 0.015284389, -0.006224364)
+operation = 2
+radius = 0.20605469
+height = 0.06347656
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Wheel" unique_id=1898205071]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+radius = 0.008300781
+height = 0.42077637
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Wheel" unique_id=1273519923]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, -2.9802322e-08, 0, 2.9802322e-08, 1.0000002, 0, -0.0042877197, 0)
+radius = 0.008300781
+height = 0.41915894
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Wheel" unique_id=21277808]
+transform = Transform3D(1, 0, 0, 0, 0.7071119, 0.7071091, 0, -0.7071091, 0.7071119, 0, 0.0025139898, -0.0025139675)
+radius = 0.008300781
+height = 0.4176941
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Wheel" unique_id=707673229]
+transform = Transform3D(1, 0, 0, 0, 0.7071077, -0.7071093, 0, 0.7071093, 0.7071077, 0, -0.0033771396, -0.003377147)
+radius = 0.008300781
+height = 0.4201355
+
+[node name="Mug" parent="." unique_id=1477461500 instance=ExtResource("4_kfj88")]
+transform = Transform3D(0.53655297, 0, -0.4495675, 0, 0.7, 0, 0.4495675, 0, 0.53655297, -0.26687583, 0.56303316, -0.21681988)
+
+[node name="Radio" parent="." unique_id=134057385 instance=ExtResource("5_atagf")]
+transform = Transform3D(0.19283628, -0.22981334, 0, 0.22981334, 0.19283628, 0, 0, 0, 0.30000004, -0.13756448, 0.23404536, -0.14705133)

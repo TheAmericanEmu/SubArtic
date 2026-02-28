@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://c5u6sshicpv1p" path="res://Data/sounds/SoundEffects/descent.wav" id="7_v08oc"]
 [ext_resource type="Script" uid="uid://bbpldt7w7s2hc" path="res://src/random_sound_effects.gd" id="8_lppb2"]
 [ext_resource type="Script" uid="uid://byu58ips5gnwv" path="res://src/task_manger.gd" id="9_c3sht"]
-[ext_resource type="Texture2D" uid="uid://btx2nf22lm1gx" path="res://Data/textures/d3jmbjq-9d52e89c-e6eb-40ab-9517-8754ba9a3bcc-ezgif.com-gif-to-sprite-converter.png" id="9_lppb2"]
+[ext_resource type="Texture2D" uid="uid://dbst1anqkib26" path="res://Data/textures/Detials/d3jmbjq-9d52e89c-e6eb-40ab-9517-8754ba9a3bcc-ezgif.com-gif-to-sprite-converter.png" id="9_lppb2"]
 [ext_resource type="PackedScene" uid="uid://c4rccd6belu7m" path="res://Data/objects/crt.tscn" id="11_v26c0"]
 [ext_resource type="Material" uid="uid://byg1caxpd8nam" path="res://Data/Mat/Brass.tres" id="13_v26c0"]
 

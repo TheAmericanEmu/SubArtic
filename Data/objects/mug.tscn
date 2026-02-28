@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://kdmtl1fo0tn8"]
+
+[ext_resource type="Texture2D" uid="uid://dtgcy7itpbiif" path="res://Data/textures/BaseTextures/Buidling/Texturelabs_Stone_159S.jpg" id="1_40etm"]
+[ext_resource type="Material" uid="uid://ykx7hb2fbpal" path="res://Data/Mat/Old_White_Metal.tres" id="2_wnpx4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qh267"]
+albedo_texture = ExtResource("1_40etm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ybsff"]
+albedo_color = Color(0.8848981, 0.6787687, 0.4936014, 1)
+
+[node name="Mug" type="Node3D" unique_id=1477461500]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="CSGCombiner3D3" type="CSGCombiner3D" parent="." unique_id=1340682427]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_qh267")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CSGCombiner3D3" unique_id=61399509]
+transform = Transform3D(0.7874731, 0, 0, 0, 0.79661775, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D3/CSGCombiner3D" unique_id=1677543744]
+transform = Transform3D(0.999993, 0, 0, 0, -0.016230868, -0.9998682, 0, 0.9998683, -0.016230868, 0.15420578, 0, 0)
+radius = 0.1796875
+height = 0.028808594
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D3/CSGCombiner3D/CSGCylinder3D2" unique_id=1047675387]
+operation = 2
+radius = 0.15234375
+height = 0.034179688
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D3/CSGCombiner3D" unique_id=1635235703]
+transform = Transform3D(0.99999624, 0, 1.5497208e-06, 0, 1, 0, -2.9802322e-08, 0, 0.99998915, 0.03314142, -0.017089844, -9.313226e-10)
+material_override = ExtResource("2_wnpx4")
+operation = 2
+size = Vector3(0.2730713, 0.41796875, 0.12792969)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D3" unique_id=236775538]
+radius = 0.14501953
+height = 0.3466797
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D3/CSGCylinder3D" unique_id=2023471978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0368042, 0)
+operation = 2
+radius = 0.12939453
+height = 0.3638916
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=2040331441]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025817871, 0)
+operation = 2
+radius = 0.06591797
+height = 0.04345703
+material = SubResource("StandardMaterial3D_ybsff")

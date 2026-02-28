@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://dj0tnf36fwsu8" path="res://Data/Fonts/HomeVideo-BLG6G.ttf" id="1_2nky1"]
 [ext_resource type="Script" uid="uid://0bh58aot7sfj" path="res://src/cam_hud.gd" id="1_4namc"]
-[ext_resource type="Texture2D" uid="uid://btx2nf22lm1gx" path="res://Data/textures/d3jmbjq-9d52e89c-e6eb-40ab-9517-8754ba9a3bcc-ezgif.com-gif-to-sprite-converter.png" id="2_mirpg"]
+[ext_resource type="Texture2D" uid="uid://dbst1anqkib26" path="res://Data/textures/Detials/d3jmbjq-9d52e89c-e6eb-40ab-9517-8754ba9a3bcc-ezgif.com-gif-to-sprite-converter.png" id="2_mirpg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mirpg"]
 font = ExtResource("1_2nky1")

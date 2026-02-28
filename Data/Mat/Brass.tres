@@ -1,8 +1,7 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://byg1caxpd8nam"]
 
-[ext_resource type="Texture2D" uid="uid://ds7bckoulatug" path="res://Data/textures/Texturelabs_Metal_246S.jpg" id="1_m4vnm"]
+[ext_resource type="Texture2D" uid="uid://ds7bckoulatug" path="res://Data/textures/BaseTextures/Metal/Texturelabs_Metal_246S.jpg" id="1_m4vnm"]
 
 [resource]
 albedo_texture = ExtResource("1_m4vnm")
 uv1_triplanar = true
-uv1_world_triplanar = true

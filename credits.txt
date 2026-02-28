@@ -11,3 +11,11 @@ https://texturelabs.org/textures/metal_276/
 https://texturelabs.org/textures/metal_268/
 https://opengameart.org/content/empty-black-keyboard
 https://texturelabs.org/textures/metal_153/
+https://texturelabs.org/textures/glass_150/
+https://texturelabs.org/textures/paper_304/
+http://texturelabs.org/textures/details_181/
+http://texturelabs.org/textures/stone_159/
+Industrial Lever by Autobot8299 -- https://freesound.org/s/835550/ -- License: Creative Commons 0
+Underwater Impact by deleted_user_7709760 -- https://freesound.org/s/400793/ -- License: Attribution 3.0
+Vibrations 02.wav by LilMati -- https://freesound.org/s/445353/ -- License: Creative Commons 0
+https://godotshaders.com/shader/spiraling-pattern-backdrop/

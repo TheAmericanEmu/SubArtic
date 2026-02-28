@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://bfbvgginv88"]
+[gd_scene format=3 uid="uid://bqoeetfd325m1"]
 
 [ext_resource type="Material" uid="uid://byg1caxpd8nam" path="res://Data/Mat/Brass.tres" id="1_fmyga"]
 [ext_resource type="PackedScene" uid="uid://c4rccd6belu7m" path="res://Data/objects/crt.tscn" id="2_rnhts"]
 [ext_resource type="PackedScene" uid="uid://bhexbtaua4erj" path="res://Data/objects/sub_hud.tscn" id="3_h71b2"]
 [ext_resource type="Script" uid="uid://cw3lyjvwm5gjq" path="res://src/sub_hud.gd" id="4_h71b2"]
-[ext_resource type="Texture2D" uid="uid://bjyxb4sfqt8ga" path="res://Data/textures/radar-ezgif.com-gif-to-sprite-converter.png" id="5_wg3xs"]
+[ext_resource type="Texture2D" path="res://Data/textures/radar-ezgif.com-gif-to-sprite-converter.png" id="5_wg3xs"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wg3xs"]
 

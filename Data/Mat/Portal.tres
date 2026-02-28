@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://nqul5jy7mjwo"]
+
+[ext_resource type="Shader" uid="uid://ds70jtp5248n4" path="res://Data/Shaders/Portal.gdshader" id="1_snxtv"]
+
+[sub_resource type="Gradient" id="Gradient_oxai5"]
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0, 0.53475934, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.04919286, 0.5678191, 0, 1, 0.12514868, 0.94606113, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_28pq5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r24cd"]
+noise = SubResource("FastNoiseLite_28pq5")
+color_ramp = SubResource("Gradient_oxai5")
+seamless = true
+in_3d_space = true
+normalize = false
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_snxtv")
+shader_parameter/noise_strength = Vector3(0.25, 0.25, 0.66667)
+shader_parameter/noise_speed = Vector3(0.075, -1, 0.6666667)
+shader_parameter/displacement_strength = Vector3(0.333, 0.0625, 0.333)
+shader_parameter/displacement_speed = Vector3(2, 3, 0.5)
+shader_parameter/noise = SubResource("NoiseTexture2D_r24cd")

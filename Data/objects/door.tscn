@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://b5pa3ccryqopn"]
+
+[ext_resource type="Material" uid="uid://b3jratmg8myh3" path="res://Data/Mat/metal_sub.tres" id="1_0f30d"]
+[ext_resource type="Material" uid="uid://ykx7hb2fbpal" path="res://Data/Mat/Old_White_Metal.tres" id="2_0fnno"]
+[ext_resource type="Texture2D" uid="uid://tcxx3rpuqo40" path="res://Data/textures/BaseTextures/Buidling/Texturelabs_Glass_150S.jpg" id="3_km3ui"]
+[ext_resource type="Material" uid="uid://byg1caxpd8nam" path="res://Data/Mat/Brass.tres" id="4_3xbg0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcusj"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.5254902)
+albedo_texture = ExtResource("3_km3ui")
+
+[node name="Door" type="Node3D" unique_id=948103190]
+
+[node name="Frame" type="CSGCombiner3D" parent="." unique_id=1067638999]
+material_override = ExtResource("1_0f30d")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Frame" unique_id=1906959492]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Frame/CSGCombiner3D" unique_id=202421515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4857788, 0)
+size = Vector3(0.16113281, 1.5400391, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Frame/CSGCombiner3D" unique_id=538837721]
+transform = Transform3D(-3.439584e-08, 1, 0, -0.7868851, -4.371139e-08, 0, 0, 0, 1, 0, 1.252731, 0)
+height = 0.15917969
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Frame/CSGCombiner3D" unique_id=145531263]
+transform = Transform3D(-3.439584e-08, 1, 0, -0.7868851, -4.371139e-08, 0, 0, 0, 1, 0, -0.290984, 0)
+height = 0.15917969
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="Frame" unique_id=423927997]
+transform = Transform3D(6.120335, 0, 0, 0, 0.9158977, 0, 0, 0, 0.81344974, 0.0938654, 0, 0)
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Frame/CSGCombiner3D2" unique_id=1160143696]
+transform = Transform3D(1.0000005, 0, 0, 0, 0.99999624, 0, 0, 0, 0.9999998, 0, 0.48577875, 0)
+size = Vector3(0.16113281, 1.5400391, 0.99121094)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Frame/CSGCombiner3D2" unique_id=759475671]
+transform = Transform3D(-3.439584e-08, 1, 0, -0.7868851, -4.371139e-08, 0, 0, 0, 1, 0, 1.252731, 0)
+height = 0.15917969
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Frame/CSGCombiner3D2" unique_id=744106618]
+transform = Transform3D(-3.439584e-08, 1, 0, -0.7868851, -4.371139e-08, 0, 0, 0, 1, 0, -0.290984, 0)
+material_override = ExtResource("1_0f30d")
+height = 0.15917969
+
+[node name="Door" type="Node3D" parent="." unique_id=1564903917]
+
+[node name="Body" type="CSGCombiner3D" parent="Door" unique_id=1008885632]
+material_override = ExtResource("2_0fnno")
+
+[node name="CSGCombiner3D3" type="CSGCombiner3D" parent="Door/Body" unique_id=1401640594]
+transform = Transform3D(0.45205012, 0, 0, 0, 0.9158977, 0, 0, 0, 0.81344974, -0.0061345994, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Door/Body/CSGCombiner3D3" unique_id=552508529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4857788, 0)
+size = Vector3(0.16113281, 1.5400391, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Door/Body/CSGCombiner3D3" unique_id=1173101100]
+transform = Transform3D(-3.439584e-08, 1, 0, -0.7868851, -4.371139e-08, 0, 0, 0, 1, 0, 1.252731, 0)
+height = 0.15917969
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Door/Body/CSGCombiner3D3" unique_id=1420420434]
+transform = Transform3D(-3.439584e-08, 1, 0, -0.7868851, -4.371139e-08, 0, 0, 0, 1, 0, -0.290984, 0)
+height = 0.15917969
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Door/Body/CSGCombiner3D3" unique_id=16712117]
+transform = Transform3D(-4.3711392e-08, 1, -4.3711392e-08, 0, -4.3711385e-08, -0.99999994, -1.0000001, -4.3711392e-08, 1.9106857e-15, 0, 0.9826424, 0)
+operation = 2
+radius = 0.25195313
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Door/Body" unique_id=1185120328]
+transform = Transform3D(-3.4969112e-08, 1, 0, -0.8, -4.371139e-08, 0, 0, 0, 0.80999994, 0, 0.9177232, 0)
+radius = 0.3095703
+height = 0.22851563
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Door/Body/CSGCylinder3D2" unique_id=1131666686]
+transform = Transform3D(1.9106859e-15, -3.5527137e-15, 0.99999994, -4.3711392e-08, 1, -1.0658141e-14, -1.0000001, -4.3711392e-08, 1.9106857e-15, 5.9604645e-08, -0.040590048, 0)
+operation = 2
+radius = 0.25195313
+
+[node name="Window" type="CSGBox3D" parent="Door" unique_id=204076705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016371071, 0.82666934, 0)
+material_override = SubResource("StandardMaterial3D_kcusj")
+size = Vector3(0.001, 1, 0.50097656)
+
+[node name="LockingWheel" type="CSGCylinder3D" parent="Door" unique_id=1629640674]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0.07579899, 0.31694865, 0)
+material_override = ExtResource("4_3xbg0")
+radius = 0.19482422
+height = 0.04284668
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Door/LockingWheel" unique_id=1009187184]
+operation = 2
+radius = 0.17529297
+height = 0.04284668
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Door/LockingWheel" unique_id=687834199]
+size = Vector3(0.03125, 0.026367188, 0.3623047)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Door/LockingWheel" unique_id=780360744]
+transform = Transform3D(-5.960464e-08, -4.371139e-08, -1, -4.3711392e-08, 1, -4.371139e-08, 1, 4.371139e-08, -5.9604645e-08, 0, 0, 0)
+size = Vector3(0.03125, 0.026367188, 0.3623047)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Door/LockingWheel" unique_id=68259647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03765869, 0)
+radius = 0.026367188
+height = 0.12219238
+
+[node name="LockingWheel2" type="CSGCylinder3D" parent="Door" unique_id=1494049331]
+transform = Transform3D(4.371139e-08, -1, -8.742278e-08, -1, -4.371139e-08, 0, -3.821371e-15, 8.742278e-08, -1, -0.086827576, 0.31694865, 0)
+material_override = ExtResource("4_3xbg0")
+radius = 0.19482422
+height = 0.04284668
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Door/LockingWheel2" unique_id=198901302]
+operation = 2
+radius = 0.17529297
+height = 0.04284668
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Door/LockingWheel2" unique_id=1146815375]
+size = Vector3(0.03125, 0.026367188, 0.3623047)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Door/LockingWheel2" unique_id=128367734]
+transform = Transform3D(-5.960464e-08, -4.371139e-08, -1, -4.3711392e-08, 1, -4.371139e-08, 1, 4.371139e-08, -5.9604645e-08, 0, 0, 0)
+size = Vector3(0.03125, 0.026367188, 0.3623047)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Door/LockingWheel2" unique_id=1381849207]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03765869, 0)
+radius = 0.026367188
+height = 0.12219238
