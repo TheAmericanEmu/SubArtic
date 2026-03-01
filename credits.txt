@@ -20,3 +20,4 @@ Underwater Impact by deleted_user_7709760 -- https://freesound.org/s/400793/ -- 
 Vibrations 02.wav by LilMati -- https://freesound.org/s/445353/ -- License: Creative Commons 0
 https://godotshaders.com/shader/spiraling-pattern-backdrop/
 https://texturelabs.org/textures/metal_294/
+SND Dive Alarm.wav by Knochenschall -- https://freesound.org/s/377770/ -- License: Creative Commons 0

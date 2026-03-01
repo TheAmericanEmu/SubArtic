@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://doyw5bkvl2inf"]
+
+[ext_resource type="PackedScene" uid="uid://dbv2nk6kpg4ye" path="res://Data/objects/portal.tscn" id="1_4kx8x"]
+[ext_resource type="PackedScene" uid="uid://cj18xptedf1tc" path="res://Data/objects/fire.tscn" id="2_egtlj"]
+[ext_resource type="Material" uid="uid://dud5yqpom7ui" path="res://Data/Mat/Brick.tres" id="3_4kx8x"]
+[ext_resource type="Texture2D" uid="uid://cwkgd5hqsrhxq" path="res://Data/textures/BaseTextures/Buidling/Texturelabs_Brick_169S.jpg" id="3_egtlj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqm3m"]
+albedo_texture = ExtResource("3_egtlj")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 4.4382644
+
+[node name="Portal_Temple" type="Node3D" unique_id=257052513]
+
+[node name="Portal" parent="." unique_id=796564679 instance=ExtResource("1_4kx8x")]
+transform = Transform3D(5.04873, 0, 0, 0, 10, 0, 0, 0, 10, 0, 27.737717, 0)
+
+[node name="Fire" parent="." unique_id=898417852 instance=ExtResource("2_egtlj")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 115.26968, 0, 36.320484)
+
+[node name="Fire2" parent="." unique_id=997222340 instance=ExtResource("2_egtlj")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 49.28882, 0, 47.08302)
+
+[node name="Fire3" parent="." unique_id=1719224957 instance=ExtResource("2_egtlj")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 115.26968, 0, -36.781372)
+
+[node name="Fire4" parent="." unique_id=1522910864 instance=ExtResource("2_egtlj")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 49.28882, 0, -48.016983)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=789717265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.29122, -15.98291, 0)
+material_override = SubResource("StandardMaterial3D_rqm3m")
+size = Vector3(193.97253, 32.96582, 105.125)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=1864012719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.08496, 24.279562, 0)
+material_override = ExtResource("3_4kx8x")
+size = Vector3(58.33203, 32.96582, 105.125)

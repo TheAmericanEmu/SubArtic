@@ -5,7 +5,7 @@ var is_player_in :=false
 signal request_take_pic
 @onready var fake_su_b: fake_sub = $".."
 @onready var mesh_instance_3d: AnimatedSprite3D = $"../DART/MeshInstance3D"
-@onready var player_camera: Camera3D = $"../../CharacterBody3D/Cam/Camera"
+@onready var player_camera: Camera3D = $"../../Player/Cam/Camera"
 
 
 

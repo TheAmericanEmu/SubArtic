@@ -7,6 +7,9 @@ class_name sub_hud extends CanvasLayer
 @onready var front: ColorRect = $SectionHealth/Front
 @onready var mid: ColorRect = $SectionHealth/Mid
 @onready var aft: ColorRect = $SectionHealth/Aft
+@onready var master_warning: Panel = $MasterWarning
+
+var show_master_warning
 
 func get_color_hsv(value: float, min_value: float, max_value: float) -> Color:
 	var t = clamp((value - min_value) / (max_value - min_value), 0.0, 1.0)
@@ -51,7 +54,15 @@ var speed:=1:
 func _ready() -> void:
 	pass # Replace with function body.
 
-
+var delay_count = 0
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if show_master_warning==true:
+		delay_count+=1
+		if delay_count==5:
+			delay_count=0
+			master_warning.visible=not master_warning.visible
+	else:
+		master_warning.visible=false
+		delay_count=0
+		

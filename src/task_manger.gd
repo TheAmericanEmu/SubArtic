@@ -4,6 +4,7 @@ extends Node3D
 @onready var fake_su_b: fake_sub = $"../PlayerSpace/Fake_SuB"
 @onready var lift_noise: AudioStreamPlayer3D = $"../PlayerSpace/Fake_SuB/Lift_noise"
 @onready var real_sub: RealSub = $"../Real_Sub"
+@onready var marker_portal_end: Marker3D = $Marker_portal_end
 
 
 var main_poi_recored:= 0
@@ -90,3 +91,14 @@ func _discovered_new_poi(id:int) -> void:
 	radio_speaker_obj.play_audio_seq([stream,place_voice_line,end_of_seq_line])
 	
 	
+
+
+func _on_real_sub_has_enter_portal_room() -> void:
+	var pull_in_tween := create_tween()
+	real_sub.allow_movement=false
+	fake_su_b._on_helm_enter_helm()
+	pull_in_tween.tween_property(real_sub,"global_position",marker_portal_end.global_position,1)
+	pull_in_tween.set_trans(Tween.TRANS_EXPO)
+	await pull_in_tween.finished
+	Hud.black_screen.modulate=Color(0.0, 0.0, 0.0, 1.0)
+	get_tree().change_scene_to_file("res://Data/Scences/ending_portal.tscn")

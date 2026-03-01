@@ -6,12 +6,17 @@ const JUMP_VELOCITY = 4.5
 
 @export var mous_sen:=0.1
 @export var real_sub:RealSub
+
+var allow_input=true
+
 func _ready():
 # Capture the mouse for FPS-style control
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	real_sub.is_poilting=true
 
 func _input(event: InputEvent) -> void:
+	if allow_input==false:
+		return
 	if event is InputEventMouseMotion:
 		cam.rotate_y(-event.relative.x*0.01)
 		var pitch_rotate = cam.rotation_degrees.x - event.relative.y* mous_sen
@@ -24,7 +29,7 @@ func _input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	
-	if real_sub.is_poilting==false:
+	if real_sub.is_poilting==false and allow_input==true:
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 		

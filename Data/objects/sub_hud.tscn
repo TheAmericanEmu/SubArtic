@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cw3lyjvwm5gjq" path="res://src/sub_hud.gd" id="1_3aac4"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3aac4"]
+bg_color = Color(0.77319574, 0, 0.1938273, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vsrht"]
+font_size = 32
+
 [sub_resource type="Shader" id="Shader_4namc"]
 code = "// CRT Shader for Godot Engine
 // Simulates the look of old CRT displays with various customizable effects
@@ -285,6 +291,34 @@ shader_parameter/pixel_strength = -4.0
 
 [node name="Hud" type="CanvasLayer" unique_id=1760680745]
 script = ExtResource("1_3aac4")
+
+[node name="MasterWarning" type="Panel" parent="." unique_id=1369117812]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -204.0
+offset_top = 88.0
+offset_right = 204.0
+offset_bottom = 128.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3aac4")
+
+[node name="Label" type="Label" parent="MasterWarning" unique_id=2005349720]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Surface ASAP"
+label_settings = SubResource("LabelSettings_vsrht")
 
 [node name="Depth" type="Panel" parent="." unique_id=2144697154]
 anchors_preset = 5

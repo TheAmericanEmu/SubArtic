@@ -24,7 +24,7 @@ var current_poi:POI = null
 
 #Signals
 signal enter_undiscovered_poi
-
+signal has_enter_portal_room
 
 func _ready() -> void:
 	pass # Replace with function body.
@@ -103,6 +103,8 @@ func _on_area_check_box_area_entered(area: Area3D) -> void:
 		current_poi=area
 		if area.has_been_found==false:
 			enter_undiscovered_poi.emit()
+	elif area.is_in_group("Portal"):
+		has_enter_portal_room.emit()
 		
 		
 

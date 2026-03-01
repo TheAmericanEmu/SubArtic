@@ -1,12 +1,13 @@
 [gd_scene format=4 uid="uid://j63n404ov600"]
 
 [ext_resource type="Material" uid="uid://dle0is8iegxl8" path="res://Data/Mat/Ground.tres" id="1_qhumg"]
-[ext_resource type="Texture2D" uid="uid://urxa0jcqu4ki" path="res://Data/textures/Texturelabs_Stone_166S.jpg" id="2_6jxuw"]
+[ext_resource type="Texture2D" uid="uid://urxa0jcqu4ki" path="res://Data/textures/BaseTextures/World/Texturelabs_Stone_166S.jpg" id="2_6jxuw"]
 [ext_resource type="PackedScene" uid="uid://dwcrmcu8p8ps5" path="res://Data/objects/city_one.tscn" id="3_acq4a"]
 [ext_resource type="Script" uid="uid://dwpny72bduwvs" path="res://src/poi.gd" id="4_pp586"]
-[ext_resource type="Texture2D" uid="uid://r7dv6rjd7nmq" path="res://Data/textures/Texturelabs_Water_136S.jpg" id="5_pveti"]
+[ext_resource type="Texture2D" uid="uid://r7dv6rjd7nmq" path="res://Data/textures/BaseTextures/World/Texturelabs_Water_136S.jpg" id="5_pveti"]
 [ext_resource type="PackedScene" uid="uid://cxcj0m6tetfa0" path="res://Data/objects/sub.tscn" id="7_r1aiu"]
 [ext_resource type="Script" uid="uid://dha3r0neglvdf" path="res://src/Dart_Cam.gd" id="7_vqlux"]
+[ext_resource type="PackedScene" uid="uid://doyw5bkvl2inf" path="res://Data/objects/portal_temple.tscn" id="8_r1aiu"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_es73t"]
 _surfaces = [{
@@ -218,6 +219,9 @@ _data = {
 &"RESET": SubResource("Animation_vqlux")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_r1aiu"]
+size = Vector3(171.67221, 146.29785, 117.85156)
+
 [node name="Map" type="Node3D" unique_id=80653053]
 
 [node name="MapCollison" type="StaticBody3D" parent="." unique_id=1284710055 groups=["Map"]]
@@ -340,12 +344,12 @@ script = ExtResource("7_vqlux")
 [node name="CityPlayer" type="AnimationPlayer" parent="City One" unique_id=650704011]
 libraries/ = SubResource("AnimationLibrary_k7lnt")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=756144654]
+[node name="IceWall" type="CSGBox3D" parent="." unique_id=756144654]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 46.017494, 0)
 size = Vector3(1073.2285, 47.046844, 1041.3418)
 material = SubResource("StandardMaterial3D_04q34")
 
-[node name="CSGPolygon3D" type="CSGCylinder3D" parent="CSGBox3D" unique_id=1161250459]
+[node name="CSGPolygon3D" type="CSGCylinder3D" parent="IceWall" unique_id=1161250459]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -17.39795, 0)
 operation = 2
 radius = 17.151855
@@ -382,7 +386,7 @@ shape = SubResource("BoxShape3D_vqlux")
 libraries/ = SubResource("AnimationLibrary_kwakk")
 
 [node name="Camera3D" type="Camera3D" parent="Sub" unique_id=1079180010]
-transform = Transform3D(0.5173146, 0.7104514, 0.4771207, -0.13743633, -0.48131245, 0.8657075, 0.8446872, -0.5134169, -0.15134814, 70.66127, -14.132584, -102.2923)
+transform = Transform3D(0.51731443, 0.7104514, 0.4771207, -0.13743629, -0.48131242, 0.8657075, 0.8446869, -0.5134169, -0.15134814, 70.66127, -14.132584, -102.2923)
 environment = SubResource("Environment_04q34")
 script = ExtResource("7_vqlux")
 
@@ -409,3 +413,12 @@ libraries/ = SubResource("AnimationLibrary_r1aiu")
 transform = Transform3D(0.10000001, 0, 0, 0, 0.09459779, 0.032423116, 0, -0.032423116, 0.09459779, 0.07159424, 3.842082, -3.3901062)
 environment = SubResource("Environment_04q34")
 script = ExtResource("7_vqlux")
+
+[node name="Portal_Temple" parent="." unique_id=257052513 instance=ExtResource("8_r1aiu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -201.08963, -428.13736, 109.26893)
+
+[node name="Area3D" type="Area3D" parent="Portal_Temple" unique_id=1763122042 groups=["Portal"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Portal_Temple/Area3D" unique_id=2137567309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.788254, 45.84082, 0)
+shape = SubResource("BoxShape3D_r1aiu")
