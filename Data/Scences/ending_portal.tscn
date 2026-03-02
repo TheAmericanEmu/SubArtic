@@ -414,7 +414,7 @@ volume_db = -48.098
 autoplay = true
 
 [node name="Player" type="CharacterBody3D" parent="PlayerSpace" unique_id=2056739346 node_paths=PackedStringArray("cam", "real_sub")]
-transform = Transform3D(-4.0253333e-08, 0.9999999, -2.4344748e-08, 0.27847135, -1.217237e-08, -0.96044475, -0.96044433, -4.5440405e-08, -0.27847147, -901.4213, -0.4251498, 0)
+transform = Transform3D(-4.025333e-08, 0.9999999, -2.4344748e-08, 0.27847135, -1.217237e-08, -0.96044475, -0.9604443, -4.5440405e-08, -0.27847147, -901.4213, -0.4251498, 0)
 top_level = true
 script = ExtResource("11_a47oq")
 cam = NodePath("Cam")

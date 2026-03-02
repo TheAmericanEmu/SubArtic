@@ -8,6 +8,49 @@
 font = ExtResource("1_2nky1")
 font_size = 32
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4namc"]
+atlas = ExtResource("2_mirpg")
+region = Rect2(0, 0, 533, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbreo"]
+atlas = ExtResource("2_mirpg")
+region = Rect2(533, 0, 533, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5lin"]
+atlas = ExtResource("2_mirpg")
+region = Rect2(1066, 0, 533, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbcig"]
+atlas = ExtResource("2_mirpg")
+region = Rect2(1599, 0, 533, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk2ll"]
+atlas = ExtResource("2_mirpg")
+region = Rect2(2132, 0, 533, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f3ox7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4namc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbreo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5lin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbcig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk2ll")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
 [sub_resource type="Shader" id="Shader_4namc"]
 code = "// CRT Shader for Godot Engine
 // Simulates the look of old CRT displays with various customizable effects
@@ -289,52 +332,6 @@ shader_parameter/roll_line_amount = 0.3
 shader_parameter/roll_speed = 1.7720004641700005
 shader_parameter/pixel_strength = -4.0
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bbreo"]
-light_mode = 1
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x5lin"]
-atlas = ExtResource("2_mirpg")
-region = Rect2(0, 0, 533, 300)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hbcig"]
-atlas = ExtResource("2_mirpg")
-region = Rect2(533, 0, 533, 300)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jk2ll"]
-atlas = ExtResource("2_mirpg")
-region = Rect2(1066, 0, 533, 300)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f3ox7"]
-atlas = ExtResource("2_mirpg")
-region = Rect2(1599, 0, 533, 300)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_re55c"]
-atlas = ExtResource("2_mirpg")
-region = Rect2(2132, 0, 533, 300)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4namc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x5lin")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hbcig")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jk2ll")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f3ox7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_re55c")
-}],
-"loop": true,
-"name": &"default",
-"speed": 24.0
-}]
-
 [node name="CamHud" type="Control" unique_id=1131783337]
 layout_mode = 3
 anchors_preset = 15
@@ -385,6 +382,14 @@ grow_horizontal = 0
 grow_vertical = 0
 label_settings = SubResource("LabelSettings_mirpg")
 
+[node name="Static" type="AnimatedSprite2D" parent="." unique_id=205015863]
+visible = false
+position = Vector2(646.75, 355.49997)
+scale = Vector2(3.426829, 3.37)
+sprite_frames = SubResource("SpriteFrames_f3ox7")
+autoplay = "default"
+frame_progress = 0.393338
+
 [node name="Panel" type="ColorRect" parent="." unique_id=161063965]
 material = SubResource("ShaderMaterial_bbreo")
 layout_mode = 0
@@ -392,12 +397,3 @@ offset_left = -66.99994
 offset_top = -84.0
 offset_right = 1290.0
 offset_bottom = 707.0
-
-[node name="Static" type="AnimatedSprite2D" parent="." unique_id=1367941470]
-self_modulate = Color(1, 1, 1, 0.11764706)
-material = SubResource("CanvasItemMaterial_bbreo")
-position = Vector2(591.00006, 314.00003)
-scale = Vector2(2.5, 2.5)
-sprite_frames = SubResource("SpriteFrames_4namc")
-autoplay = "default"
-frame_progress = 0.22913174

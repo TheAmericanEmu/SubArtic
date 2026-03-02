@@ -12,6 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://4ydgonq4kek0" path="res://Data/textures/Detials/Texturelabs_Details_182S.jpg" id="9_ybsff"]
 [ext_resource type="PackedScene" uid="uid://kdmtl1fo0tn8" path="res://Data/objects/mug.tscn" id="10_ybsff"]
 [ext_resource type="PackedScene" uid="uid://dw55wkaro4dek" path="res://Data/objects/fan.tscn" id="12_1cfy1"]
+[ext_resource type="PackedScene" uid="uid://c4rccd6belu7m" path="res://Data/objects/crt.tscn" id="13_8hqnp"]
+[ext_resource type="PackedScene" uid="uid://bhexbtaua4erj" path="res://Data/objects/sub_hud.tscn" id="14_08n8r"]
+[ext_resource type="Script" uid="uid://cw3lyjvwm5gjq" path="res://src/sub_hud.gd" id="15_408ma"]
+[ext_resource type="Shader" uid="uid://d1ki24rd31qj" path="res://Data/Shaders/radar.gdshader" id="16_rdsak"]
+[ext_resource type="PackedScene" uid="uid://c4w14s4tlqo2g" path="res://Data/DucEgg/menu.tscn" id="17_08n8r"]
+[ext_resource type="Texture2D" uid="uid://dhiy74jvsf7tg" path="res://Data/textures/Detials/WindowsVista.png" id="18_rdsak"]
+[ext_resource type="Script" uid="uid://bv30j17b6t8eu" path="res://src/card_spin.gd" id="19_ij6vn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e11gj"]
 albedo_texture = ExtResource("1_ipdhg")
@@ -39,6 +46,423 @@ albedo_texture = ExtResource("8_84ru5")
 transparency = 1
 blend_mode = 2
 albedo_texture = ExtResource("9_ybsff")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ij6vn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_408ma"]
+viewport_path = NodePath("Hud")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_rdsak"]
+viewport_path = NodePath("Real_Sub/MainWindowCam")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ij6vn"]
+resource_local_to_scene = true
+blend_mode = 4
+albedo_texture = SubResource("ViewportTexture_408ma")
+emission_energy_multiplier = 8.79
+heightmap_texture = SubResource("ViewportTexture_rdsak")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8hqnp"]
+viewport_path = NodePath("Radar")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_08n8r"]
+viewport_path = NodePath("Real_Sub/MainWindowCam")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_408ma"]
+resource_local_to_scene = true
+blend_mode = 4
+albedo_texture = SubResource("ViewportTexture_8hqnp")
+emission_energy_multiplier = 8.79
+heightmap_texture = SubResource("ViewportTexture_08n8r")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ij6vn"]
+viewport_path = NodePath("CmdOS")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4taid"]
+viewport_path = NodePath("Real_Sub/MainWindowCam")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrd1w"]
+resource_local_to_scene = true
+blend_mode = 4
+albedo_texture = SubResource("ViewportTexture_ij6vn")
+emission_energy_multiplier = 8.79
+heightmap_texture = SubResource("ViewportTexture_4taid")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vrd1w"]
+viewport_path = NodePath("EasterEgg")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_t8oxg"]
+viewport_path = NodePath("Real_Sub/MainWindowCam")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_svwqc"]
+resource_local_to_scene = true
+blend_mode = 4
+albedo_texture = SubResource("ViewportTexture_vrd1w")
+emission_energy_multiplier = 8.79
+heightmap_texture = SubResource("ViewportTexture_t8oxg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sv88u"]
+shader = ExtResource("16_rdsak")
+shader_parameter/line_color = Color(0, 0.4, 0, 1)
+shader_parameter/beam_color = Color(0.5, 1, 0.5, 1)
+shader_parameter/trail_color = Color(0, 0.5, 0, 1)
+shader_parameter/blip_color = Color(0.5, 1, 0.5, 1)
+shader_parameter/show_edges = true
+shader_parameter/range_lines = 8.0
+shader_parameter/sector_lines = 10.0
+shader_parameter/line_width = 0.02000000025148
+shader_parameter/beam_angle = 0.2
+shader_parameter/beam_width = 0.0050000002375
+shader_parameter/trail_width = 0.258000012255
+shader_parameter/blip_size = 0.11600000225012
+shader_parameter/blip_softness = 0.4
+shader_parameter/blip_presistence = 2.0
+shader_parameter/blip_position = Vector2(0.5, 0.5)
+
+[sub_resource type="Shader" id="Shader_t8oxg"]
+code = "// CRT Shader for Godot Engine
+// Simulates the look of old CRT displays with various customizable effects
+shader_type canvas_item;
+
+// Built-in texture for screen sampling
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture;
+
+// Base resolution for pixel-perfect effects (lower values = larger pixels)
+uniform vec2 resolution = vec2(320.0, 180.0);
+
+// ===== Effect Controls =====
+// Each parameter has a sensible default and range hint for the Godot editor
+
+// Scanline effect (dark lines between pixel rows)
+uniform float scan_line_amount : hint_range(0.0, 1.0) = 1.0;
+uniform float scan_line_strength : hint_range(-12.0, -1.0) = -8.0;
+
+// Screen curvature/warp effect
+uniform float warp_amount : hint_range(0.0, 5.0) = 0.1;
+
+// Visual noise/interference
+uniform float noise_amount : hint_range(0.0, 0.3) = 0.03;
+uniform float interference_amount : hint_range(0.0, 1.0) = 0.2;
+
+// Shadow mask/grille (simulates color phosphor patterns)
+uniform float grille_amount : hint_range(0.0, 1.0) = 0.1;
+uniform float grille_size : hint_range(1.0, 5.0) = 1.0;
+
+// Vignette (darkening at screen edges)
+uniform float vignette_amount : hint_range(0.0, 2.0) = 0.6;
+uniform float vignette_intensity : hint_range(0.0, 1.0) = 0.4;
+
+// Chromatic aberration (color separation)
+uniform float aberation_amount : hint_range(0.0, 1.0) = 0.5;
+
+// Rolling line effect (simulates VHS/analog interference)
+uniform float roll_line_amount : hint_range(0.0, 1.0) = 0.3;
+uniform float roll_speed : hint_range(-8.0, 8.0) = 1.0;
+
+// Pixel sharpness/softness
+uniform float pixel_strength : hint_range(-4.0, 0.0) = -2.0;
+
+// ===== Utility Functions =====
+
+/**
+ * Generates a pseudo-random float between 0 and 1 based on input coordinates
+ */
+float random(vec2 uv) {
+    return fract(cos(uv.x * 83.4827 + uv.y * 92.2842) * 43758.5453123);
+}
+
+/**
+ * Samples a pixel from the screen texture with optional offset and noise
+ * Handles edge cases and applies noise if enabled
+ */
+vec3 fetch_pixel(vec2 uv, vec2 off) {
+    // Calculate pixel position with offset and snap to pixel grid
+    vec2 pos = floor(uv * resolution + off) / resolution + vec2(0.5) / resolution;
+
+    // Apply noise if enabled
+    float noise = 0.0;
+    if (noise_amount > 0.0) {
+        noise = random(pos + fract(TIME)) * noise_amount;
+    }
+
+    // Clamp to screen bounds (return black if outside)
+    if (max(abs(pos.x - 0.5), abs(pos.y - 0.5)) > 0.5) {
+        return vec3(0.0);
+    }
+
+    // Sample the texture with mipmap bias for sharper pixels
+    return texture(SCREEN_TEXTURE, pos, -16.0).rgb + noise;
+}
+
+// ===== Pixel and Scanline Processing =====
+
+/**
+ * Calculates distance from current pixel to nearest texel center
+ * Used for sub-pixel filtering and anti-aliasing
+ */
+vec2 Dist(vec2 pos) { 
+    pos = pos * resolution;
+    return -((pos - floor(pos)) - vec2(0.5));
+}
+    
+/**
+ * 1D Gaussian function for smooth filtering
+ */
+float Gaus(float pos, float scale) { 
+    return exp2(scale * pos * pos); 
+}
+
+/**
+ * 3-tap Gaussian filter along horizontal line
+ * Creates smooth horizontal blending between pixels
+ */
+vec3 Horz3(vec2 pos, float off) {
+    // Sample three horizontally adjacent pixels
+    vec3 b = fetch_pixel(pos, vec2(-1.0, off));
+    vec3 c = fetch_pixel(pos, vec2( 0.0, off));
+    vec3 d = fetch_pixel(pos, vec2( 1.0, off));
+    
+    // Calculate weights based on distance from pixel center
+    float dst = Dist(pos).x;
+    float wb = Gaus(dst - 1.0, pixel_strength);
+    float wc = Gaus(dst + 0.0, pixel_strength);
+    float wd = Gaus(dst + 1.0, pixel_strength);
+    
+    // Return weighted average of samples
+    return (b * wb + c * wc + d * wd) / (wb + wc + wd);
+}
+
+/**
+ * Calculates scanline weight for a given position and offset
+ * Creates the dark lines between pixel rows
+ */
+float Scan(vec2 pos, float off) {
+    float dst = Dist(pos).y;
+    return Gaus(dst + off, scan_line_strength);
+}
+
+/**
+ * Applies scanline effect by blending multiple horizontal samples
+ * Combines three scanlines with gaussian weights for smooth transitions
+ */
+vec3 Tri(vec2 pos) {
+    vec3 clr = fetch_pixel(pos, vec2(0.0));
+    
+    if (scan_line_amount > 0.0) {
+        // Sample three vertically adjacent scanlines
+        vec3 a = Horz3(pos, -1.0);
+        vec3 b = Horz3(pos,  0.0);
+        vec3 c = Horz3(pos,  1.0);
+
+        // Calculate scanline weights
+        float wa = Scan(pos, -1.0);
+        float wb = Scan(pos,  0.0);
+        float wc = Scan(pos,  1.0);
+
+        // Blend between original and scanline-affected color
+        vec3 scanlines = a * wa + b * wb + c * wc;
+        clr = mix(clr, scanlines, scan_line_amount);
+    }
+    
+    return clr;
+}
+
+// ===== Screen Warping and Distortion Effects =====
+
+/**
+ * Applies a spherize/bulge distortion to simulate CRT screen curvature
+ * Warps UV coordinates more severely towards screen edges
+ */
+vec2 warp(vec2 uv) {
+    // Calculate distance from center and apply non-linear warping
+    vec2 delta = uv - 0.5;
+    float delta2 = dot(delta.xy, delta.xy);
+    float delta4 = delta2 * delta2;
+    float delta_offset = delta4 * warp_amount;
+    
+    // Apply warping and normalize back to 0-1 range
+    vec2 warped = uv + delta * delta_offset;
+    return (warped - 0.5) / mix(1.0, 1.2, warp_amount/5.0) + 0.5;
+}
+
+/**
+ * Applies vignette effect (darkening at screen edges)
+ * Uses a smooth falloff based on distance from center
+ */
+float vignette(vec2 uv) {
+    // Create circular falloff from center
+    uv *= 1.0 - uv.xy;
+    float vignette = uv.x * uv.y * 15.0;
+    
+    // Apply intensity controls
+    return pow(vignette, vignette_intensity * vignette_amount);
+}
+
+/**
+ * Simulates a shadow mask/grille pattern like those found in CRT displays
+ * Creates color separation similar to real phosphor patterns
+ */
+vec3 grille(vec2 uv) {
+    float unit = PI / 3.0;
+    float scale = 2.0 * unit / grille_size;
+    
+    // Create offset color patterns for RGB channels
+    float r = smoothstep(0.5, 0.8, cos(uv.x * scale - unit));
+    float g = smoothstep(0.5, 0.8, cos(uv.x * scale + unit));
+    float b = smoothstep(0.5, 0.8, cos(uv.x * scale + 3.0 * unit));
+    
+    // Blend between original color and grille pattern
+    return mix(vec3(1.0), vec3(r, g, b), grille_amount);
+}
+
+/**
+ * Creates rolling horizontal interference lines
+ * Simulates analog signal interference or VHS artifacts
+ */
+float roll_line(vec2 uv) {
+    // Create complex wave pattern that moves with time
+    float x = uv.y * 3.0 - TIME * roll_speed;
+    float f = cos(x) * cos(x * 2.35 + 1.1) * cos(x * 4.45 + 2.3);
+    
+    // Threshold and smooth the wave to create distinct lines
+    float roll_line = smoothstep(0.5, 0.9, f);
+    return roll_line * roll_line_amount;
+}
+
+// ===== Main Shader Function =====
+
+void fragment() {
+    // Get screen coordinates and apply screen warping
+    vec2 pix = FRAGCOORD.xy;
+    vec2 pos = warp(SCREEN_UV);
+    
+    // Generate rolling interference lines if enabled
+    float line = 0.0;
+    if (roll_line_amount > 0.0) {
+        line = roll_line(pos);
+    }
+
+    // Apply horizontal interference/jitter
+    vec2 sq_pix = floor(pos * resolution) / resolution + vec2(0.5) / resolution;
+    if (interference_amount + roll_line_amount > 0.0) {
+        float interference = random(sq_pix.yy + fract(TIME));
+        pos.x += (interference * (interference_amount + line * 6.0)) / resolution.x;
+    }
+
+    // Get base color with scanline processing
+    vec3 clr = Tri(pos);
+    
+    // Apply chromatic aberration (color separation)
+    if (aberation_amount > 0.0) {
+        float chromatic = aberation_amount + line * 2.0;  // Enhanced by rolling lines
+        vec2 chromatic_x = vec2(chromatic, 0.0) / resolution.x;
+        vec2 chromatic_y = vec2(0.0, chromatic/2.0) / resolution.y;
+        
+        // Sample RGB channels with slight offsets
+        float r = Tri(pos - chromatic_x).r;  // Red shifted left
+        float g = Tri(pos + chromatic_y).g;  // Green shifted down
+        float b = Tri(pos + chromatic_x).b;  // Blue shifted right
+        clr = vec3(r, g, b);
+    }
+    
+    // Apply shadow mask/grille effect
+    if (grille_amount > 0.0) {
+        clr *= grille(pix);
+    }
+    
+    // Adjust overall brightness based on effects
+    clr *= 1.0 + scan_line_amount * 0.6 + line * 3.0 + grille_amount * 2.0;
+    
+    // Apply vignette (darken edges)
+    if (vignette_amount > 0.0) {
+        clr *= vignette(pos);
+    }
+    
+    // Output final color
+    COLOR.rgb = clr;
+    COLOR.a = 1.0;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_svwqc"]
+shader = SubResource("Shader_t8oxg")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/scan_line_strength = -7.199999772
+shader_parameter/warp_amount = 1.118000053105
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.0
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.2050000097375
+shader_parameter/vignette_intensity = 0.8800000418
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.346000016435
+shader_parameter/roll_speed = 1.0000004274999998
+shader_parameter/pixel_strength = -4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4taid"]
+atlas = ExtResource("18_rdsak")
+region = Rect2(0, 0, 720, 410)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrd1w"]
+atlas = ExtResource("18_rdsak")
+region = Rect2(720, 0, 720, 410)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8oxg"]
+atlas = ExtResource("18_rdsak")
+region = Rect2(1440, 0, 720, 410)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svwqc"]
+atlas = ExtResource("18_rdsak")
+region = Rect2(2160, 0, 720, 410)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv88u"]
+atlas = ExtResource("18_rdsak")
+region = Rect2(2880, 0, 720, 410)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pojws"]
+atlas = ExtResource("18_rdsak")
+region = Rect2(0, 410, 720, 410)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6glb"]
+atlas = ExtResource("18_rdsak")
+region = Rect2(720, 410, 720, 410)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne01r"]
+atlas = ExtResource("18_rdsak")
+region = Rect2(1440, 410, 720, 410)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4dav6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4taid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrd1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8oxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svwqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sv88u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pojws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6glb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne01r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="DeskConsole" type="Node3D" unique_id=2064120215]
 
@@ -188,3 +612,119 @@ transform = Transform3D(0.5940024, 0, 0.3703527, 0, 0.7, 0, -0.3703527, 0, 0.594
 
 [node name="Fan" parent="." unique_id=239339012 instance=ExtResource("12_1cfy1")]
 transform = Transform3D(0.45112947, 0, 0.5352403, 0, 0.7, 0, -0.5352403, 0, 0.45112947, -0.08951068, 0.48069322, 0.10967064)
+
+[node name="CRT3" parent="." unique_id=1368665395 instance=ExtResource("13_8hqnp")]
+transform = Transform3D(-2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, -2.9802322e-08, -0.97179365, 1.474057, 1.6461619)
+
+[node name="Sub_Computer" type="MeshInstance3D" parent="CRT3" unique_id=1227599720]
+transform = Transform3D(0.3604311, 0, 0, 0, -4.36406e-08, -0.4286871, 0, 0.9983806, -1.8738508e-08, 0.011657715, -0.010257721, 0.46451914)
+mesh = SubResource("PlaneMesh_ij6vn")
+surface_material_override/0 = SubResource("StandardMaterial3D_ij6vn")
+
+[node name="CRT4" parent="." unique_id=1501532657 instance=ExtResource("13_8hqnp")]
+transform = Transform3D(-2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, -2.9802322e-08, -0.97179365, 1.474057, 0.5461619)
+
+[node name="Sub_Computer" type="MeshInstance3D" parent="CRT4" unique_id=1776782537]
+transform = Transform3D(0.3604311, 0, 0, 0, -4.36406e-08, -0.4286871, 0, 0.9983806, -1.8738508e-08, 0.011657715, -0.010257721, 0.46451914)
+mesh = SubResource("PlaneMesh_ij6vn")
+surface_material_override/0 = SubResource("StandardMaterial3D_408ma")
+
+[node name="CRT5" parent="." unique_id=1334030640 instance=ExtResource("13_8hqnp")]
+transform = Transform3D(-2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, -2.9802322e-08, -0.97179365, 1.474057, -0.55779594)
+
+[node name="Sub_Computer" type="MeshInstance3D" parent="CRT5" unique_id=1063855233]
+transform = Transform3D(0.3604311, 0, 0, 0, -4.36406e-08, -0.4286871, 0, 0.9983806, -1.8738508e-08, 0.011657715, -0.010257721, 0.46451914)
+mesh = SubResource("PlaneMesh_ij6vn")
+surface_material_override/0 = SubResource("StandardMaterial3D_vrd1w")
+
+[node name="CRT6" parent="." unique_id=2045523813 instance=ExtResource("13_8hqnp")]
+transform = Transform3D(-2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, -2.9802322e-08, -0.97179365, 1.474057, -1.5538381)
+
+[node name="Sub_Computer" type="MeshInstance3D" parent="CRT6" unique_id=1291388815]
+transform = Transform3D(0.3604311, 0, 0, 0, -4.36406e-08, -0.4286871, 0, 0.9983806, -1.8738508e-08, 0.011657715, -0.010257721, 0.46451914)
+mesh = SubResource("PlaneMesh_ij6vn")
+surface_material_override/0 = SubResource("StandardMaterial3D_svwqc")
+
+[node name="Hud" type="SubViewport" parent="." unique_id=1647701510]
+
+[node name="Control" parent="Hud" unique_id=1760680745 instance=ExtResource("14_08n8r")]
+
+[node name="Radar" type="SubViewport" parent="." unique_id=2032710773]
+
+[node name="Control" type="CanvasLayer" parent="Radar" unique_id=813231662]
+script = ExtResource("15_408ma")
+
+[node name="Control" type="Control" parent="Radar/Control" unique_id=1288730338]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Radar/Control/Control" unique_id=346479260]
+material = SubResource("ShaderMaterial_sv88u")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="Panel" type="ColorRect" parent="Radar/Control/Control" unique_id=2057221350]
+material = SubResource("ShaderMaterial_svwqc")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EasterEgg" type="SubViewport" parent="." unique_id=2078719306]
+size_2d_override = Vector2i(1152, 648)
+size_2d_override_stretch = true
+
+[node name="Node2D" parent="EasterEgg" unique_id=1737096505 instance=ExtResource("17_08n8r")]
+
+[node name="Panel" type="ColorRect" parent="EasterEgg" unique_id=1612680649]
+material = SubResource("ShaderMaterial_svwqc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CmdOS" type="SubViewport" parent="." unique_id=1046860674]
+size_2d_override = Vector2i(1152, 648)
+size_2d_override_stretch = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CmdOS" unique_id=1295191163]
+
+[node name="Control" type="Control" parent="CmdOS/CanvasLayer" unique_id=1626549157]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="CmdOS/CanvasLayer/Control" unique_id=1211290627]
+scale = Vector2(1.65, 1.65)
+sprite_frames = SubResource("SpriteFrames_4dav6")
+frame_progress = 0.7192612
+script = ExtResource("19_ij6vn")
+
+[node name="Panel" type="ColorRect" parent="CmdOS/CanvasLayer" unique_id=1786112213]
+material = SubResource("ShaderMaterial_svwqc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

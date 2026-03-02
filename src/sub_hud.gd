@@ -9,7 +9,7 @@ class_name sub_hud extends CanvasLayer
 @onready var aft: ColorRect = $SectionHealth/Aft
 @onready var master_warning: Panel = $MasterWarning
 
-var show_master_warning
+var show_master_warning=false
 
 func get_color_hsv(value: float, min_value: float, max_value: float) -> Color:
 	var t = clamp((value - min_value) / (max_value - min_value), 0.0, 1.0)
@@ -63,6 +63,7 @@ func _process(delta: float) -> void:
 			delay_count=0
 			master_warning.visible=not master_warning.visible
 	else:
-		master_warning.visible=false
-		delay_count=0
+		if master_warning!=null:
+			master_warning.visible=false
+			delay_count=0
 		

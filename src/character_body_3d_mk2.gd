@@ -11,7 +11,7 @@ var allow_input=true
 
 func _ready():
 # Capture the mouse for FPS-style control
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	real_sub.is_poilting=true
 
 func _input(event: InputEvent) -> void:
