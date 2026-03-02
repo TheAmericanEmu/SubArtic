@@ -1,36 +1,341 @@
-[gd_scene format=3 uid="uid://bqoeetfd325m1"]
+[gd_scene format=3 uid="uid://bfbvgginv88"]
 
-[ext_resource type="Material" uid="uid://byg1caxpd8nam" path="res://Data/Mat/Brass.tres" id="1_fmyga"]
+[ext_resource type="Material" uid="uid://b3jratmg8myh3" path="res://Data/Mat/metal_sub.tres" id="1_h71b2"]
+[ext_resource type="Script" uid="uid://b4t5ye56nk4yh" path="res://src/main_menu.gd" id="1_wg3xs"]
 [ext_resource type="PackedScene" uid="uid://n45sm3g4e04m" path="res://Data/objects/desk_console.tscn" id="2_5vljy"]
+[ext_resource type="PackedScene" uid="uid://1keaqiuny0ox" path="res://Data/objects/chair.tscn" id="3_wg3xs"]
+[ext_resource type="PackedScene" uid="uid://b5pa3ccryqopn" path="res://Data/objects/door.tscn" id="4_1bay0"]
+[ext_resource type="Material" uid="uid://ykx7hb2fbpal" path="res://Data/Mat/Old_White_Metal.tres" id="4_h71b2"]
+[ext_resource type="FontFile" uid="uid://bt7tjn1quay66" path="res://Data/Fonts/Iceberg-Regular.ttf" id="7_1bay0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ri743"]
+albedo_color = Color(1, 1, 0.09411765, 1)
+emission_enabled = true
+emission = Color(8.040716, 6.4685707, 1.7855817, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wg3xs"]
+load_path = "res://.godot/imported/corten-steel-b-15748-in-architextures.jpg-a31a0ead7904c183b121e8c10a27ed6c.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bay0"]
+albedo_texture = SubResource("CompressedTexture2D_wg3xs")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7f1b"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yek8v"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4l5b"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkime"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cqxpr"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7j56e"]
+
+[sub_resource type="Theme" id="Theme_p203k"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("7_1bay0")
+Button/styles/disabled = SubResource("StyleBoxFlat_v7f1b")
+Button/styles/focus = SubResource("StyleBoxFlat_yek8v")
+Button/styles/hover = SubResource("StyleBoxFlat_y4l5b")
+Button/styles/normal = SubResource("StyleBoxFlat_qkime")
+Button/styles/pressed = SubResource("StyleBoxFlat_cqxpr")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("7_1bay0")
+Label/styles/focus = SubResource("StyleBoxFlat_yek8v")
+Label/styles/normal = SubResource("StyleBoxEmpty_7j56e")
 
 [node name="Main_Menu" type="Node3D" unique_id=788266356]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=790060103]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8793457, 0)
-size = Vector3(5, 2.1586914, 5)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=385800169]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3095703, -0.45013428, -1.0053711)
-operation = 2
-size = Vector3(2.171875, 0.9901123, 2.4814453)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=117650205]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.31461364, -0.008567259, -1.9469154)
-material_override = ExtResource("1_fmyga")
-size = Vector3(0.4609375, 0.35595703, 0.68115234)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D2" unique_id=573684436]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.087402344, -0.014831543, -0.06304932)
-operation = 2
-size = Vector3(0.6357422, 0.32629395, 0.5772705)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D2" unique_id=396772876]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0053100586, 0.101882935, 0.2853949)
-size = Vector3(0.47155762, 0.09286499, 0.09976578)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D2" unique_id=821226608]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0053100586, -0.0012564361, 0.2853949)
-size = Vector3(0.47155762, 0.09286499, 0.09976578)
+script = ExtResource("1_wg3xs")
 
 [node name="DeskConsole" parent="." unique_id=2064120215 instance=ExtResource("2_5vljy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9490938, 0, -1.983082)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.0283718, 0.035983175, -0.21958786)
+
+[node name="Chair" parent="." unique_id=2138102768 instance=ExtResource("3_wg3xs")]
+transform = Transform3D(-0.17445925, 0, -0.04431673, 0, 0.18, 0, 0.04431673, 0, -0.17445925, -1.8036312, -0.05978717, -0.04620278)
+
+[node name="Chair2" parent="." unique_id=608945575 instance=ExtResource("3_wg3xs")]
+transform = Transform3D(-0.15469798, 0, 0.092024654, 0, 0.17999999, 0, -0.092024654, 0, -0.15469798, -1.8036312, -0.05978717, -0.44620278)
+
+[node name="Door" parent="." unique_id=948103190 instance=ExtResource("4_1bay0")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -1.2802945, 0.16955005, 0.30413923)
+
+[node name="Ship_Light" type="Node3D" parent="." unique_id=1885549112]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.7130665, 0.7269739, -0.25852644)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship_Light" unique_id=599016506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012298584, 0)
+material_override = ExtResource("4_h71b2")
+size = Vector3(1.1447754, 0.31347656, 2.168213)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Ship_Light/CSGBox3D2" unique_id=1723175018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10276154, 0)
+operation = 2
+size = Vector3(1, 0.19970703, 2.0253906)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship_Light/CSGBox3D2/CSGBox3D" unique_id=1715840925]
+transform = Transform3D(0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0, 1, 0.42975911, 0.07420024, -4.7326088e-05)
+operation = 2
+size = Vector3(1, 0.19970703, 2.1662598)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Ship_Light/CSGBox3D2/CSGBox3D" unique_id=1130123151]
+transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, -0.45581993, 0.07415375, 0)
+operation = 2
+size = Vector3(1, 0.19970703, 2.1662598)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Ship_Light" unique_id=1193924621]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.28852624, -0.028860927, 0)
+material_override = SubResource("StandardMaterial3D_ri743")
+radius = 0.106933594
+height = 2.0976563
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Ship_Light" unique_id=702429334]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.0078392625, -0.028860927, 0)
+material_override = SubResource("StandardMaterial3D_ri743")
+radius = 0.106933594
+height = 2.0488281
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Ship_Light" unique_id=1819961905]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.31538722, -0.028860927, 0)
+material_override = SubResource("StandardMaterial3D_ri743")
+radius = 0.106933594
+height = 2.0458984
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Ship_Light" unique_id=1822613995]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+shadow_enabled = true
+spot_angle = 55.0
+
+[node name="Ship_Light2" type="Node3D" parent="." unique_id=1908748482]
+transform = Transform3D(-3.7252903e-09, 0, 0.2, 0, 0.20000003, 0, -0.2, 0, -3.7252903e-09, -1.3433555, 0.62814903, 0.5205378)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship_Light2" unique_id=189925741]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012298584, 0)
+material_override = ExtResource("4_h71b2")
+size = Vector3(1.1447754, 0.31347656, 2.168213)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Ship_Light2/CSGBox3D2" unique_id=2042096321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10276154, 0)
+operation = 2
+size = Vector3(1, 0.19970703, 2.0253906)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Ship_Light2/CSGBox3D2/CSGBox3D" unique_id=837166113]
+transform = Transform3D(0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0, 1, 0.42975911, 0.07420024, -4.7326088e-05)
+operation = 2
+size = Vector3(1, 0.19970703, 2.1662598)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Ship_Light2/CSGBox3D2/CSGBox3D" unique_id=388077966]
+transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, -0.45581993, 0.07415375, 0)
+operation = 2
+size = Vector3(1, 0.19970703, 2.1662598)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Ship_Light2" unique_id=334614321]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.28852624, -0.028860927, 0)
+material_override = SubResource("StandardMaterial3D_ri743")
+radius = 0.106933594
+height = 2.0976563
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Ship_Light2" unique_id=1878640403]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.0078392625, -0.028860927, 0)
+material_override = SubResource("StandardMaterial3D_ri743")
+radius = 0.106933594
+height = 2.0488281
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Ship_Light2" unique_id=1738421644]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.31538722, -0.028860927, 0)
+material_override = SubResource("StandardMaterial3D_ri743")
+radius = 0.106933594
+height = 2.0458984
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Ship_Light2" unique_id=1336572422]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+shadow_enabled = true
+spot_angle = 55.0
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1871709188]
+material_override = SubResource("StandardMaterial3D_1bay0")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=790060103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8793457, 0)
+material_override = ExtResource("1_h71b2")
+size = Vector3(5, 2.1586914, 5)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CSGCombiner3D" unique_id=2008292388]
+transform = Transform3D(-6.160683e-08, 0, -0.19999996, 0, 0.2, 0, 1.4094001, 0, -8.742275e-09, -1.2802945, 0.16955006, 0.27579924)
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGCombiner3D" unique_id=280143278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4857788, 0)
+size = Vector3(0.16113281, 1.5400391, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCombiner3D" unique_id=18461496]
+transform = Transform3D(-3.439584e-08, 1, 0, -0.7868851, -4.371139e-08, 0, 0, 0, 1, 0, 1.252731, 0)
+height = 0.15917969
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCombiner3D" unique_id=80673912]
+transform = Transform3D(-3.439584e-08, 1, 0, -0.7868851, -4.371139e-08, 0, 0, 0, 1, 0, -0.290984, 0)
+height = 0.15917969
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=91780640]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5832825, 0.28422242, 0.5112152)
+operation = 2
+size = Vector3(1.6244507, 0.7001343, 0.33370972)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=385800169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7025299, 0.3227356, -0.32470703)
+operation = 2
+size = Vector3(1.3859558, 0.77716064, 1.1201172)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2131478517]
+transform = Transform3D(-0.7089678, 0, 0.7052408, 0, 1, 0, -0.7052408, 0, -0.7089678, -0.9904196, 0.41942504, -0.8037623)
+fov = 49.38382
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1651059070]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1568039221]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_p203k")
+
+[node name="Title" type="Label" parent="CanvasLayer/Control" unique_id=130562356]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -138.0
+offset_right = 138.0
+offset_bottom = 79.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("7_1bay0")
+theme_override_font_sizes/font_size = 64
+text = "Sub Arctic"
+
+[node name="Play" type="Button" parent="CanvasLayer/Control" unique_id=90068027]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -26.5
+offset_right = 118.0
+offset_bottom = 27.236115
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Play"
+
+[node name="Credits" type="Button" parent="CanvasLayer/Control" unique_id=2039802092]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 43.0
+offset_right = 118.0
+offset_bottom = 96.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+
+[node name="Quit" type="Button" parent="CanvasLayer/Control" unique_id=1928473489]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 110.0
+offset_right = 118.0
+offset_bottom = 163.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[connection signal="pressed" from="CanvasLayer/Control/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Quit" to="." method="_on_quit_pressed"]
+
+[editable path="Door"]

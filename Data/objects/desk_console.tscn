@@ -2,6 +2,7 @@
 
 [ext_resource type="Material" uid="uid://b3jratmg8myh3" path="res://Data/Mat/metal_sub.tres" id="1_4uxws"]
 [ext_resource type="Texture2D" uid="uid://rti1bojdvqcg" path="res://Data/textures/BaseTextures/Metal/MetalPlates002_1K-JPG_Color.jpg" id="1_ipdhg"]
+[ext_resource type="Script" uid="uid://b4fad37s14cw4" path="res://src/desk_console.gd" id="1_rdsak"]
 [ext_resource type="Texture2D" uid="uid://be5yab3w6rmbv" path="res://Data/textures/Detials/laptopkeyboard.png" id="3_cybdi"]
 [ext_resource type="Material" uid="uid://ykx7hb2fbpal" path="res://Data/Mat/Old_White_Metal.tres" id="4_8xb12"]
 [ext_resource type="Material" uid="uid://byg1caxpd8nam" path="res://Data/Mat/Brass.tres" id="5_pd734"]
@@ -14,11 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://dw55wkaro4dek" path="res://Data/objects/fan.tscn" id="12_1cfy1"]
 [ext_resource type="PackedScene" uid="uid://c4rccd6belu7m" path="res://Data/objects/crt.tscn" id="13_8hqnp"]
 [ext_resource type="PackedScene" uid="uid://bhexbtaua4erj" path="res://Data/objects/sub_hud.tscn" id="14_08n8r"]
-[ext_resource type="Script" uid="uid://cw3lyjvwm5gjq" path="res://src/sub_hud.gd" id="15_408ma"]
-[ext_resource type="Shader" uid="uid://d1ki24rd31qj" path="res://Data/Shaders/radar.gdshader" id="16_rdsak"]
+[ext_resource type="Script" uid="uid://m25ikxbn4dl3" path="res://src/radar.gd" id="16_ij6vn"]
+[ext_resource type="Shader" path="res://Data/Shaders/radar.gdshader" id="16_rdsak"]
 [ext_resource type="PackedScene" uid="uid://c4w14s4tlqo2g" path="res://Data/DucEgg/menu.tscn" id="17_08n8r"]
 [ext_resource type="Texture2D" uid="uid://dhiy74jvsf7tg" path="res://Data/textures/Detials/WindowsVista.png" id="18_rdsak"]
-[ext_resource type="Script" uid="uid://bv30j17b6t8eu" path="res://src/card_spin.gd" id="19_ij6vn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e11gj"]
 albedo_texture = ExtResource("1_ipdhg")
@@ -117,7 +117,7 @@ shader_parameter/trail_width = 0.258000012255
 shader_parameter/blip_size = 0.11600000225012
 shader_parameter/blip_softness = 0.4
 shader_parameter/blip_presistence = 2.0
-shader_parameter/blip_position = Vector2(0.5, 0.5)
+shader_parameter/blip_position = Vector2(1, 0)
 
 [sub_resource type="Shader" id="Shader_t8oxg"]
 code = "// CRT Shader for Godot Engine
@@ -465,6 +465,7 @@ animations = [{
 }]
 
 [node name="DeskConsole" type="Node3D" unique_id=2064120215]
+script = ExtResource("1_rdsak")
 
 [node name="CSGCombiner3D2" type="CSGCombiner3D" parent="." unique_id=824093468]
 material_override = ExtResource("4_8xb12")
@@ -652,7 +653,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_svwqc")
 [node name="Radar" type="SubViewport" parent="." unique_id=2032710773]
 
 [node name="Control" type="CanvasLayer" parent="Radar" unique_id=813231662]
-script = ExtResource("15_408ma")
 
 [node name="Control" type="Control" parent="Radar/Control" unique_id=1288730338]
 layout_mode = 3
@@ -661,8 +661,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("16_ij6vn")
 
-[node name="ColorRect" type="ColorRect" parent="Radar/Control/Control" unique_id=346479260]
+[node name="Radar" type="ColorRect" parent="Radar/Control/Control" unique_id=346479260]
 material = SubResource("ShaderMaterial_sv88u")
 layout_mode = 1
 anchors_preset = 15
@@ -718,8 +719,8 @@ grow_vertical = 2
 [node name="Sprite2D" type="AnimatedSprite2D" parent="CmdOS/CanvasLayer/Control" unique_id=1211290627]
 scale = Vector2(1.65, 1.65)
 sprite_frames = SubResource("SpriteFrames_4dav6")
+autoplay = "default"
 frame_progress = 0.7192612
-script = ExtResource("19_ij6vn")
 
 [node name="Panel" type="ColorRect" parent="CmdOS/CanvasLayer" unique_id=1786112213]
 material = SubResource("ShaderMaterial_svwqc")

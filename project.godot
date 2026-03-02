@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Sub Arctic"
-run/main_scene="uid://c5pv700ic2oxv"
+run/main_scene="uid://bfbvgginv88"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="SubArctic"
 config/features=PackedStringArray("4.6", "Forward Plus")
