@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cjw1enr3yyuxf"
-path="res://.godot/imported/get_out_of_line.wav-937dcb68deb894a8729932ed0ed4b2fb.sample"
+path="res://.godot/imported/get_out_of_line.wav-65dcdbd43c8489c779612bc6ed0881fd.sample"
 
 [deps]
 
-source_file="res://Data/sounds/voicelines/get_out_of_line.wav"
-dest_files=["res://.godot/imported/get_out_of_line.wav-937dcb68deb894a8729932ed0ed4b2fb.sample"]
+source_file="res://Data/sounds/OldData/voicelines_bonzi/get_out_of_line.wav"
+dest_files=["res://.godot/imported/get_out_of_line.wav-65dcdbd43c8489c779612bc6ed0881fd.sample"]
 
 [params]
 

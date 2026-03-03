@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b2igjh7eu508t"
-path="res://.godot/imported/discovered_city_expo.wav-ce74074946a352c93b57ae50bb019e46.sample"
+path="res://.godot/imported/discovered_city_expo.wav-5766e6f9b439f7f8cc5695c992856743.sample"
 
 [deps]
 
-source_file="res://Data/sounds/voicelines/discovered_city_expo.wav"
-dest_files=["res://.godot/imported/discovered_city_expo.wav-ce74074946a352c93b57ae50bb019e46.sample"]
+source_file="res://Data/sounds/OldData/voicelines_bonzi/discovered_city_expo.wav"
+dest_files=["res://.godot/imported/discovered_city_expo.wav-5766e6f9b439f7f8cc5695c992856743.sample"]
 
 [params]
 

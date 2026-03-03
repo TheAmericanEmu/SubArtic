@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cp5ct1r1pl7xh"
-path="res://.godot/imported/discovered_poi.wav-f96bb9ecf1ea544e8d1a9d42f0ffa30c.sample"
+path="res://.godot/imported/discovered_poi.wav-15559ab6b4768fc88909d7c24a3b4855.sample"
 
 [deps]
 
-source_file="res://Data/sounds/voicelines/discovered_poi.wav"
-dest_files=["res://.godot/imported/discovered_poi.wav-f96bb9ecf1ea544e8d1a9d42f0ffa30c.sample"]
+source_file="res://Data/sounds/OldData/voicelines_bonzi/discovered_poi.wav"
+dest_files=["res://.godot/imported/discovered_poi.wav-15559ab6b4768fc88909d7c24a3b4855.sample"]
 
 [params]
 

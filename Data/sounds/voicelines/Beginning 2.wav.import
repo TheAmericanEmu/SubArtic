@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cjsw3xr0brfbh"
+path="res://.godot/imported/Beginning 2.wav-45435954453850f364d5835fa07f3a65.sample"
+
+[deps]
+
+source_file="res://Data/sounds/voicelines/Beginning 2.wav"
+dest_files=["res://.godot/imported/Beginning 2.wav-45435954453850f364d5835fa07f3a65.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

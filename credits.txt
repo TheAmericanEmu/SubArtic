@@ -21,3 +21,4 @@ Vibrations 02.wav by LilMati -- https://freesound.org/s/445353/ -- License: Crea
 https://godotshaders.com/shader/spiraling-pattern-backdrop/
 https://texturelabs.org/textures/metal_294/
 SND Dive Alarm.wav by Knochenschall -- https://freesound.org/s/377770/ -- License: Creative Commons 0
+ship engine.wav by IsraGallo -- https://freesound.org/s/514441/ -- License: Attribution 4.0

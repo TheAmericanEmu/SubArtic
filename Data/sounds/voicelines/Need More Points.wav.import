@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b6b4a4vrtcrsc"
+path="res://.godot/imported/Need More Points.wav-b31e454ec43fadc581623176de048f35.sample"
+
+[deps]
+
+source_file="res://Data/sounds/voicelines/Need More Points.wav"
+dest_files=["res://.godot/imported/Need More Points.wav-b31e454ec43fadc581623176de048f35.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

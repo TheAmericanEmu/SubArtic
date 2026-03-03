@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c4rccd6belu7m" path="res://Data/objects/crt.tscn" id="13_8hqnp"]
 [ext_resource type="PackedScene" uid="uid://bhexbtaua4erj" path="res://Data/objects/sub_hud.tscn" id="14_08n8r"]
 [ext_resource type="Script" uid="uid://m25ikxbn4dl3" path="res://src/radar.gd" id="16_ij6vn"]
-[ext_resource type="Shader" path="res://Data/Shaders/radar.gdshader" id="16_rdsak"]
+[ext_resource type="Shader" uid="uid://d1ki24rd31qj" path="res://Data/Shaders/radar.gdshader" id="16_rdsak"]
 [ext_resource type="PackedScene" uid="uid://c4w14s4tlqo2g" path="res://Data/DucEgg/menu.tscn" id="17_08n8r"]
 [ext_resource type="Texture2D" uid="uid://dhiy74jvsf7tg" path="res://Data/textures/Detials/WindowsVista.png" id="18_rdsak"]
 

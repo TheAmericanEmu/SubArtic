@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bybx7ckj2dvpt"
-path="res://.godot/imported/findshed_keep_going.wav-87ccd88e5b9e3abb93d3327e875f017b.sample"
+path="res://.godot/imported/findshed_keep_going.wav-d7740ffbb9693973b4fe1ed7fd27038e.sample"
 
 [deps]
 
-source_file="res://Data/sounds/voicelines/findshed_keep_going.wav"
-dest_files=["res://.godot/imported/findshed_keep_going.wav-87ccd88e5b9e3abb93d3327e875f017b.sample"]
+source_file="res://Data/sounds/OldData/voicelines_bonzi/findshed_keep_going.wav"
+dest_files=["res://.godot/imported/findshed_keep_going.wav-d7740ffbb9693973b4fe1ed7fd27038e.sample"]
 
 [params]
 

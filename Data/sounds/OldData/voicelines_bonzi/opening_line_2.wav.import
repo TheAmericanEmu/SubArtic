@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://but8djvpxso6g"
-path="res://.godot/imported/opening_line_2.wav-33c8364b066f1d3cfc3669c554e9118a.sample"
+path="res://.godot/imported/opening_line_2.wav-9b009abfec97cb96c534d264666f8e43.sample"
 
 [deps]
 
-source_file="res://Data/sounds/voicelines/opening_line_2.wav"
-dest_files=["res://.godot/imported/opening_line_2.wav-33c8364b066f1d3cfc3669c554e9118a.sample"]
+source_file="res://Data/sounds/OldData/voicelines_bonzi/opening_line_2.wav"
+dest_files=["res://.godot/imported/opening_line_2.wav-9b009abfec97cb96c534d264666f8e43.sample"]
 
 [params]
 
