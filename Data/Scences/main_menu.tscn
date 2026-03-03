@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5pa3ccryqopn" path="res://Data/objects/door.tscn" id="4_1bay0"]
 [ext_resource type="Material" uid="uid://ykx7hb2fbpal" path="res://Data/Mat/Old_White_Metal.tres" id="4_h71b2"]
 [ext_resource type="FontFile" uid="uid://bt7tjn1quay66" path="res://Data/Fonts/Iceberg-Regular.ttf" id="7_1bay0"]
+[ext_resource type="AudioStream" uid="uid://crl4yfwr5v3ti" path="res://Data/sounds/Music/MainMenuAbaunic.wav" id="8_v7f1b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ri743"]
 albedo_color = Color(1, 1, 0.09411765, 1)
@@ -334,6 +335,11 @@ offset_bottom = 163.0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "Quit"
+
+[node name="MainMenuAbaunic" type="AudioStreamPlayer" parent="." unique_id=1372874511]
+stream = ExtResource("8_v7f1b")
+volume_db = 24.0
+autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Control/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Quit" to="." method="_on_quit_pressed"]

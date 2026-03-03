@@ -9,9 +9,9 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 var is_poilting := false
-var allow_movement:=false
+var allow_movement:=true
 #Stats
-var depth :=0.00
+var depth :=-1.00
 var power_settings:=1
 var power_left:=100.0
 var engine_rpm:=0
@@ -19,7 +19,7 @@ var engine_rpm:=0
 var for_health:=100
 var mid_health:=100
 var aft_health:=100
-
+var is_under_water=false
 var current_poi:POI = null
 
 #Signals
@@ -34,8 +34,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	main_cam.global_transform=main_cam_point.global_transform
 	var surface = self.position
+
 	surface.y = 0
-	depth = self.position.distance_to(surface)
+
+	if 0> self.global_position.y:
+		is_under_water=true
+	else:
+		is_under_water=false
+	depth = self.global_position.distance_to(surface)
 
 func _physics_process(delta: float) -> void:
 	

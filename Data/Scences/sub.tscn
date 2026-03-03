@@ -142,6 +142,9 @@ albedo_texture = SubResource("ViewportTexture_v26c0")
 [sub_resource type="PlaneMesh" id="PlaneMesh_en8mb"]
 material = SubResource("StandardMaterial3D_v8ttn")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_v26c0"]
+size = Vector3(46.904297, 31.752441, 42.536865)
+
 [node name="Sub" type="Node3D" unique_id=443815960]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1847204775]
@@ -209,7 +212,6 @@ material = ExtResource("2_6mkbk")
 
 [node name="Window_Blocker" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB" unique_id=211580294]
 transform = Transform3D(-4.3711346e-08, 0.115417175, 0, -1, -5.0450506e-09, 0, 0, 0, 1, -0.9920044, 0.10277064, 0)
-visible = false
 use_collision = true
 radius = 0.2
 height = 0.2
@@ -442,7 +444,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5870817, 0)
 current = true
 
 [node name="Real_Sub" type="CharacterBody3D" parent="." unique_id=1852088454]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.54668, -418.55756, 119.53752)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.64443, 0)
 script = ExtResource("2_ylndv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Real_Sub" unique_id=1698410215]
@@ -643,6 +645,24 @@ mesh = SubResource("PlaneMesh_en8mb")
 [node name="Node3D" parent="." unique_id=69286103 groups=["Map"] instance=ExtResource("5_1pqt4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -29.327824, 0)
 
+[node name="CaveBlocker" type="StaticBody3D" parent="Node3D" unique_id=964071621]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.6053, -204.60379, 191.0634)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CaveBlocker" unique_id=1748725162]
+shape = SubResource("BoxShape3D_v26c0")
+
+[node name="CaveVoiceTigger" type="Area3D" parent="Node3D" unique_id=198204565]
+transform = Transform3D(0.57357645, 0.81915206, 0, -0.81915206, 0.57357645, 0, 0, 0, 1, 205.6053, -275.50378, 191.0634)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CaveVoiceTigger" unique_id=440987912]
+shape = SubResource("BoxShape3D_v26c0")
+
+[node name="Hoist_Tigger" type="Area3D" parent="Node3D" unique_id=673778007]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Hoist_Tigger" unique_id=522206604]
+transform = Transform3D(0.9998981, 0, -0.014276308, 0, 1, 0, 0.014276308, 0, 0.9998981, 0, 15.376221, 0)
+shape = SubResource("BoxShape3D_v26c0")
+
 [node name="TaskManger" type="Node3D" parent="." unique_id=1818109146]
 script = ExtResource("9_c3sht")
 
@@ -663,3 +683,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188.67392, -397.52182, 109.1
 [connection signal="body_entered" from="Real_Sub/ForHitBox3" to="Real_Sub" method="_on_for_hit_box_3_body_entered"]
 [connection signal="area_entered" from="Real_Sub/AreaCheckBox" to="Real_Sub" method="_on_area_check_box_area_entered"]
 [connection signal="area_exited" from="Real_Sub/AreaCheckBox" to="Real_Sub" method="_on_area_check_box_area_exited"]
+[connection signal="body_entered" from="Node3D/CaveVoiceTigger" to="TaskManger" method="_on_cave_voice_tigger_body_entered"]
+[connection signal="body_entered" from="Node3D/Hoist_Tigger" to="TaskManger" method="_on_hoist_tigger_body_entered"]

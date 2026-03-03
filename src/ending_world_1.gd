@@ -6,10 +6,14 @@ extends Node3D
 @onready var real_sub: RealSub = $Real_Sub
 @onready var fake_su_b: fake_sub = $PlayerSpace/Fake_SuB
 
-var ending_tiggered = false
+var ending_tiggered_bool = true
 
 func ending_tiggured():
-	ending_tiggered=true
+	control.show_master_warning=true
+	Player.allow_input=false
+	real_sub.is_poilting=false
+	real_sub.allow_movement=false
+	cut_scnce.play("Ending")
 
 func _ready() -> void:
 	control.show_master_warning=true
@@ -28,7 +32,10 @@ func _ready() -> void:
 	await cut_scnce.animation_finished
 	Player.allow_input=true
 	real_sub.allow_movement=true
+	ending_tiggered_bool=false
 
 func _process(delta: float) -> void:
-	if real_sub.depth==0 and not ending_tiggered:
-		print("surfaced")
+	print(real_sub.is_under_water)
+	if real_sub.is_under_water==false and not ending_tiggered_bool:
+		
+		ending_tiggured()

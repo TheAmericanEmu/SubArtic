@@ -1,7 +1,7 @@
-class_name cam_hud extends Control
-@onready var static_img: AnimatedSprite2D = $Static
-@onready var time_label: Label = $Time
-@onready var stats_label: Label = $Stats
+class_name cam_hud extends CanvasLayer
+@onready var static_img: AnimatedSprite2D = $CanvasLayer/Static
+@onready var time_label: Label = $CanvasLayer/Time
+@onready var stats_label: Label = $CanvasLayer/Stats
 
 var _random_static = false
 

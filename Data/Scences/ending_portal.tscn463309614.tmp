@@ -15,21 +15,6 @@
 [ext_resource type="Script" uid="uid://7vakksvm5beb" path="res://src/real_sub.gd" id="12_2i2ja"]
 [ext_resource type="AudioStream" uid="uid://t4xyvj58wgi" path="res://Data/sounds/SoundEffects/Alarm.wav" id="12_3d354"]
 [ext_resource type="Material" uid="uid://byg1caxpd8nam" path="res://Data/Mat/Brass.tres" id="13_x8d8p"]
-[ext_resource type="PackedScene" uid="uid://4owmn31ahvl3" path="res://Data/objects/ship.tscn" id="16_aise0"]
-[ext_resource type="Shader" uid="uid://c6amdk6rxt61d" path="res://Data/Shaders/ending_portal.gdshader" id="16_xd00w"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xd00w"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_log2e"]
-sky_material = SubResource("ProceduralSkyMaterial_xd00w")
-
-[sub_resource type="Environment" id="Environment_j28fg"]
-background_mode = 2
-sky = SubResource("Sky_log2e")
-tonemap_mode = 2
-glow_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_g8fc6"]
 
@@ -141,7 +126,7 @@ material = SubResource("StandardMaterial3D_v8ttn")
 
 [sub_resource type="Animation" id="Animation_xd00w"]
 resource_name = "Ending"
-length = 14.0
+length = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -209,27 +194,14 @@ tracks/5/path = NodePath("PlayerSpace/Player/Cam/Camera:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.6333, 4.072819, 14.033334),
+"times": PackedFloat32Array(0, 0.6333, 4.072819, 9.966666),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.5078081, -1.3014023e-06, -1.3860711e-06), Vector3(0, -1.5707964, 0), Vector3(0, 0, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Ship:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 12.733334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-723.17596, 0, 235.62645), Vector3(-905.95306, 0, 226.56067)]
+"values": [Vector3(0, 0, 0), Vector3(1.5078081, -1.3014023e-06, -1.3860711e-06), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_3d354"]
 length = 0.001
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -252,7 +224,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(0, -0.425, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -276,7 +248,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.5, 0)]
+"values": [Vector3(0.11999512, 0.62846345, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -288,7 +260,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.70000005, 0)]
+"values": [Vector3(0, 1.7321439, -5.012718)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -301,18 +273,6 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Ship:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-723.17596, 0, 235.62645)]
 }
 
 [sub_resource type="Animation" id="Animation_aise0"]
@@ -350,38 +310,13 @@ _data = {
 &"Wake_Up": SubResource("Animation_aise0")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_log2e"]
-render_priority = 0
-shader = ExtResource("16_xd00w")
-shader_parameter/water_color = Color(0.3317011, 0.5365109, 1, 1)
-shader_parameter/water_color_ratio = 0.70000001043084
-shader_parameter/beers_law = 12.0000001788144
-shader_parameter/normal_strength = 0.0
-shader_parameter/roughness = 0.1
-shader_parameter/time_scale = 5.0
-shader_parameter/uv_scale = 1.0
-shader_parameter/depth_distance = 0.40000000596048
-shader_parameter/caustics_power = 1.0
-shader_parameter/caustics_distance = 0.3
-shader_parameter/foam_distance = 0.04
-shader_parameter/wave_power = 0.05999999865891
-shader_parameter/wave_frequency = 1.0
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_log2e"]
-material = SubResource("ShaderMaterial_log2e")
 
 [node name="Ending_Portal" type="Node3D" unique_id=742357243]
 script = ExtResource("1_txdtb")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=606187501]
-environment = SubResource("Environment_j28fg")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=907764929]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
-
 [node name="PlayerSpace" type="Node3D" parent="." unique_id=1298752740]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -900.21277, 0.9294605, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -900.21277, 0, 0)
 
 [node name="Fake_SuB" type="Node3D" parent="PlayerSpace" unique_id=2108755874]
 transform = Transform3D(4.168087, 0, 0, 0, 3.8921623, 0, 0, 0, 3.8921623, 0, 0, 0)
@@ -629,7 +564,7 @@ radius = 0.1459961
 height = 0.34146118
 
 [node name="Hatch" type="Node3D" parent="PlayerSpace/Fake_SuB/Hatch" unique_id=1121887913]
-transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 1, 0.11999512, 0.62846345, 0)
 
 [node name="CSGCylinder3D8" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Hatch/Hatch" unique_id=148015547]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.004095912, 0)
@@ -671,7 +606,7 @@ radius = 0.026367188
 height = 0.12219238
 
 [node name="Player" type="CharacterBody3D" parent="PlayerSpace" unique_id=2056739346 node_paths=PackedStringArray("cam", "real_sub")]
-transform = Transform3D(-0.99999976, 0, -8.74228e-08, 0, 0.9999999, 0, 8.7422755e-08, 0, -1.0000002, 0, 0, 0)
+transform = Transform3D(-0.99999976, 0, -8.74228e-08, 0, 0.9999999, 0, 8.7422755e-08, 0, -1.0000002, 0, -0.425, 0)
 script = ExtResource("11_a47oq")
 cam = NodePath("Cam")
 real_sub = NodePath("../../Real_Sub")
@@ -686,7 +621,7 @@ shape = SubResource("CapsuleShape3D_3wjmb")
 [node name="Cam" type="Node3D" parent="PlayerSpace/Player" unique_id=2095223247]
 
 [node name="Camera" type="Camera3D" parent="PlayerSpace/Player/Cam" unique_id=1976219999]
-transform = Transform3D(1.0000002, 0, 0, 0, 1.0000001, 0, 0, 0, 0.99999976, 0, 0.70000005, 0)
+transform = Transform3D(1.0000002, 0, 0, 0, 1.0000001, 0, 0, 0, 0.9999997, 0, 1.7321439, -5.012718)
 current = true
 
 [node name="Real_Sub" type="CharacterBody3D" parent="." unique_id=1635617434]
@@ -890,14 +825,10 @@ mesh = SubResource("PlaneMesh_xsrsw")
 
 [node name="CutScnce" type="AnimationPlayer" parent="." unique_id=2045740884]
 libraries/ = SubResource("AnimationLibrary_xd00w")
-autoplay = &"RESET"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=643971485]
-transform = Transform3D(721.8551, 0, 0, 0, 3.4354322, 0, 0, 0, 1170.3411, -988.8573, 2.7824707, 0)
+transform = Transform3D(721.8551, 0, 0, 0, 3.4354322, 0, 0, 0, 1170.3411, -988.8573, 1.9360466, 0)
 mesh = SubResource("PlaneMesh_log2e")
-
-[node name="Ship" parent="." unique_id=602545118 instance=ExtResource("16_aise0")]
-transform = Transform3D(-9.68951, 0, 2.472528, 0, 10, 0, -2.472528, 0, -9.68951, -723.17596, 0, 235.62645)
 
 [connection signal="body_entered" from="PlayerSpace/Fake_SuB/Cam" to="PlayerSpace/Fake_SuB/Cam" method="_on_body_entered"]
 [connection signal="body_exited" from="PlayerSpace/Fake_SuB/Cam" to="PlayerSpace/Fake_SuB/Cam" method="_on_body_exited"]

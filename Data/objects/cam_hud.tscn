@@ -332,27 +332,29 @@ shader_parameter/roll_line_amount = 0.3
 shader_parameter/roll_speed = 1.7720004641700005
 shader_parameter/pixel_strength = -4.0
 
-[node name="CamHud" type="Control" unique_id=1131783337]
+[node name="CamHud" type="CanvasLayer" unique_id=1508737068]
+script = ExtResource("1_4namc")
+
+[node name="CanvasLayer" type="Control" parent="." unique_id=1518254162]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_4namc")
 
-[node name="StaticText1" type="Label" parent="." unique_id=1941536605]
+[node name="StaticText1" type="Label" parent="CanvasLayer" unique_id=1941536605]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 40.0
+offset_top = -30.0
+offset_right = 192.0
 grow_vertical = 0
 text = "Cam Feed 1"
 label_settings = SubResource("LabelSettings_mirpg")
 
-[node name="Stats" type="Label" parent="." unique_id=1913446081]
+[node name="Stats" type="Label" parent="CanvasLayer" unique_id=1913446081]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -367,33 +369,26 @@ text = "Depth:"
 label_settings = SubResource("LabelSettings_mirpg")
 horizontal_alignment = 2
 
-[node name="Time" type="Label" parent="." unique_id=1656794724]
+[node name="Time" type="Label" parent="CanvasLayer" unique_id=1656794724]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1152.0
-offset_top = -648.0
-offset_right = -960.0
-offset_bottom = -618.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_right = 192.0
+offset_bottom = 30.0
 label_settings = SubResource("LabelSettings_mirpg")
 
-[node name="Static" type="AnimatedSprite2D" parent="." unique_id=205015863]
-visible = false
-position = Vector2(646.75, 355.49997)
-scale = Vector2(3.426829, 3.37)
+[node name="Static" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=205015863]
+texture_filter = 1
+texture_repeat = 3
+position = Vector2(684.00024, 245.99988)
+scale = Vector2(13.399626, 10.513333)
 sprite_frames = SubResource("SpriteFrames_f3ox7")
 autoplay = "default"
 frame_progress = 0.393338
 
-[node name="Panel" type="ColorRect" parent="." unique_id=161063965]
+[node name="Panel" type="ColorRect" parent="CanvasLayer" unique_id=161063965]
 material = SubResource("ShaderMaterial_bbreo")
-layout_mode = 0
-offset_left = -66.99994
-offset_top = -84.0
-offset_right = 1290.0
-offset_bottom = 707.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
