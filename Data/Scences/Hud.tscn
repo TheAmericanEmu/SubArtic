@@ -9,6 +9,7 @@ bg_color = Color(0, 0, 0, 1)
 font_size = 32
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=624475563]
+layer = -1
 script = ExtResource("1_evixl")
 
 [node name="Hud" type="Control" parent="." unique_id=198013420]

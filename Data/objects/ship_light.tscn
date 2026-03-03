@@ -50,6 +50,5 @@ height = 2.0458984
 [node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1822613995]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 light_color = Color(13.507204, 13.416326, 0.0019713964, 1)
-light_energy = 6.403
 shadow_enabled = true
 spot_angle = 55.0
