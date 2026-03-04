@@ -131,150 +131,188 @@ Label/fonts/font = ExtResource("7_1bay0")
 Label/styles/focus = SubResource("StyleBoxFlat_yek8v")
 Label/styles/normal = SubResource("StyleBoxEmpty_7j56e")
 
+[sub_resource type="Animation" id="Animation_v7f1b"]
+resource_name = "PitchUndRoll"
+length = 10.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Map:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.6300294, 6.387014, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.1332908, 0, 0), Vector3(-0.049445182, 0, 0), Vector3(-0.15491544, 0, 0), Vector3(0.1332908, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yek8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Map:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.07220428)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y4l5b"]
+_data = {
+&"PitchUndRoll": SubResource("Animation_v7f1b"),
+&"RESET": SubResource("Animation_yek8v")
+}
+
 [node name="Main_Menu" type="Node3D" unique_id=788266356]
 script = ExtResource("1_wg3xs")
 
-[node name="DeskConsole" parent="." unique_id=2064120215 instance=ExtResource("2_5vljy")]
+[node name="Map" type="Node3D" parent="." unique_id=1292672640]
+transform = Transform3D(0.9973944, -0.07214157, 0, 0.07214156, 0.9973946, 0, 0, 0, 1.0000001, 0, 0, 0)
+
+[node name="DeskConsole" parent="Map" unique_id=2064120215 instance=ExtResource("2_5vljy")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.0283718, 0.035983175, -0.21958786)
 
-[node name="Chair" parent="." unique_id=2138102768 instance=ExtResource("3_wg3xs")]
+[node name="Chair" parent="Map" unique_id=2138102768 instance=ExtResource("3_wg3xs")]
 transform = Transform3D(-0.17445925, 0, -0.04431673, 0, 0.18, 0, 0.04431673, 0, -0.17445925, -1.8036312, -0.05978717, -0.04620278)
 
-[node name="Chair2" parent="." unique_id=608945575 instance=ExtResource("3_wg3xs")]
+[node name="Chair2" parent="Map" unique_id=608945575 instance=ExtResource("3_wg3xs")]
 transform = Transform3D(-0.15469798, 0, 0.092024654, 0, 0.17999999, 0, -0.092024654, 0, -0.15469798, -1.8036312, -0.05978717, -0.44620278)
 
-[node name="Door" parent="." unique_id=948103190 instance=ExtResource("4_1bay0")]
+[node name="Door" parent="Map" unique_id=948103190 instance=ExtResource("4_1bay0")]
 transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -1.2802945, 0.16955005, 0.30413923)
 
-[node name="Ship_Light" type="Node3D" parent="." unique_id=1885549112]
+[node name="Ship_Light" type="Node3D" parent="Map" unique_id=1885549112]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.7130665, 0.7269739, -0.25852644)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Ship_Light" unique_id=599016506]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Ship_Light" unique_id=599016506]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012298584, 0)
 material_override = ExtResource("4_h71b2")
 size = Vector3(1.1447754, 0.31347656, 2.168213)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Ship_Light/CSGBox3D2" unique_id=1723175018]
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Ship_Light/CSGBox3D2" unique_id=1723175018]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10276154, 0)
 operation = 2
 size = Vector3(1, 0.19970703, 2.0253906)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Ship_Light/CSGBox3D2/CSGBox3D" unique_id=1715840925]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Ship_Light/CSGBox3D2/CSGBox3D" unique_id=1715840925]
 transform = Transform3D(0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0, 1, 0.42975911, 0.07420024, -4.7326088e-05)
 operation = 2
 size = Vector3(1, 0.19970703, 2.1662598)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Ship_Light/CSGBox3D2/CSGBox3D" unique_id=1130123151]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Ship_Light/CSGBox3D2/CSGBox3D" unique_id=1130123151]
 transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, -0.45581993, 0.07415375, 0)
 operation = 2
 size = Vector3(1, 0.19970703, 2.1662598)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Ship_Light" unique_id=1193924621]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map/Ship_Light" unique_id=1193924621]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.28852624, -0.028860927, 0)
 material_override = SubResource("StandardMaterial3D_ri743")
 radius = 0.106933594
 height = 2.0976563
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Ship_Light" unique_id=702429334]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Map/Ship_Light" unique_id=702429334]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.0078392625, -0.028860927, 0)
 material_override = SubResource("StandardMaterial3D_ri743")
 radius = 0.106933594
 height = 2.0488281
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Ship_Light" unique_id=1819961905]
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Map/Ship_Light" unique_id=1819961905]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.31538722, -0.028860927, 0)
 material_override = SubResource("StandardMaterial3D_ri743")
 radius = 0.106933594
 height = 2.0458984
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Ship_Light" unique_id=1822613995]
+[node name="SpotLight3D" type="SpotLight3D" parent="Map/Ship_Light" unique_id=1822613995]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 shadow_enabled = true
 spot_angle = 55.0
 
-[node name="Ship_Light2" type="Node3D" parent="." unique_id=1908748482]
+[node name="Ship_Light2" type="Node3D" parent="Map" unique_id=1908748482]
 transform = Transform3D(-3.7252903e-09, 0, 0.2, 0, 0.20000003, 0, -0.2, 0, -3.7252903e-09, -1.3433555, 0.62814903, 0.5205378)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Ship_Light2" unique_id=189925741]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Ship_Light2" unique_id=189925741]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012298584, 0)
 material_override = ExtResource("4_h71b2")
 size = Vector3(1.1447754, 0.31347656, 2.168213)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Ship_Light2/CSGBox3D2" unique_id=2042096321]
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Ship_Light2/CSGBox3D2" unique_id=2042096321]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10276154, 0)
 operation = 2
 size = Vector3(1, 0.19970703, 2.0253906)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Ship_Light2/CSGBox3D2/CSGBox3D" unique_id=837166113]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Ship_Light2/CSGBox3D2/CSGBox3D" unique_id=837166113]
 transform = Transform3D(0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0, 1, 0.42975911, 0.07420024, -4.7326088e-05)
 operation = 2
 size = Vector3(1, 0.19970703, 2.1662598)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Ship_Light2/CSGBox3D2/CSGBox3D" unique_id=388077966]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Ship_Light2/CSGBox3D2/CSGBox3D" unique_id=388077966]
 transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, -0.45581993, 0.07415375, 0)
 operation = 2
 size = Vector3(1, 0.19970703, 2.1662598)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Ship_Light2" unique_id=334614321]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map/Ship_Light2" unique_id=334614321]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.28852624, -0.028860927, 0)
 material_override = SubResource("StandardMaterial3D_ri743")
 radius = 0.106933594
 height = 2.0976563
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Ship_Light2" unique_id=1878640403]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Map/Ship_Light2" unique_id=1878640403]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.0078392625, -0.028860927, 0)
 material_override = SubResource("StandardMaterial3D_ri743")
 radius = 0.106933594
 height = 2.0488281
 
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Ship_Light2" unique_id=1738421644]
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Map/Ship_Light2" unique_id=1738421644]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.31538722, -0.028860927, 0)
 material_override = SubResource("StandardMaterial3D_ri743")
 radius = 0.106933594
 height = 2.0458984
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Ship_Light2" unique_id=1336572422]
+[node name="SpotLight3D" type="SpotLight3D" parent="Map/Ship_Light2" unique_id=1336572422]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 shadow_enabled = true
 spot_angle = 55.0
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1871709188]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Map" unique_id=1871709188]
 material_override = SubResource("StandardMaterial3D_1bay0")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=790060103]
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/CSGCombiner3D" unique_id=790060103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8793457, 0)
 material_override = ExtResource("1_h71b2")
 size = Vector3(5, 2.1586914, 5)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="CSGCombiner3D" unique_id=2008292388]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Map/CSGCombiner3D" unique_id=2008292388]
 transform = Transform3D(-6.160683e-08, 0, -0.19999996, 0, 0.2, 0, 1.4094001, 0, -8.742275e-09, -1.2802945, 0.16955006, 0.27579924)
 operation = 2
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGCombiner3D" unique_id=280143278]
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/CSGCombiner3D/CSGCombiner3D" unique_id=280143278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4857788, 0)
 size = Vector3(0.16113281, 1.5400391, 1)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCombiner3D" unique_id=18461496]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map/CSGCombiner3D/CSGCombiner3D" unique_id=18461496]
 transform = Transform3D(-3.439584e-08, 1, 0, -0.7868851, -4.371139e-08, 0, 0, 0, 1, 0, 1.252731, 0)
 height = 0.15917969
 
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D/CSGCombiner3D" unique_id=80673912]
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Map/CSGCombiner3D/CSGCombiner3D" unique_id=80673912]
 transform = Transform3D(-3.439584e-08, 1, 0, -0.7868851, -4.371139e-08, 0, 0, 0, 1, 0, -0.290984, 0)
 height = 0.15917969
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=91780640]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/CSGCombiner3D" unique_id=91780640]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5832825, 0.28422242, 0.5112152)
 operation = 2
 size = Vector3(1.6244507, 0.7001343, 0.33370972)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=385800169]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/CSGCombiner3D" unique_id=385800169]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7025299, 0.3227356, -0.32470703)
 operation = 2
 size = Vector3(1.3859558, 0.77716064, 1.1201172)
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=2131478517]
-transform = Transform3D(-0.7089678, 0, 0.7052408, 0, 1, 0, -0.7052408, 0, -0.7089678, -0.9904196, 0.41942504, -0.8037623)
-fov = 49.38382
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1651059070]
 
@@ -340,7 +378,15 @@ text = "Quit"
 stream = ExtResource("8_v7f1b")
 autoplay = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=471341507]
+libraries/ = SubResource("AnimationLibrary_y4l5b")
+autoplay = &"PitchUndRoll"
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2131478517]
+transform = Transform3D(-0.69523567, 6.3667605e-09, 0.71878195, 3.72529e-09, 1, -5.254454e-09, -0.71878195, -9.754125e-10, -0.69523567, -1.084166, 0.45900035, -0.8037623)
+fov = 49.38382
+
 [connection signal="pressed" from="CanvasLayer/Control/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Quit" to="." method="_on_quit_pressed"]
 
-[editable path="Door"]
+[editable path="Map/Door"]

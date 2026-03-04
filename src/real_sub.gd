@@ -25,7 +25,8 @@ var current_poi:POI = null
 #Signals
 signal enter_undiscovered_poi
 signal has_enter_portal_room
-
+signal change_speed
+signal collison
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -55,9 +56,11 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("power_up"):
 			if power_settings<3:
 				power_settings+=1
+				change_speed.emit()
 		elif Input.is_action_just_pressed("power_down"):
 			if power_settings>1:
 				power_settings-=1
+				change_speed.emit()
 
 
 		# Get the input direction and handle the movement/deceleration.
@@ -81,7 +84,7 @@ func _physics_process(delta: float) -> void:
 
 func do_collison(body:StaticBody3D,sec:int):
 	
-	
+	collison.emit()
 	if sec==0:
 		for_health-=(1*self.velocity).length()
 	elif sec==1:
@@ -89,6 +92,11 @@ func do_collison(body:StaticBody3D,sec:int):
 	else:
 		aft_health-=(1*self.velocity).length()
 	print(for_health,"-----",mid_health,"-----",aft_health)
+
+	if for_health<=0 or mid_health<=0 or aft_health<=0:
+		Hud.black_screen.modulate=Color(0.0, 0.0, 0.0, 1.0)
+		get_tree().change_scene_to_file("res://Data/Scences/you_dead.tscn")
+		
 func _on_aft_hit_box_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Map"):
 		do_collison(body,2)

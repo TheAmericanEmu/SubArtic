@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cg5c5p6dssmwv" path="res://src/ending_world_1.gd" id="1_txdtb"]
 [ext_resource type="Script" uid="uid://4uq35uy5es0o" path="res://src/fake_su_b.gd" id="1_uayi5"]
-[ext_resource type="Shader" uid="uid://curli0pxcv2vr" path="res://Data/Shaders/Sky.gdshader" id="2_log2e"]
+[ext_resource type="Shader" path="res://Data/Shaders/Sky.gdshader" id="2_log2e"]
 [ext_resource type="Material" uid="uid://b3jratmg8myh3" path="res://Data/Mat/metal_sub.tres" id="2_txdtb"]
 [ext_resource type="PackedScene" uid="uid://bhexbtaua4erj" path="res://Data/objects/sub_hud.tscn" id="3_3d354"]
 [ext_resource type="Script" uid="uid://buv7u1vpinn0t" path="res://src/photo_spot.gd" id="4_aise0"]
@@ -16,8 +16,10 @@
 [ext_resource type="Script" uid="uid://7vakksvm5beb" path="res://src/real_sub.gd" id="12_2i2ja"]
 [ext_resource type="AudioStream" uid="uid://t4xyvj58wgi" path="res://Data/sounds/SoundEffects/Alarm.wav" id="12_3d354"]
 [ext_resource type="Material" uid="uid://byg1caxpd8nam" path="res://Data/Mat/Brass.tres" id="13_x8d8p"]
+[ext_resource type="PackedScene" uid="uid://dgnrafljigjnl" path="res://Data/objects/helm.tscn" id="15_w8i40"]
 [ext_resource type="PackedScene" uid="uid://4owmn31ahvl3" path="res://Data/objects/ship.tscn" id="16_aise0"]
-[ext_resource type="Shader" path="res://Data/Shaders/ending_portal.gdshader" id="16_xd00w"]
+[ext_resource type="AudioStream" uid="uid://2urskuj1qy61" path="res://Data/sounds/SoundEffects/Lever-Sound.mp3" id="16_kua5q"]
+[ext_resource type="Shader" uid="uid://c6amdk6rxt61d" path="res://Data/Shaders/ending_portal.gdshader" id="16_xd00w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j28fg"]
 shader = ExtResource("2_log2e")
@@ -230,10 +232,10 @@ tracks/5/path = NodePath("PlayerSpace/Player/Cam/Camera:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.6333, 4.072819, 14.033334),
+"times": PackedFloat32Array(0, 0.6333, 4.072819, 14),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.5078081, -1.3014023e-06, -1.3860711e-06), Vector3(0, -1.5707964, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -544,6 +546,9 @@ script = ExtResource("5_xd00w")
 transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_6an5y")
 
+[node name="HelmPoint" type="Marker3D" parent="PlayerSpace/Fake_SuB/Helm" unique_id=1465284232]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19981384, -0.05664721, 0)
+
 [node name="radio_speaker" type="AudioStreamPlayer3D" parent="PlayerSpace/Fake_SuB" unique_id=919846903]
 transform = Transform3D(0.23964986, 0.012147692, 0, -0.011343522, 0.25663927, 0, 0, 0, 0.2569266, -0.9283905, 0.3342938, 0)
 volume_db = 80.0
@@ -559,27 +564,6 @@ transform = Transform3D(0.2399182, 0, 0, 0, 0.2569266, 0, 0, 0, 0.2569266, 0.030
 stream = ExtResource("7_j28fg")
 volume_db = -17.313
 script = ExtResource("8_w8i40")
-
-[node name="Node3D" type="Node3D" parent="PlayerSpace/Fake_SuB" unique_id=175453583]
-transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, -1.0200043, -0.17968425, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/Node3D" unique_id=1608006903]
-transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.027236938, 0.0075448602, 0)
-size = Vector3(0.33822924, 0.41882324, 0.3095703)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/Node3D/CSGBox3D" unique_id=1293955957]
-transform = Transform3D(0.030031886, 0.999549, 0, -0.9995479, 0.030033251, 0, 0, 0, 1, 0.12724304, 0.22143133, 0)
-operation = 2
-size = Vector3(0.2258468, 0.37420654, 0.54785156)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/Node3D/CSGBox3D/CSGBox3D3" unique_id=606637990]
-transform = Transform3D(0.05367896, -0.9985807, 0, 0.998571, 0.053674184, 0, 0, 0, 1.0000309, 0.1092844, -0.26280212, 0)
-size = Vector3(0.4376376, 0.25231934, 0.54785156)
-
-[node name="Helm" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Node3D" unique_id=1330210795]
-transform = Transform3D(-1.0010176e-07, 0.99999917, 0, -1.0000002, 6.1256074e-08, 0, 0, 0, 1, 0.15296936, 0.041175604, 0)
-radius = 0.12402344
-height = 0.012512207
 
 [node name="DART" type="Node3D" parent="PlayerSpace/Fake_SuB" unique_id=1729766895]
 transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 1.5945435, -0.17968425, 0)
@@ -690,6 +674,20 @@ size = Vector3(0.03125, 0.026367188, 0.3623047)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03765869, 0)
 radius = 0.026367188
 height = 0.12219238
+
+[node name="HelmObject" parent="PlayerSpace/Fake_SuB" unique_id=1745636996 instance=ExtResource("15_w8i40")]
+transform = Transform3D(0.4999998, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.79678345, -0.27893132, -0.021042181)
+
+[node name="EOT" parent="PlayerSpace/Fake_SuB/HelmObject" index="2" unique_id=1600945269]
+transform = Transform3D(0.48395467, 0.875093, 0, -0.87509316, 0.48395458, 0, 0, 0, 1, -0.12390137, 0.3306783, -0.30026293)
+
+[node name="Mug" parent="PlayerSpace/Fake_SuB/HelmObject" index="5" unique_id=1477461500]
+transform = Transform3D(-0.123215124, 0.6812926, 0.10323957, -0.52221406, -0.16074947, 0.4375529, 0.44956768, 0, 0.53655297, 0.15274048, -0.12834248, -0.29436123)
+
+[node name="LeverSound" type="AudioStreamPlayer3D" parent="PlayerSpace/Fake_SuB/HelmObject" unique_id=173307472]
+transform = Transform3D(0.47983664, 0, 0, 0, 0.5138532, 0, 0, 0, 0.5138532, -0.12945557, 0.32070655, -0.31487983)
+stream = ExtResource("16_kua5q")
+volume_db = 1.792
 
 [node name="Player" type="CharacterBody3D" parent="PlayerSpace" unique_id=2056739346 node_paths=PackedStringArray("cam", "real_sub")]
 transform = Transform3D(-0.99999976, 0, -8.74228e-08, 0, 0.9999999, 0, 8.7422755e-08, 0, -1.0000002, 0, 0, 0)
@@ -931,3 +929,5 @@ transform = Transform3D(-9.68951, 0, 2.472528, 0, 10, 0, -2.472528, 0, -9.68951,
 [connection signal="body_entered" from="Real_Sub/ForHitBox3" to="Real_Sub" method="_on_for_hit_box_3_body_entered"]
 [connection signal="area_entered" from="Real_Sub/AreaCheckBox" to="Real_Sub" method="_on_area_check_box_area_entered"]
 [connection signal="area_exited" from="Real_Sub/AreaCheckBox" to="Real_Sub" method="_on_area_check_box_area_exited"]
+
+[editable path="PlayerSpace/Fake_SuB/HelmObject"]

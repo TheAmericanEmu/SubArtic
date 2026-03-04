@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://b3jratmg8myh3" path="res://Data/Mat/metal_sub.tres" id="2_6mkbk"]
 [ext_resource type="PackedScene" uid="uid://bhexbtaua4erj" path="res://Data/objects/sub_hud.tscn" id="2_7hphq"]
 [ext_resource type="Script" uid="uid://7vakksvm5beb" path="res://src/real_sub.gd" id="2_ylndv"]
+[ext_resource type="Texture2D" uid="uid://bs55mymn2itc0" path="res://Data/textures/BaseTextures/Metal/Texturelabs_Metal_153S.jpg" id="3_xuk5s"]
 [ext_resource type="Script" uid="uid://buv7u1vpinn0t" path="res://src/photo_spot.gd" id="4_wm6fd"]
 [ext_resource type="PackedScene" uid="uid://j63n404ov600" path="res://Data/objects/Map.tscn" id="5_1pqt4"]
 [ext_resource type="Script" uid="uid://oar3d7retwq5" path="res://src/helm_interact_point.gd" id="5_rcmm0"]
@@ -14,7 +15,10 @@
 [ext_resource type="Script" uid="uid://byu58ips5gnwv" path="res://src/task_manger.gd" id="9_c3sht"]
 [ext_resource type="Texture2D" uid="uid://dbst1anqkib26" path="res://Data/textures/Detials/d3jmbjq-9d52e89c-e6eb-40ab-9517-8754ba9a3bcc-ezgif.com-gif-to-sprite-converter.png" id="9_lppb2"]
 [ext_resource type="PackedScene" uid="uid://c4rccd6belu7m" path="res://Data/objects/crt.tscn" id="11_v26c0"]
+[ext_resource type="PackedScene" uid="uid://dgnrafljigjnl" path="res://Data/objects/helm.tscn" id="12_v8ttn"]
+[ext_resource type="AudioStream" uid="uid://2urskuj1qy61" path="res://Data/sounds/SoundEffects/Lever-Sound.mp3" id="13_ne8mk"]
 [ext_resource type="Material" uid="uid://byg1caxpd8nam" path="res://Data/Mat/Brass.tres" id="13_v26c0"]
+[ext_resource type="AudioStream" uid="uid://bdrcjarn6tpji" path="res://Data/sounds/SoundEffects/UnderWaterHit.wav" id="18_82rfx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_715lt"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -33,6 +37,9 @@ fog_light_energy = 0.85
 fog_sun_scatter = 1.6
 fog_density = 0.574
 fog_height_density = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g8gd5"]
+albedo_texture = ExtResource("3_xuk5s")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yum48"]
 
@@ -212,6 +219,7 @@ material = ExtResource("2_6mkbk")
 
 [node name="Window_Blocker" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB" unique_id=211580294]
 transform = Transform3D(-4.3711346e-08, 0.115417175, 0, -1, -5.0450506e-09, 0, 0, 0, 1, -0.9920044, 0.10277064, 0)
+material_override = SubResource("StandardMaterial3D_g8gd5")
 use_collision = true
 radius = 0.2
 height = 0.2
@@ -289,6 +297,9 @@ script = ExtResource("5_rcmm0")
 transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_wm6fd")
 
+[node name="HelmPoint" type="Marker3D" parent="PlayerSpace/Fake_SuB/Helm" unique_id=635555751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19981384, -0.05664721, 0)
+
 [node name="radio_speaker" type="AudioStreamPlayer3D" parent="PlayerSpace/Fake_SuB" unique_id=1633211420]
 transform = Transform3D(0.23964986, 0.012147692, 0, -0.011343522, 0.25663927, 0, 0, 0, 0.2569266, -0.9283905, 0.3342938, 0)
 volume_db = 80.0
@@ -304,27 +315,6 @@ transform = Transform3D(0.2399182, 0, 0, 0, 0.2569266, 0, 0, 0, 0.2569266, 0.030
 stream = ExtResource("7_v08oc")
 volume_db = -17.313
 script = ExtResource("8_lppb2")
-
-[node name="Node3D" type="Node3D" parent="PlayerSpace/Fake_SuB" unique_id=2025585577]
-transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, -1.0200043, -0.17968425, 0)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/Node3D" unique_id=279612457]
-transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.027236938, 0.0075448602, 0)
-size = Vector3(0.33822924, 0.41882324, 0.3095703)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/Node3D/CSGBox3D" unique_id=1089668753]
-transform = Transform3D(0.030031886, 0.999549, 0, -0.9995479, 0.030033251, 0, 0, 0, 1, 0.12724304, 0.22143133, 0)
-operation = 2
-size = Vector3(0.2258468, 0.37420654, 0.54785156)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/Node3D/CSGBox3D/CSGBox3D3" unique_id=1842683769]
-transform = Transform3D(0.05367896, -0.9985807, 0, 0.998571, 0.053674184, 0, 0, 0, 1.0000309, 0.1092844, -0.26280212, 0)
-size = Vector3(0.4376376, 0.25231934, 0.54785156)
-
-[node name="Helm" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Node3D" unique_id=593325604]
-transform = Transform3D(-1.0010176e-07, 0.99999917, 0, -1.0000002, 6.1256074e-08, 0, 0, 0, 1, 0.15296936, 0.041175604, 0)
-radius = 0.12402344
-height = 0.012512207
 
 [node name="DART" type="Node3D" parent="PlayerSpace/Fake_SuB" unique_id=2002542877]
 transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 1.5945435, -0.17968425, 0)
@@ -424,8 +414,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03765869, 0)
 radius = 0.026367188
 height = 0.12219238
 
+[node name="HelmObject" parent="PlayerSpace/Fake_SuB" unique_id=1745636996 instance=ExtResource("12_v8ttn")]
+transform = Transform3D(0.4999998, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.79678345, -0.27893132, -0.021042181)
+
+[node name="EOT" parent="PlayerSpace/Fake_SuB/HelmObject" index="2" unique_id=1600945269]
+transform = Transform3D(0.48395467, 0.875093, 0, -0.87509316, 0.48395458, 0, 0, 0, 1, -0.12390137, 0.3306783, -0.30026293)
+
+[node name="Mug" parent="PlayerSpace/Fake_SuB/HelmObject" index="5" unique_id=1477461500]
+transform = Transform3D(0.53655297, 0, -0.4495675, 0, 0.7, 0, 0.44956753, 0, 0.53655297, -0.24383545, 0.5630332, -0.21681988)
+
+[node name="LeverSound" type="AudioStreamPlayer3D" parent="PlayerSpace/Fake_SuB/HelmObject" unique_id=326068525]
+transform = Transform3D(0.47983664, 0, 0, 0, 0.5138532, 0, 0, 0, 0.5138532, -0.12945557, 0.32070655, -0.31487983)
+stream = ExtResource("13_ne8mk")
+volume_db = 1.792
+
+[node name="UnderWaterHit" type="AudioStreamPlayer3D" parent="PlayerSpace/Fake_SuB" unique_id=437537985]
+transform = Transform3D(0.2399182, 0, 0, 0, 0.2569266, 0, 0, 0, 0.2569266, -0.64064026, 0.36611167, -0.0074310354)
+stream = ExtResource("18_82rfx")
+volume_db = 31.642
+pitch_scale = 2.4
+
 [node name="Player" type="CharacterBody3D" parent="PlayerSpace" unique_id=1902696497 node_paths=PackedStringArray("cam", "real_sub")]
-transform = Transform3D(-1, 0, 4.5695582e-08, 0, 1, 0, -4.569558e-08, 0, -1.0000001, -2.423153, 0, 0)
+transform = Transform3D(-1, 0, 4.5695582e-08, 0, 1, 0, -4.569558e-08, 0, -1.0000001, -2.4231567, -0.3600847, 0)
 script = ExtResource("1_yum48")
 cam = NodePath("Cam")
 real_sub = NodePath("../../Real_Sub")
@@ -676,6 +686,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188.67392, -397.52182, 109.1
 [connection signal="body_entered" from="PlayerSpace/Fake_SuB/Helm" to="PlayerSpace/Fake_SuB/Helm" method="_on_body_entered"]
 [connection signal="body_exited" from="PlayerSpace/Fake_SuB/Helm" to="PlayerSpace/Fake_SuB/Helm" method="_on_body_exited"]
 [connection signal="enter_helm" from="PlayerSpace/Fake_SuB/Helm" to="PlayerSpace/Fake_SuB" method="_on_helm_enter_helm"]
+[connection signal="change_speed" from="Real_Sub" to="PlayerSpace/Fake_SuB" method="_on_real_sub_change_speed"]
+[connection signal="collison" from="Real_Sub" to="PlayerSpace/Fake_SuB" method="_on_real_sub_collison"]
 [connection signal="enter_undiscovered_poi" from="Real_Sub" to="TaskManger" method="_enter_undiscovered_poi"]
 [connection signal="has_enter_portal_room" from="Real_Sub" to="TaskManger" method="_on_real_sub_has_enter_portal_room"]
 [connection signal="body_entered" from="Real_Sub/AftHitBox" to="Real_Sub" method="_on_aft_hit_box_body_entered"]
@@ -685,3 +697,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -188.67392, -397.52182, 109.1
 [connection signal="area_exited" from="Real_Sub/AreaCheckBox" to="Real_Sub" method="_on_area_check_box_area_exited"]
 [connection signal="body_entered" from="Node3D/CaveVoiceTigger" to="TaskManger" method="_on_cave_voice_tigger_body_entered"]
 [connection signal="body_entered" from="Node3D/Hoist_Tigger" to="TaskManger" method="_on_hoist_tigger_body_entered"]
+
+[editable path="PlayerSpace/Fake_SuB/HelmObject"]

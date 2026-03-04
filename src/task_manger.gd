@@ -125,8 +125,10 @@ func _on_hoist_tigger_body_entered(body: Node3D) -> void:
 		var pull_in_tween := create_tween()
 		real_sub.allow_movement=false
 		fake_su_b._on_helm_enter_helm()
+		radio_speaker_obj.play_audio_seq([load("res://Data/sounds/voicelines/Hoist.wav")])
 		pull_in_tween.tween_property(real_sub,"global_position",marker_portal_end.global_position,1)
 		pull_in_tween.set_trans(Tween.TRANS_EXPO)
 		fake_su_b._toogle_main_window()
 		await pull_in_tween.finished
 		Hud.black_screen.modulate=Color(0.0, 0.0, 0.0, 1.0)
+		get_tree().change_scene_to_file("res://Data/Scences/main_menu.tscn")
