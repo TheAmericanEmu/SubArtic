@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cg5c5p6dssmwv" path="res://src/ending_world_1.gd" id="1_txdtb"]
 [ext_resource type="Script" uid="uid://4uq35uy5es0o" path="res://src/fake_su_b.gd" id="1_uayi5"]
+[ext_resource type="Shader" uid="uid://curli0pxcv2vr" path="res://Data/Shaders/Sky.gdshader" id="2_log2e"]
 [ext_resource type="Material" uid="uid://b3jratmg8myh3" path="res://Data/Mat/metal_sub.tres" id="2_txdtb"]
 [ext_resource type="PackedScene" uid="uid://bhexbtaua4erj" path="res://Data/objects/sub_hud.tscn" id="3_3d354"]
 [ext_resource type="Script" uid="uid://buv7u1vpinn0t" path="res://src/photo_spot.gd" id="4_aise0"]
@@ -16,19 +17,39 @@
 [ext_resource type="AudioStream" uid="uid://t4xyvj58wgi" path="res://Data/sounds/SoundEffects/Alarm.wav" id="12_3d354"]
 [ext_resource type="Material" uid="uid://byg1caxpd8nam" path="res://Data/Mat/Brass.tres" id="13_x8d8p"]
 [ext_resource type="PackedScene" uid="uid://4owmn31ahvl3" path="res://Data/objects/ship.tscn" id="16_aise0"]
-[ext_resource type="Shader" uid="uid://c6amdk6rxt61d" path="res://Data/Shaders/ending_portal.gdshader" id="16_xd00w"]
+[ext_resource type="Shader" path="res://Data/Shaders/ending_portal.gdshader" id="16_xd00w"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xd00w"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j28fg"]
+shader = ExtResource("2_log2e")
+shader_parameter/sky_day = Color(0, 0.3, 0.7, 1)
+shader_parameter/horizon_day = Color(0.75, 0.85, 0.85, 1)
+shader_parameter/horizon_sunset = Color(0.9, 0.4, 0.1, 1)
+shader_parameter/sky_sunset = Color(0.15, 0.2, 0.4, 1)
+shader_parameter/horizon_night = Color(0.1, 0.15, 0.2, 1)
+shader_parameter/sky_night = Color(0.05, 0.1, 0.15, 1)
+shader_parameter/day_night_mix = 0.8
+shader_parameter/use_directional_light = true
+shader_parameter/horizon_exponent = 2.0
+shader_parameter/sunset_amount_exponent = 0.7
+shader_parameter/night_amount_exponent = 4.0
+shader_parameter/cloud_color = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/cloud_tiling = Vector2(1, 1)
+shader_parameter/wind_speed = Vector2(0.5, 0.5)
+shader_parameter/cloud_density = 0.0
+shader_parameter/cloud_depth = 2.0
+shader_parameter/cloud_shape_exponent = 2.0
+shader_parameter/cloud_occlude_exponent = 1.0
+shader_parameter/sun_scale = 0.05
+shader_parameter/sun_strength = 15.0
+shader_parameter/sun_color = Color(1, 0.9, 0, 1)
 
 [sub_resource type="Sky" id="Sky_log2e"]
-sky_material = SubResource("ProceduralSkyMaterial_xd00w")
+sky_material = SubResource("ShaderMaterial_j28fg")
 
 [sub_resource type="Environment" id="Environment_j28fg"]
 background_mode = 2
 sky = SubResource("Sky_log2e")
-tonemap_mode = 2
+tonemap_mode = 4
 glow_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_g8fc6"]
@@ -354,8 +375,8 @@ _data = {
 render_priority = 0
 shader = ExtResource("16_xd00w")
 shader_parameter/water_color = Color(0.3317011, 0.5365109, 1, 1)
-shader_parameter/water_color_ratio = 0.70000001043084
-shader_parameter/beers_law = 12.0000001788144
+shader_parameter/water_color_ratio = 0.5
+shader_parameter/beers_law = 3.0
 shader_parameter/normal_strength = 0.0
 shader_parameter/roughness = 0.1
 shader_parameter/time_scale = 5.0

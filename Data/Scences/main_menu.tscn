@@ -338,7 +338,6 @@ text = "Quit"
 
 [node name="MainMenuAbaunic" type="AudioStreamPlayer" parent="." unique_id=1372874511]
 stream = ExtResource("8_v7f1b")
-volume_db = 24.0
 autoplay = true
 
 [connection signal="pressed" from="CanvasLayer/Control/Play" to="." method="_on_play_pressed"]

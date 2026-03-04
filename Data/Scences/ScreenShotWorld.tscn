@@ -1,0 +1,878 @@
+[gd_scene format=3 uid="uid://c6rmufwl5up1r"]
+
+[ext_resource type="Material" uid="uid://b3jratmg8myh3" path="res://Data/Mat/metal_sub.tres" id="2_51l8h"]
+[ext_resource type="PackedScene" uid="uid://bhexbtaua4erj" path="res://Data/objects/sub_hud.tscn" id="3_nek0d"]
+[ext_resource type="AudioStream" uid="uid://c5u6sshicpv1p" path="res://Data/sounds/SoundEffects/descent.wav" id="7_i8k7g"]
+[ext_resource type="FontFile" uid="uid://bt7tjn1quay66" path="res://Data/Fonts/Iceberg-Regular.ttf" id="8_7koig"]
+[ext_resource type="PackedScene" uid="uid://c4rccd6belu7m" path="res://Data/objects/crt.tscn" id="9_biul0"]
+[ext_resource type="Texture2D" uid="uid://dbst1anqkib26" path="res://Data/textures/Detials/d3jmbjq-9d52e89c-e6eb-40ab-9517-8754ba9a3bcc-ezgif.com-gif-to-sprite-converter.png" id="10_uxr2h"]
+[ext_resource type="Material" uid="uid://byg1caxpd8nam" path="res://Data/Mat/Brass.tres" id="11_m7srd"]
+[ext_resource type="PackedScene" uid="uid://j63n404ov600" path="res://Data/objects/Map.tscn" id="14_lw1l2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_715lt"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_7hphq"]
+sky_material = SubResource("ProceduralSkyMaterial_715lt")
+
+[sub_resource type="Environment" id="Environment_1pqt4"]
+background_mode = 2
+sky = SubResource("Sky_7hphq")
+tonemap_mode = 2
+glow_enabled = true
+fog_light_color = Color(0.028351555, 0.49991438, 0.55002755, 1)
+fog_light_energy = 0.85
+fog_sun_scatter = 1.6
+fog_density = 0.574
+fog_height_density = 16.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yum48"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ylndv"]
+viewport_path = NodePath("Real_Sub/MainWindowCam")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1pqt4"]
+viewport_path = NodePath("Real_Sub/MainWindowCam")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_715lt"]
+resource_local_to_scene = true
+blend_mode = 4
+albedo_texture = SubResource("ViewportTexture_ylndv")
+emission_energy_multiplier = 8.79
+heightmap_texture = SubResource("ViewportTexture_1pqt4")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wm6fd"]
+size = Vector3(0.50598145, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8ttn"]
+atlas = ExtResource("10_uxr2h")
+region = Rect2(0, 0, 533, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne8mk"]
+atlas = ExtResource("10_uxr2h")
+region = Rect2(533, 0, 533, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82rfx"]
+atlas = ExtResource("10_uxr2h")
+region = Rect2(1066, 0, 533, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xuk5s"]
+atlas = ExtResource("10_uxr2h")
+region = Rect2(1599, 0, 533, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8gd5"]
+atlas = ExtResource("10_uxr2h")
+region = Rect2(2132, 0, 533, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d7cnb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8ttn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne8mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82rfx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xuk5s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8gd5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 24.0
+}]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_v26c0"]
+data = PackedVector3Array(-0.13781738, 0.02157013, -0.14718628, -0.13781738, 0.071935855, -0.12979704, -0.13781738, 0.02157013, -0.12979704, -0.13781738, 0.08203125, -0.14718628, -0.13781738, 0.071935855, -0.12979704, -0.13781738, 0.02157013, -0.14718628, -0.13781738, 0.08203125, -0.14718628, -0.13781738, 0.071935855, 0.11995882, -0.13781738, 0.071935855, -0.12979704, -0.13781738, 0.08203125, -0.14718628, -0.13781738, 0.02157013, -0.14718628, 0.091356725, -0.08203125, -0.14718628, -0.13781738, 0.071935855, 0.11995882, -0.13781738, 0.02157013, 0.14718628, -0.13781738, 0.02157013, 0.11995882, -0.13781738, 0.08203125, -0.14718628, -0.13781738, 0.08203125, 0.14718628, -0.13781738, 0.071935855, 0.11995882, -0.13781738, 0.08203125, 0.14718628, -0.13781738, 0.02157013, 0.14718628, -0.13781738, 0.071935855, 0.11995882, -0.13781738, 0.08203125, 0.14718628, 0.091356725, -0.08203125, 0.14718628, -0.13781738, 0.02157013, 0.14718628, -0.13781738, 0.08203125, -0.14718628, 0.13781738, 0.08203125, 0.14718628, -0.13781738, 0.08203125, 0.14718628, -0.13781738, 0.08203125, -0.14718628, 0.091356725, -0.08203125, -0.14718628, 0.13781738, -0.08203125, -0.14718628, 0.13781738, -0.08203125, -0.14718628, 0.091356725, -0.08203125, -0.14718628, 0.091356725, -0.08203125, -0.12979704, 0.13781738, -0.08203125, -0.14718628, 0.091356725, -0.08203125, -0.12979704, 0.13781738, -0.08203125, -0.12979704, 0.13781738, -0.08203125, -0.14718628, 0.13781738, -0.08203125, -0.12979704, 0.13781738, 0.08203125, -0.14718628, 0.13781738, 0.08203125, -0.14718628, 0.13781738, -0.08203125, -0.12979704, 0.13781738, -0.0526687, -0.12979704, 0.13781738, -0.08203125, 0.11995882, 0.091356725, -0.08203125, 0.11995882, 0.091356725, -0.08203125, 0.14718628, 0.13781738, -0.08203125, 0.14718628, 0.13781738, -0.08203125, 0.11995882, 0.091356725, -0.08203125, 0.14718628, 0.13781738, -0.08203125, 0.14718628, 0.13781738, -0.0526687, 0.11995882, 0.13781738, -0.08203125, 0.11995882, 0.13781738, 0.08203125, 0.14718628, 0.13781738, -0.0526687, -0.12979704, 0.13781738, -0.0526687, 0.11995882, 0.13781738, -0.08203125, 0.14718628, 0.091356725, -0.08203125, 0.14718628, 0.13781738, 0.08203125, 0.14718628, 0.13781738, -0.08203125, 0.14718628, 0.13781738, 0.08203125, 0.14718628, 0.13781738, -0.0526687, 0.11995882, -0.13781738, 0.08203125, -0.14718628, 0.13781738, -0.08203125, -0.14718628, 0.13781738, 0.08203125, -0.14718628, -0.13781738, 0.08203125, -0.14718628, 0.13781738, 0.08203125, -0.14718628, 0.13781738, 0.08203125, 0.14718628, 0.13781738, 0.08203125, -0.14718628, 0.13781738, -0.0526687, -0.12979704, 0.13781738, 0.08203125, 0.14718628, -0.13781738, 0.08203125, 0.14718628, 0.13781738, 0.08203125, 0.14718628, 0.091356725, -0.08203125, 0.14718628, -0.13781738, 0.02157013, -0.12979704, 0.091356725, -0.08203125, -0.12979704, -0.13781738, 0.02157013, -0.14718628, -0.13781738, 0.02157013, 0.14718628, 0.091356725, -0.08203125, 0.14718628, -0.13781738, 0.02157013, 0.11995882, 0.091356725, -0.08203125, -0.12979704, 0.091356725, -0.08203125, -0.14718628, -0.13781738, 0.02157013, -0.14718628, 0.091356725, -0.08203125, 0.14718628, 0.091356725, -0.08203125, 0.11995882, -0.13781738, 0.02157013, 0.11995882, -0.13781738, 0.02157013, -0.12979704, -0.13781738, 0.071935855, -0.12979704, 0.091356725, -0.08203125, -0.12979704, -0.13781738, 0.071935855, 0.11995882, 0.13781738, -0.0526687, -0.12979704, -0.13781738, 0.071935855, -0.12979704, -0.13781738, 0.071935855, 0.11995882, -0.13781738, 0.02157013, 0.11995882, 0.13781738, -0.0526687, 0.11995882, 0.091356725, -0.08203125, -0.12979704, -0.13781738, 0.071935855, -0.12979704, 0.13781738, -0.08203125, -0.12979704, 0.13781738, -0.08203125, -0.12979704, -0.13781738, 0.071935855, -0.12979704, 0.13781738, -0.0526687, -0.12979704, -0.13781738, 0.071935855, 0.11995882, 0.13781738, -0.0526687, 0.11995882, 0.13781738, -0.0526687, -0.12979704, -0.13781738, 0.02157013, 0.11995882, 0.091356725, -0.08203125, 0.11995882, 0.13781738, -0.0526687, 0.11995882, 0.13781738, -0.08203125, 0.11995882, 0.13781738, -0.0526687, 0.11995882, 0.091356725, -0.08203125, 0.11995882)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7hphq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6mkbk"]
+viewport_path = NodePath("PlayerSpace/Fake_SuB/Hud")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wm6fd"]
+resource_local_to_scene = true
+blend_mode = 4
+albedo_texture = SubResource("ViewportTexture_6mkbk")
+emission_energy_multiplier = 8.79
+heightmap_texture = SubResource("ViewportTexture_1pqt4")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v26c0"]
+size = Vector3(46.904297, 31.752441, 42.536865)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_cyb1b"]
+viewport_path = NodePath("PlayerSpace/Fake_SuB/View_Into_Sub")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8ttn"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_cyb1b")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_en8mb"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_v8ttn")
+
+[sub_resource type="Environment" id="Environment_4pfjr"]
+background_mode = 1
+background_color = Color(0.24660903, 0.4683491, 1, 1)
+fog_enabled = true
+fog_light_color = Color(0.34117648, 0.6117647, 1, 1)
+fog_light_energy = 1.24
+fog_sun_scatter = 0.27
+fog_sky_affect = 0.79
+fog_height = 771.71
+fog_height_density = -1.8551
+volumetric_fog_emission = Color(0, 0, 0.8784314, 1)
+volumetric_fog_length = 331.13
+
+[sub_resource type="Shader" id="Shader_4namc"]
+code = "// CRT Shader for Godot Engine
+// Simulates the look of old CRT displays with various customizable effects
+shader_type canvas_item;
+
+// Built-in texture for screen sampling
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture;
+
+// Base resolution for pixel-perfect effects (lower values = larger pixels)
+uniform vec2 resolution = vec2(320.0, 180.0);
+
+// ===== Effect Controls =====
+// Each parameter has a sensible default and range hint for the Godot editor
+
+// Scanline effect (dark lines between pixel rows)
+uniform float scan_line_amount : hint_range(0.0, 1.0) = 1.0;
+uniform float scan_line_strength : hint_range(-12.0, -1.0) = -8.0;
+
+// Screen curvature/warp effect
+uniform float warp_amount : hint_range(0.0, 5.0) = 0.1;
+
+// Visual noise/interference
+uniform float noise_amount : hint_range(0.0, 0.3) = 0.03;
+uniform float interference_amount : hint_range(0.0, 1.0) = 0.2;
+
+// Shadow mask/grille (simulates color phosphor patterns)
+uniform float grille_amount : hint_range(0.0, 1.0) = 0.1;
+uniform float grille_size : hint_range(1.0, 5.0) = 1.0;
+
+// Vignette (darkening at screen edges)
+uniform float vignette_amount : hint_range(0.0, 2.0) = 0.6;
+uniform float vignette_intensity : hint_range(0.0, 1.0) = 0.4;
+
+// Chromatic aberration (color separation)
+uniform float aberation_amount : hint_range(0.0, 1.0) = 0.5;
+
+// Rolling line effect (simulates VHS/analog interference)
+uniform float roll_line_amount : hint_range(0.0, 1.0) = 0.3;
+uniform float roll_speed : hint_range(-8.0, 8.0) = 1.0;
+
+// Pixel sharpness/softness
+uniform float pixel_strength : hint_range(-4.0, 0.0) = -2.0;
+
+// ===== Utility Functions =====
+
+/**
+ * Generates a pseudo-random float between 0 and 1 based on input coordinates
+ */
+float random(vec2 uv) {
+    return fract(cos(uv.x * 83.4827 + uv.y * 92.2842) * 43758.5453123);
+}
+
+/**
+ * Samples a pixel from the screen texture with optional offset and noise
+ * Handles edge cases and applies noise if enabled
+ */
+vec3 fetch_pixel(vec2 uv, vec2 off) {
+    // Calculate pixel position with offset and snap to pixel grid
+    vec2 pos = floor(uv * resolution + off) / resolution + vec2(0.5) / resolution;
+
+    // Apply noise if enabled
+    float noise = 0.0;
+    if (noise_amount > 0.0) {
+        noise = random(pos + fract(TIME)) * noise_amount;
+    }
+
+    // Clamp to screen bounds (return black if outside)
+    if (max(abs(pos.x - 0.5), abs(pos.y - 0.5)) > 0.5) {
+        return vec3(0.0);
+    }
+
+    // Sample the texture with mipmap bias for sharper pixels
+    return texture(SCREEN_TEXTURE, pos, -16.0).rgb + noise;
+}
+
+// ===== Pixel and Scanline Processing =====
+
+/**
+ * Calculates distance from current pixel to nearest texel center
+ * Used for sub-pixel filtering and anti-aliasing
+ */
+vec2 Dist(vec2 pos) { 
+    pos = pos * resolution;
+    return -((pos - floor(pos)) - vec2(0.5));
+}
+    
+/**
+ * 1D Gaussian function for smooth filtering
+ */
+float Gaus(float pos, float scale) { 
+    return exp2(scale * pos * pos); 
+}
+
+/**
+ * 3-tap Gaussian filter along horizontal line
+ * Creates smooth horizontal blending between pixels
+ */
+vec3 Horz3(vec2 pos, float off) {
+    // Sample three horizontally adjacent pixels
+    vec3 b = fetch_pixel(pos, vec2(-1.0, off));
+    vec3 c = fetch_pixel(pos, vec2( 0.0, off));
+    vec3 d = fetch_pixel(pos, vec2( 1.0, off));
+    
+    // Calculate weights based on distance from pixel center
+    float dst = Dist(pos).x;
+    float wb = Gaus(dst - 1.0, pixel_strength);
+    float wc = Gaus(dst + 0.0, pixel_strength);
+    float wd = Gaus(dst + 1.0, pixel_strength);
+    
+    // Return weighted average of samples
+    return (b * wb + c * wc + d * wd) / (wb + wc + wd);
+}
+
+/**
+ * Calculates scanline weight for a given position and offset
+ * Creates the dark lines between pixel rows
+ */
+float Scan(vec2 pos, float off) {
+    float dst = Dist(pos).y;
+    return Gaus(dst + off, scan_line_strength);
+}
+
+/**
+ * Applies scanline effect by blending multiple horizontal samples
+ * Combines three scanlines with gaussian weights for smooth transitions
+ */
+vec3 Tri(vec2 pos) {
+    vec3 clr = fetch_pixel(pos, vec2(0.0));
+    
+    if (scan_line_amount > 0.0) {
+        // Sample three vertically adjacent scanlines
+        vec3 a = Horz3(pos, -1.0);
+        vec3 b = Horz3(pos,  0.0);
+        vec3 c = Horz3(pos,  1.0);
+
+        // Calculate scanline weights
+        float wa = Scan(pos, -1.0);
+        float wb = Scan(pos,  0.0);
+        float wc = Scan(pos,  1.0);
+
+        // Blend between original and scanline-affected color
+        vec3 scanlines = a * wa + b * wb + c * wc;
+        clr = mix(clr, scanlines, scan_line_amount);
+    }
+    
+    return clr;
+}
+
+// ===== Screen Warping and Distortion Effects =====
+
+/**
+ * Applies a spherize/bulge distortion to simulate CRT screen curvature
+ * Warps UV coordinates more severely towards screen edges
+ */
+vec2 warp(vec2 uv) {
+    // Calculate distance from center and apply non-linear warping
+    vec2 delta = uv - 0.5;
+    float delta2 = dot(delta.xy, delta.xy);
+    float delta4 = delta2 * delta2;
+    float delta_offset = delta4 * warp_amount;
+    
+    // Apply warping and normalize back to 0-1 range
+    vec2 warped = uv + delta * delta_offset;
+    return (warped - 0.5) / mix(1.0, 1.2, warp_amount/5.0) + 0.5;
+}
+
+/**
+ * Applies vignette effect (darkening at screen edges)
+ * Uses a smooth falloff based on distance from center
+ */
+float vignette(vec2 uv) {
+    // Create circular falloff from center
+    uv *= 1.0 - uv.xy;
+    float vignette = uv.x * uv.y * 15.0;
+    
+    // Apply intensity controls
+    return pow(vignette, vignette_intensity * vignette_amount);
+}
+
+/**
+ * Simulates a shadow mask/grille pattern like those found in CRT displays
+ * Creates color separation similar to real phosphor patterns
+ */
+vec3 grille(vec2 uv) {
+    float unit = PI / 3.0;
+    float scale = 2.0 * unit / grille_size;
+    
+    // Create offset color patterns for RGB channels
+    float r = smoothstep(0.5, 0.8, cos(uv.x * scale - unit));
+    float g = smoothstep(0.5, 0.8, cos(uv.x * scale + unit));
+    float b = smoothstep(0.5, 0.8, cos(uv.x * scale + 3.0 * unit));
+    
+    // Blend between original color and grille pattern
+    return mix(vec3(1.0), vec3(r, g, b), grille_amount);
+}
+
+/**
+ * Creates rolling horizontal interference lines
+ * Simulates analog signal interference or VHS artifacts
+ */
+float roll_line(vec2 uv) {
+    // Create complex wave pattern that moves with time
+    float x = uv.y * 3.0 - TIME * roll_speed;
+    float f = cos(x) * cos(x * 2.35 + 1.1) * cos(x * 4.45 + 2.3);
+    
+    // Threshold and smooth the wave to create distinct lines
+    float roll_line = smoothstep(0.5, 0.9, f);
+    return roll_line * roll_line_amount;
+}
+
+// ===== Main Shader Function =====
+
+void fragment() {
+    // Get screen coordinates and apply screen warping
+    vec2 pix = FRAGCOORD.xy;
+    vec2 pos = warp(SCREEN_UV);
+    
+    // Generate rolling interference lines if enabled
+    float line = 0.0;
+    if (roll_line_amount > 0.0) {
+        line = roll_line(pos);
+    }
+
+    // Apply horizontal interference/jitter
+    vec2 sq_pix = floor(pos * resolution) / resolution + vec2(0.5) / resolution;
+    if (interference_amount + roll_line_amount > 0.0) {
+        float interference = random(sq_pix.yy + fract(TIME));
+        pos.x += (interference * (interference_amount + line * 6.0)) / resolution.x;
+    }
+
+    // Get base color with scanline processing
+    vec3 clr = Tri(pos);
+    
+    // Apply chromatic aberration (color separation)
+    if (aberation_amount > 0.0) {
+        float chromatic = aberation_amount + line * 2.0;  // Enhanced by rolling lines
+        vec2 chromatic_x = vec2(chromatic, 0.0) / resolution.x;
+        vec2 chromatic_y = vec2(0.0, chromatic/2.0) / resolution.y;
+        
+        // Sample RGB channels with slight offsets
+        float r = Tri(pos - chromatic_x).r;  // Red shifted left
+        float g = Tri(pos + chromatic_y).g;  // Green shifted down
+        float b = Tri(pos + chromatic_x).b;  // Blue shifted right
+        clr = vec3(r, g, b);
+    }
+    
+    // Apply shadow mask/grille effect
+    if (grille_amount > 0.0) {
+        clr *= grille(pix);
+    }
+    
+    // Adjust overall brightness based on effects
+    clr *= 1.0 + scan_line_amount * 0.6 + line * 3.0 + grille_amount * 2.0;
+    
+    // Apply vignette (darken edges)
+    if (vignette_amount > 0.0) {
+        clr *= vignette(pos);
+    }
+    
+    // Output final color
+    COLOR.rgb = clr;
+    COLOR.a = 1.0;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wx3aq"]
+shader = SubResource("Shader_4namc")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/scan_line_strength = -7.199999772
+shader_parameter/warp_amount = 1.118000053105
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.0
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.2050000097375
+shader_parameter/vignette_intensity = 0.8800000418
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.346000016435
+shader_parameter/roll_speed = 1.0000004274999998
+shader_parameter/pixel_strength = -4.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ytuf8"]
+font = ExtResource("8_7koig")
+font_size = 64
+
+[node name="Sub" type="Node3D" unique_id=443815960]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1847204775]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+visible = false
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1667378322]
+environment = SubResource("Environment_1pqt4")
+
+[node name="PlayerSpace" type="Node3D" parent="." unique_id=2147308345]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -900.21277, 0, 0)
+
+[node name="Fake_SuB" type="Node3D" parent="PlayerSpace" unique_id=765512476]
+transform = Transform3D(4.168087, 0, 0, 0, 3.8921623, 0, 0, 0, 3.8921623, 0, 0, 0)
+
+[node name="Sub_Body" type="Node3D" parent="PlayerSpace/Fake_SuB" unique_id=1816376281]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Sub_Body" unique_id=1640316048]
+transform = Transform3D(-4.374163e-08, 1.2959981, 0, -1.0006924, -5.6649885e-08, 0, 0, 0, 1.0006924, 0.32268986, -1.4105211e-08, 0)
+use_collision = true
+material = ExtResource("2_51l8h")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Sub_Body/CSGCylinder3D" unique_id=1664900815]
+transform = Transform3D(-0.022020385, -5.836675e-08, 0.87141055, -4.0302787e-08, 1.3033857, 3.8090565e-08, -0.8997305, -5.6955738e-08, -0.02132727, 0, 0, 0)
+operation = 2
+sides = 6
+material = ExtResource("2_51l8h")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Sub_Body" unique_id=412303701]
+transform = Transform3D(-4.3741647e-08, 1.0006921, 0, -1.0006925, -4.374167e-08, 0, 0, 0, 1.0006925, 1.719049, -5.3599074e-08, 0)
+use_collision = true
+height = 0.21386719
+material = ExtResource("2_51l8h")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Sub_Body" unique_id=1995002136]
+transform = Transform3D(-4.3741636e-08, 1.2959981, 0, -1.0006924, -5.6649885e-08, 0, 0, 0, 1.0006924, -1.093486, -3.90642e-08, 0)
+use_collision = true
+height = 0.21386719
+material = ExtResource("2_51l8h")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Sub_Body/CSGCylinder3D2" unique_id=2021352098]
+transform = Transform3D(1.0000001, 7.1054274e-15, 0, -3.5527137e-15, 1.0000001, 0, 0, 0, 1.0000001, -0.11928945, 0, 0)
+operation = 2
+use_collision = true
+radius = 0.176
+height = 0.804
+material = ExtResource("2_51l8h")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB" unique_id=693124963]
+transform = Transform3D(-4.3711378e-08, 0.9999997, 0, -1, -4.371139e-08, 0, 0, 0, 1, -1.0414566, 0.118687905, 0)
+use_collision = true
+radius = 0.2
+height = 0.2
+material = ExtResource("2_51l8h")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/CSGCylinder3D4" unique_id=916865724]
+transform = Transform3D(1.0000001, 0, 0, -3.5527137e-15, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
+operation = 2
+use_collision = true
+radius = 0.176
+height = 0.804
+material = ExtResource("2_51l8h")
+
+[node name="Window_Blocker" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB" unique_id=211580294]
+transform = Transform3D(-4.3711346e-08, 0.115417175, 0, -1, -5.0450506e-09, 0, 0, 0, 1, -0.9920044, 0.10277064, 0)
+visible = false
+use_collision = true
+radius = 0.2
+height = 0.2
+
+[node name="SpotLight3D" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=1760715090]
+transform = Transform3D(0.2399182, 0, 0, 0, -0.1144153, 0.23004438, 0, -0.23004438, -0.1144153, 0, 0.4213385, -0.1897946)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=1421689198]
+transform = Transform3D(0.2399182, 0, 0, 0, -0.1144153, 0.23004438, 0, -0.23004438, -0.1144153, -0.48548204, 0.4213385, -0.1897946)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=1242509814]
+transform = Transform3D(0.2399182, 0, 0, 0, -0.1144153, 0.23004438, 0, -0.23004438, -0.1144153, 0.75404984, 0.4213385, -0.1897946)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=1291164987]
+transform = Transform3D(0.2399182, 0, 0, 0, 0.14201665, 0.21410874, 0, -0.21410874, 0.14201665, 0, 0.4213385, 0.16584393)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=1160412564]
+transform = Transform3D(0.2399182, 0, 0, 0, 0.14201665, 0.21410874, 0, -0.21410874, 0.14201665, -0.48548204, 0.4213385, 0.16584393)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="PlayerSpace/Fake_SuB" unique_id=548131648]
+transform = Transform3D(0.2399182, 0, 0, 0, 0.14201665, 0.21410874, 0, -0.21410874, 0.14201665, 0.7540497, 0.4213385, 0.16584393)
+light_color = Color(0.49619633, 0.3497126, 0.07856687, 1)
+light_energy = 8.556
+light_volumetric_fog_energy = 0.87
+light_size = 0.585
+shadow_enabled = true
+
+[node name="Main_Window" type="MeshInstance3D" parent="PlayerSpace/Fake_SuB" unique_id=1229945878]
+transform = Transform3D(-8.742273e-09, 0.19999976, -8.742273e-09, 0, -8.742276e-09, -0.19999999, -0.20000002, -8.742276e-09, 3.8213706e-16, -1.1412354, 0.12109735, 0.0012976032)
+mesh = SubResource("PlaneMesh_yum48")
+surface_material_override/0 = SubResource("StandardMaterial3D_715lt")
+
+[node name="Hud" type="SubViewport" parent="PlayerSpace/Fake_SuB" unique_id=346411124]
+
+[node name="Control" parent="PlayerSpace/Fake_SuB/Hud" unique_id=202643959 instance=ExtResource("3_nek0d")]
+
+[node name="Cam" type="Area3D" parent="PlayerSpace/Fake_SuB" unique_id=1299493268]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 1.4608002, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerSpace/Fake_SuB/Cam" unique_id=1659033969]
+transform = Transform3D(0.9999997, 0, 0, 0, 1.0000025, 0, 0, 0, 1.0000025, -0.07366943, 0, 0)
+shape = SubResource("BoxShape3D_wm6fd")
+
+[node name="Helm" type="Area3D" parent="PlayerSpace/Fake_SuB" unique_id=1612783822]
+transform = Transform3D(0.9999996, 0, 0, 0, 1, 0, 0, 0, 1, -0.7613983, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerSpace/Fake_SuB/Helm" unique_id=1611040364]
+transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_wm6fd")
+
+[node name="radio_speaker" type="AudioStreamPlayer3D" parent="PlayerSpace/Fake_SuB" unique_id=1633211420]
+transform = Transform3D(0.23964986, 0.012147692, 0, -0.011343522, 0.25663927, 0, 0, 0, 0.2569266, -0.9283905, 0.3342938, 0)
+volume_db = 80.0
+
+[node name="Lift_noise" type="AudioStreamPlayer3D" parent="PlayerSpace/Fake_SuB" unique_id=931849442]
+transform = Transform3D(0.2399182, 0, 0, 0, 0.2569266, 0, 0, 0, 0.2569266, 0.49378967, 0.5262801, 0)
+stream = ExtResource("7_i8k7g")
+volume_db = -17.313
+
+[node name="RandomSoundEffects" type="AudioStreamPlayer3D" parent="PlayerSpace/Fake_SuB" unique_id=1539366900]
+transform = Transform3D(0.2399182, 0, 0, 0, 0.2569266, 0, 0, 0, 0.2569266, 0.030761719, 0.5262801, 0)
+stream = ExtResource("7_i8k7g")
+volume_db = -17.313
+
+[node name="Node3D" type="Node3D" parent="PlayerSpace/Fake_SuB" unique_id=2025585577]
+transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, -1.0200043, -0.17968425, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/Node3D" unique_id=279612457]
+transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.027236938, 0.0075448602, 0)
+size = Vector3(0.33822924, 0.41882324, 0.3095703)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/Node3D/CSGBox3D" unique_id=1089668753]
+transform = Transform3D(0.030031886, 0.999549, 0, -0.9995479, 0.030033251, 0, 0, 0, 1, 0.12724304, 0.22143133, 0)
+operation = 2
+size = Vector3(0.2258468, 0.37420654, 0.54785156)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/Node3D/CSGBox3D/CSGBox3D3" unique_id=1842683769]
+transform = Transform3D(0.05367896, -0.9985807, 0, 0.998571, 0.053674184, 0, 0, 0, 1.0000309, 0.1092844, -0.26280212, 0)
+size = Vector3(0.4376376, 0.25231934, 0.54785156)
+
+[node name="Helm" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Node3D" unique_id=593325604]
+transform = Transform3D(-1.0010176e-07, 0.99999917, 0, -1.0000002, 6.1256074e-08, 0, 0, 0, 1, 0.15296936, 0.041175604, 0)
+radius = 0.12402344
+height = 0.012512207
+
+[node name="DART" type="Node3D" parent="PlayerSpace/Fake_SuB" unique_id=2002542877]
+transform = Transform3D(0.99999917, 0, 0, 0, 1, 0, 0, 0, 1, 1.5945435, -0.17968425, 0)
+
+[node name="CRT2" parent="PlayerSpace/Fake_SuB/DART" unique_id=1334030640 instance=ExtResource("9_biul0")]
+transform = Transform3D(0.18363447, 0, -0.16534494, 0, 0.25692663, 0, 0.15439935, 0, 0.19665287, -0.045455933, 0.2441497, -0.1973616)
+
+[node name="MeshInstance3D" type="AnimatedSprite3D" parent="PlayerSpace/Fake_SuB/DART/CRT2" unique_id=1612817826]
+transform = Transform3D(-0.14455158, -5.3487605e-09, -3.7252903e-09, 1.7949883e-09, -0.28715938, 0, -2.2351742e-08, -6.661338e-16, 0.097418144, -0.01159668, -0.00683254, 0.46636963)
+sprite_frames = SubResource("SpriteFrames_d7cnb")
+autoplay = "default"
+frame_progress = 0.35229415
+
+[node name="CSGBox3D" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/DART" unique_id=833362218]
+transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.120529175, 0.0482357, -0.09555053)
+size = Vector3(0.27563477, 0.1640625, 0.29437256)
+material = ExtResource("2_51l8h")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/DART/CSGBox3D" unique_id=237502367]
+transform = Transform3D(0.91121644, 0.4119279, 0, -0.41192818, 0.91121644, 0, 0, 0, 1, -0.0398407, -0.08809611, -0.004919097)
+operation = 2
+size = Vector3(0.27563477, 0.119140625, 0.34405136)
+material = ExtResource("2_51l8h")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/DART/CSGBox3D" unique_id=562498204]
+transform = Transform3D(0.91121644, 0.4119279, 0, -0.41192818, 0.91121644, 0, 0, 0, 1, -0.019302368, -0.07220027, -0.0049191117)
+operation = 2
+size = Vector3(0.39642334, 0.16503906, 0.24975586)
+material = ExtResource("2_51l8h")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PlayerSpace/Fake_SuB/DART" unique_id=2023099062]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="PlayerSpace/Fake_SuB/DART/StaticBody3D" unique_id=250740126]
+transform = Transform3D(0.9999994, 0, 0, 0, 1, 0, 0, 0, 1, -0.120529175, 0.0482357, -0.09555053)
+shape = SubResource("ConcavePolygonShape3D_v26c0")
+
+[node name="CRT" parent="PlayerSpace/Fake_SuB" unique_id=246017689 instance=ExtResource("9_biul0")]
+transform = Transform3D(0.19922984, 0, 0.23808333, 0, 0.25692663, 0, -0.22346154, 0, 0.2122663, -0.90400696, 0.13992362, -0.3140918)
+
+[node name="Sub_Computer" type="MeshInstance3D" parent="PlayerSpace/Fake_SuB/CRT" unique_id=1336111389]
+transform = Transform3D(0.3604311, 0, 0, 0, -4.36406e-08, -0.4286871, 0, 0.9983806, -1.8738508e-08, 0.011657715, -0.010257721, 0.46451914)
+mesh = SubResource("PlaneMesh_7hphq")
+surface_material_override/0 = SubResource("StandardMaterial3D_wm6fd")
+
+[node name="View_Into_Sub" type="SubViewport" parent="PlayerSpace/Fake_SuB" unique_id=490413698]
+
+[node name="Camera3D" type="Camera3D" parent="PlayerSpace/Fake_SuB/View_Into_Sub" unique_id=2003437521]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -904.90643, 0.4296843, 0)
+
+[node name="Hatch" type="Node3D" parent="PlayerSpace/Fake_SuB" unique_id=1924505026]
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Hatch" unique_id=1829363657]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44529462, 0)
+material_override = ExtResource("2_51l8h")
+radius = 0.17480469
+height = 0.13964844
+
+[node name="Hatch" type="Node3D" parent="PlayerSpace/Fake_SuB/Hatch" unique_id=26962688]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Hatch/Hatch" unique_id=663625527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.004095912, 0)
+material_override = ExtResource("11_m7srd")
+radius = 0.1459961
+height = 0.057250977
+
+[node name="CSGBox3D" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/Hatch/Hatch/CSGCylinder3D8" unique_id=2122368657]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12995529, -0.010146797, 0.00014956295)
+size = Vector3(0.05899048, 0.08135986, 0.068115234)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Hatch/Hatch/CSGCylinder3D8/CSGBox3D" unique_id=235319767]
+transform = Transform3D(1, 7.42085e-06, -3.642485e-05, 3.642485e-05, -3.6918067e-05, 1, 7.4208483e-06, -1, -3.6918067e-05, 0.00486061, -0.006115496, -0.00024414063)
+radius = 0.056640625
+height = 0.06982422
+sides = 6
+
+[node name="LockingWheel2" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Hatch/Hatch" unique_id=1523048980]
+transform = Transform3D(-0.3, 3.960142e-15, -4.5298744e-08, 0, 0.3, 2.6226834e-08, 4.5298744e-08, 2.6226834e-08, -0.3, 0.0016927123, 0.044691086, -0.00031733513)
+material_override = ExtResource("11_m7srd")
+radius = 0.19482422
+height = 0.04284668
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Hatch/Hatch/LockingWheel2" unique_id=280177052]
+operation = 2
+radius = 0.17529297
+height = 0.04284668
+
+[node name="CSGBox3D" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/Hatch/Hatch/LockingWheel2" unique_id=1481038632]
+size = Vector3(0.03125, 0.026367188, 0.3623047)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="PlayerSpace/Fake_SuB/Hatch/Hatch/LockingWheel2" unique_id=1308725066]
+transform = Transform3D(-5.960464e-08, -4.371139e-08, -1, -4.3711392e-08, 1, -4.371139e-08, 1, 4.371139e-08, -5.9604645e-08, 0, 0, 0)
+size = Vector3(0.03125, 0.026367188, 0.3623047)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="PlayerSpace/Fake_SuB/Hatch/Hatch/LockingWheel2" unique_id=1640758299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03765869, 0)
+radius = 0.026367188
+height = 0.12219238
+
+[node name="Node3D" parent="." unique_id=69286103 groups=["Map"] instance=ExtResource("14_lw1l2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -29.327824, 0)
+
+[node name="CaveBlocker" type="StaticBody3D" parent="Node3D" unique_id=964071621]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 205.6053, -204.60379, 191.0634)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CaveBlocker" unique_id=1748725162]
+shape = SubResource("BoxShape3D_v26c0")
+
+[node name="CaveVoiceTigger" type="Area3D" parent="Node3D" unique_id=198204565]
+transform = Transform3D(0.57357645, 0.81915206, 0, -0.81915206, 0.57357645, 0, 0, 0, 1, 205.6053, -275.50378, 191.0634)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CaveVoiceTigger" unique_id=440987912]
+shape = SubResource("BoxShape3D_v26c0")
+
+[node name="Hoist_Tigger" type="Area3D" parent="Node3D" unique_id=673778007]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Hoist_Tigger" unique_id=522206604]
+transform = Transform3D(0.9998981, 0, -0.014276308, 0, 1, 0, 0.014276308, 0, 0.9998981, 0, 15.376221, 0)
+shape = SubResource("BoxShape3D_v26c0")
+
+[node name="Sub" type="Node3D" parent="." unique_id=956374506]
+transform = Transform3D(-1.7484555e-07, 0, -4, 0, 4, 0, 4, 0, -1.7484555e-07, 0, -13.64443, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Sub" unique_id=1521660470]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+material_override = ExtResource("2_51l8h")
+height = 2.834961
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Sub/CSGCylinder3D" unique_id=265265937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3582464, -0.07400679)
+material_override = ExtResource("2_51l8h")
+operation = 2
+radius = 0.19580078
+height = 0.32861328
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Sub" unique_id=1274707469]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.43066168, -0.24085462, 0)
+material_override = ExtResource("11_m7srd")
+radius = 0.2397461
+height = 1.671875
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Sub/CSGCylinder3D2" unique_id=188669931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83922994, -2.9802322e-08)
+radius = 0.24262589
+radial_segments = 8
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Sub/CSGCylinder3D2" unique_id=1973352071]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.83793205, 2.9802322e-08)
+radius = 0.24262589
+radial_segments = 8
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Sub" unique_id=1450134316]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.36933833, -0.24085462, 0)
+material_override = ExtResource("11_m7srd")
+radius = 0.2397461
+height = 1.671875
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Sub/CSGCylinder3D3" unique_id=112147836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83922994, -2.9802322e-08)
+radius = 0.24262589
+radial_segments = 8
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Sub/CSGCylinder3D3" unique_id=1384453266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.83793205, 2.9802322e-08)
+radius = 0.24262589
+radial_segments = 8
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Sub" unique_id=523504995]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.011474609, 0, -1.5738907)
+material_override = ExtResource("2_51l8h")
+size = Vector3(0.02734375, 1.1350098, 0.3486328)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Sub/CSGBox3D" unique_id=366819447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3166504)
+operation = 2
+size = Vector3(0.22045898, 0.32714844, 0.80322266)
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Sub" unique_id=1409805442]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0.011474609, -1.0127467e-08, -1.057731)
+material_override = ExtResource("11_m7srd")
+radius = 0.017089844
+height = 1.5366211
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Sub" unique_id=1118591540]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0.011474609, 1.5798156e-08, -1.4594873)
+material_override = ExtResource("2_51l8h")
+radius = 0.17333984
+height = 0.09716797
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Sub" unique_id=215197452]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0.011474609, -1.0127467e-08, -1.7943053)
+material_override = ExtResource("11_m7srd")
+radius = 0.041015625
+height = 0.046875
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Sub/CSGCylinder3D6" unique_id=1903715186]
+transform = Transform3D(0.7358844, 2.9597294e-08, 0.67710716, -2.9597294e-08, 0.9999999, -1.1544856e-08, -0.67710716, -1.1544859e-08, 0.7358843, 0, 0.0065820217, 1.1514707e-08)
+radius = 0.21533203
+height = 0.001
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Sub/CSGCylinder3D6/CSGCylinder3D5" unique_id=392822256]
+transform = Transform3D(-0.7071054, 3.0908033e-08, 0.7070969, -3.0908453e-08, 0.9999845, -7.461861e-08, -0.70710456, -7.461869e-08, -0.7070963, 0.014026275, 0, -0.0140263)
+operation = 2
+size = Vector3(0.5498047, 0.119140625, 0.037475586)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Sub/CSGCylinder3D6/CSGCylinder3D5" unique_id=661996654]
+transform = Transform3D(0.7071067, 3.0908115e-08, 0.7070983, -3.0908435e-08, 0.9999851, -1.2802431e-08, -0.7071039, -1.280279e-08, 0.7070955, 0, 0, 0)
+material_override = ExtResource("11_m7srd")
+operation = 2
+size = Vector3(0.5498047, 0.119140625, 0.0390625)
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Sub" unique_id=827402040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44529462, 0)
+material_override = ExtResource("2_51l8h")
+radius = 0.17480469
+height = 0.13964844
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Sub" unique_id=70299580]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5040959, 0)
+material_override = ExtResource("11_m7srd")
+radius = 0.1459961
+height = 0.057250977
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Sub/CSGCylinder3D8" unique_id=514041480]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12995529, -0.010146797, 0.00014956295)
+size = Vector3(0.05899048, 0.08135986, 0.068115234)
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Sub" unique_id=1883357051]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.07829089, 1.4208752)
+material_override = ExtResource("2_51l8h")
+radius = 0.23730469
+height = 0.107421875
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Sub/CSGCylinder3D9" unique_id=39580492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1105957, 0)
+material_override = ExtResource("2_51l8h")
+operation = 2
+radius = 0.19580078
+height = 0.32861328
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sub" unique_id=2016727607]
+transform = Transform3D(0.22181207, 0, 0, 0, -4.3711385e-08, -0.20805714, 0, 0.99999994, -9.0944665e-09, 0, 0.08362198, 1.3617783)
+mesh = SubResource("PlaneMesh_en8mb")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=121308662]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14.359994, -13.414759, 0)
+environment = SubResource("Environment_4pfjr")
+current = true
+fov = 40.940872
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1095490280]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1494304051]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="ColorRect" parent="CanvasLayer/Control" unique_id=812255040]
+material = SubResource("ShaderMaterial_wx3aq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=1364365562]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -124.5
+offset_right = 124.5
+offset_bottom = 79.0
+grow_horizontal = 2
+text = "Sub Artic"
+label_settings = SubResource("LabelSettings_ytuf8")
+
+[connection signal="body_entered" from="PlayerSpace/Fake_SuB/Cam" to="PlayerSpace/Fake_SuB/Cam" method="_on_body_entered"]
+[connection signal="body_exited" from="PlayerSpace/Fake_SuB/Cam" to="PlayerSpace/Fake_SuB/Cam" method="_on_body_exited"]
+[connection signal="body_entered" from="PlayerSpace/Fake_SuB/Helm" to="PlayerSpace/Fake_SuB/Helm" method="_on_body_entered"]
+[connection signal="body_exited" from="PlayerSpace/Fake_SuB/Helm" to="PlayerSpace/Fake_SuB/Helm" method="_on_body_exited"]
