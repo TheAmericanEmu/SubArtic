@@ -14,11 +14,11 @@ albedo_color = Color(1, 1, 0.09411765, 1)
 emission_enabled = true
 emission = Color(8.040716, 6.4685707, 1.7855817, 1)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wg3xs"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v7f1b"]
 load_path = "res://.godot/imported/corten-steel-b-15748-in-architextures.jpg-a31a0ead7904c183b121e8c10a27ed6c.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1bay0"]
-albedo_texture = SubResource("CompressedTexture2D_wg3xs")
+albedo_texture = SubResource("CompressedTexture2D_v7f1b")
 uv1_scale = Vector3(2, 2, 2)
 uv1_triplanar = true
 
@@ -174,7 +174,7 @@ _data = {
 script = ExtResource("1_wg3xs")
 
 [node name="Map" type="Node3D" parent="." unique_id=1292672640]
-transform = Transform3D(0.9973944, -0.07214157, 0, 0.07214156, 0.9973946, 0, 0, 0, 1.0000001, 0, 0, 0)
+transform = Transform3D(0.9973943, -0.07214157, 0, 0.07214155, 0.9973946, 0, 0, 0, 1.0000001, 0, 0, 0)
 
 [node name="DeskConsole" parent="Map" unique_id=2064120215 instance=ExtResource("2_5vljy")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.0283718, 0.035983175, -0.21958786)
@@ -387,6 +387,7 @@ transform = Transform3D(-0.69523567, 6.3667605e-09, 0.71878195, 3.72529e-09, 1, 
 fov = 49.38382
 
 [connection signal="pressed" from="CanvasLayer/Control/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Quit" to="." method="_on_quit_pressed"]
 
 [editable path="Map/Door"]

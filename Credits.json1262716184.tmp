@@ -1,10 +1,10 @@
 {
-	"Presented":{
-		"By":["Northwest Passage Game Studios"]
+	"Presented By":{
+		"By":["Northwest Passage Game Studios"],
 	},
-  "The Team":{
+	"The Team":{
 		"Progmamer":[
-			"Colin 'TheAmericanEmu' Harrington-Ding"
+			"Colin 'TheAmericanEmu' Harrington-Ding",
 		],
 		"Voice Actors":["Odell: Conner Nygun"],
 		"Tech Help": ["Mr Prudy"],
@@ -12,6 +12,14 @@
 		"Lord And Savoir":["Mathew Farah"]
 	},
   "Game Assets": {
+	"Meshes": [
+	  {
+		"name": "Submarine",
+		"creator": "Poly by Google",
+		"license": "CC-BY 3.0",
+		"url": "https://poly.pizza/m/dfSQmeuuYt3"
+	  }
+	],
 	"Textures": [
 	  {
 		"name": "Soil 124",
@@ -142,12 +150,6 @@
 		"creator": "GodotShaders",
 		"license": "Unknown",
 		"url": "https://godotshaders.com/shader/spiraling-pattern-backdrop/"
-	  },
-	  {
-		"name": "SimpleGodotCRTShader",
-		"creator": "henriquelalves",
-		"license": "MIT",
-		"url": "https://github.com/henriquelalves/SimpleGodotCRTShader"
 	  }
 	],
 	"Other Assets": [
@@ -163,32 +165,7 @@
 		"license": "Varies",
 		"url": "https://opengameart.org/content/empty-black-keyboard"
 	  }
-	],
-	"Tools Used":[
-	  {
-		"name": "Audacity",
-		"creator": "The Audacity Team",
-		"license": "GNU General Public License",
-		"url": "https://www.audacityteam.org/"
-	  },
-	  {
-		"name": "Godot 4.6",
-		"creator": "Juan Linietsky, Ariel Manzur & Godot Engine contributors",
-		"license": "MIT",
-		"url": "https://godotengine.org/"
-	  },
-	  {
-		"name": "GIMP",
-		"creator": "GIMP Development Team",
-		"license": "GNU GENERAL PUBLIC LICENSE",
-		"url": "https://www.gimp.org/"
-	  },
-		{
-		"name": "AI Discolures",
-		"creator": "No Art Story Elements Was Created With AI",
-		"license": "AI Was used with General Debuging",
-		"url": "Spell Checking and In Writing this JSON File"
-	  },
 	]
   }
 }
+	

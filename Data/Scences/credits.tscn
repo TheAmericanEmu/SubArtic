@@ -1,0 +1,755 @@
+[gd_scene format=3 uid="uid://b5ri5tigan2lu"]
+
+[ext_resource type="PackedScene" uid="uid://n45sm3g4e04m" path="res://Data/objects/desk_console.tscn" id="1_jeu0e"]
+[ext_resource type="Script" uid="uid://b4a1tt44vp2od" path="res://src/credits.gd" id="2_7s70f"]
+[ext_resource type="FontFile" uid="uid://bt7tjn1quay66" path="res://Data/Fonts/Iceberg-Regular.ttf" id="2_hud8b"]
+[ext_resource type="PackedScene" uid="uid://1keaqiuny0ox" path="res://Data/objects/chair.tscn" id="2_ppvjq"]
+[ext_resource type="PackedScene" uid="uid://b5pa3ccryqopn" path="res://Data/objects/door.tscn" id="3_xv0ke"]
+[ext_resource type="Material" uid="uid://ykx7hb2fbpal" path="res://Data/Mat/Old_White_Metal.tres" id="4_klhno"]
+[ext_resource type="Material" uid="uid://b3jratmg8myh3" path="res://Data/Mat/metal_sub.tres" id="5_rbj4c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqyxt"]
+albedo_color = Color(1, 1, 0.09411765, 1)
+emission_enabled = true
+emission = Color(8.040716, 6.4685707, 1.7855817, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wg3xs"]
+load_path = "res://.godot/imported/corten-steel-b-15748-in-architextures.jpg-a31a0ead7904c183b121e8c10a27ed6c.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_toqgh"]
+albedo_texture = SubResource("CompressedTexture2D_wg3xs")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar = true
+
+[sub_resource type="Animation" id="Animation_v7f1b"]
+resource_name = "PitchUndRoll"
+length = 10.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Map:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.6300294, 6.387014, 10),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.1332908, 0, 0), Vector3(-0.049445182, 0, 0), Vector3(-0.15491544, 0, 0), Vector3(0.1332908, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yek8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Map:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.07220428)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s6a6e"]
+_data = {
+&"PitchUndRoll": SubResource("Animation_v7f1b"),
+&"RESET": SubResource("Animation_yek8v")
+}
+
+[sub_resource type="Shader" id="Shader_4namc"]
+code = "// CRT Shader for Godot Engine
+// Simulates the look of old CRT displays with various customizable effects
+shader_type canvas_item;
+
+// Built-in texture for screen sampling
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture;
+
+// Base resolution for pixel-perfect effects (lower values = larger pixels)
+uniform vec2 resolution = vec2(320.0, 180.0);
+
+// ===== Effect Controls =====
+// Each parameter has a sensible default and range hint for the Godot editor
+
+// Scanline effect (dark lines between pixel rows)
+uniform float scan_line_amount : hint_range(0.0, 1.0) = 1.0;
+uniform float scan_line_strength : hint_range(-12.0, -1.0) = -8.0;
+
+// Screen curvature/warp effect
+uniform float warp_amount : hint_range(0.0, 5.0) = 0.1;
+
+// Visual noise/interference
+uniform float noise_amount : hint_range(0.0, 0.3) = 0.03;
+uniform float interference_amount : hint_range(0.0, 1.0) = 0.2;
+
+// Shadow mask/grille (simulates color phosphor patterns)
+uniform float grille_amount : hint_range(0.0, 1.0) = 0.1;
+uniform float grille_size : hint_range(1.0, 5.0) = 1.0;
+
+// Vignette (darkening at screen edges)
+uniform float vignette_amount : hint_range(0.0, 2.0) = 0.6;
+uniform float vignette_intensity : hint_range(0.0, 1.0) = 0.4;
+
+// Chromatic aberration (color separation)
+uniform float aberation_amount : hint_range(0.0, 1.0) = 0.5;
+
+// Rolling line effect (simulates VHS/analog interference)
+uniform float roll_line_amount : hint_range(0.0, 1.0) = 0.3;
+uniform float roll_speed : hint_range(-8.0, 8.0) = 1.0;
+
+// Pixel sharpness/softness
+uniform float pixel_strength : hint_range(-4.0, 0.0) = -2.0;
+
+// ===== Utility Functions =====
+
+/**
+ * Generates a pseudo-random float between 0 and 1 based on input coordinates
+ */
+float random(vec2 uv) {
+    return fract(cos(uv.x * 83.4827 + uv.y * 92.2842) * 43758.5453123);
+}
+
+/**
+ * Samples a pixel from the screen texture with optional offset and noise
+ * Handles edge cases and applies noise if enabled
+ */
+vec3 fetch_pixel(vec2 uv, vec2 off) {
+    // Calculate pixel position with offset and snap to pixel grid
+    vec2 pos = floor(uv * resolution + off) / resolution + vec2(0.5) / resolution;
+
+    // Apply noise if enabled
+    float noise = 0.0;
+    if (noise_amount > 0.0) {
+        noise = random(pos + fract(TIME)) * noise_amount;
+    }
+
+    // Clamp to screen bounds (return black if outside)
+    if (max(abs(pos.x - 0.5), abs(pos.y - 0.5)) > 0.5) {
+        return vec3(0.0);
+    }
+
+    // Sample the texture with mipmap bias for sharper pixels
+    return texture(SCREEN_TEXTURE, pos, -16.0).rgb + noise;
+}
+
+// ===== Pixel and Scanline Processing =====
+
+/**
+ * Calculates distance from current pixel to nearest texel center
+ * Used for sub-pixel filtering and anti-aliasing
+ */
+vec2 Dist(vec2 pos) { 
+    pos = pos * resolution;
+    return -((pos - floor(pos)) - vec2(0.5));
+}
+    
+/**
+ * 1D Gaussian function for smooth filtering
+ */
+float Gaus(float pos, float scale) { 
+    return exp2(scale * pos * pos); 
+}
+
+/**
+ * 3-tap Gaussian filter along horizontal line
+ * Creates smooth horizontal blending between pixels
+ */
+vec3 Horz3(vec2 pos, float off) {
+    // Sample three horizontally adjacent pixels
+    vec3 b = fetch_pixel(pos, vec2(-1.0, off));
+    vec3 c = fetch_pixel(pos, vec2( 0.0, off));
+    vec3 d = fetch_pixel(pos, vec2( 1.0, off));
+    
+    // Calculate weights based on distance from pixel center
+    float dst = Dist(pos).x;
+    float wb = Gaus(dst - 1.0, pixel_strength);
+    float wc = Gaus(dst + 0.0, pixel_strength);
+    float wd = Gaus(dst + 1.0, pixel_strength);
+    
+    // Return weighted average of samples
+    return (b * wb + c * wc + d * wd) / (wb + wc + wd);
+}
+
+/**
+ * Calculates scanline weight for a given position and offset
+ * Creates the dark lines between pixel rows
+ */
+float Scan(vec2 pos, float off) {
+    float dst = Dist(pos).y;
+    return Gaus(dst + off, scan_line_strength);
+}
+
+/**
+ * Applies scanline effect by blending multiple horizontal samples
+ * Combines three scanlines with gaussian weights for smooth transitions
+ */
+vec3 Tri(vec2 pos) {
+    vec3 clr = fetch_pixel(pos, vec2(0.0));
+    
+    if (scan_line_amount > 0.0) {
+        // Sample three vertically adjacent scanlines
+        vec3 a = Horz3(pos, -1.0);
+        vec3 b = Horz3(pos,  0.0);
+        vec3 c = Horz3(pos,  1.0);
+
+        // Calculate scanline weights
+        float wa = Scan(pos, -1.0);
+        float wb = Scan(pos,  0.0);
+        float wc = Scan(pos,  1.0);
+
+        // Blend between original and scanline-affected color
+        vec3 scanlines = a * wa + b * wb + c * wc;
+        clr = mix(clr, scanlines, scan_line_amount);
+    }
+    
+    return clr;
+}
+
+// ===== Screen Warping and Distortion Effects =====
+
+/**
+ * Applies a spherize/bulge distortion to simulate CRT screen curvature
+ * Warps UV coordinates more severely towards screen edges
+ */
+vec2 warp(vec2 uv) {
+    // Calculate distance from center and apply non-linear warping
+    vec2 delta = uv - 0.5;
+    float delta2 = dot(delta.xy, delta.xy);
+    float delta4 = delta2 * delta2;
+    float delta_offset = delta4 * warp_amount;
+    
+    // Apply warping and normalize back to 0-1 range
+    vec2 warped = uv + delta * delta_offset;
+    return (warped - 0.5) / mix(1.0, 1.2, warp_amount/5.0) + 0.5;
+}
+
+/**
+ * Applies vignette effect (darkening at screen edges)
+ * Uses a smooth falloff based on distance from center
+ */
+float vignette(vec2 uv) {
+    // Create circular falloff from center
+    uv *= 1.0 - uv.xy;
+    float vignette = uv.x * uv.y * 15.0;
+    
+    // Apply intensity controls
+    return pow(vignette, vignette_intensity * vignette_amount);
+}
+
+/**
+ * Simulates a shadow mask/grille pattern like those found in CRT displays
+ * Creates color separation similar to real phosphor patterns
+ */
+vec3 grille(vec2 uv) {
+    float unit = PI / 3.0;
+    float scale = 2.0 * unit / grille_size;
+    
+    // Create offset color patterns for RGB channels
+    float r = smoothstep(0.5, 0.8, cos(uv.x * scale - unit));
+    float g = smoothstep(0.5, 0.8, cos(uv.x * scale + unit));
+    float b = smoothstep(0.5, 0.8, cos(uv.x * scale + 3.0 * unit));
+    
+    // Blend between original color and grille pattern
+    return mix(vec3(1.0), vec3(r, g, b), grille_amount);
+}
+
+/**
+ * Creates rolling horizontal interference lines
+ * Simulates analog signal interference or VHS artifacts
+ */
+float roll_line(vec2 uv) {
+    // Create complex wave pattern that moves with time
+    float x = uv.y * 3.0 - TIME * roll_speed;
+    float f = cos(x) * cos(x * 2.35 + 1.1) * cos(x * 4.45 + 2.3);
+    
+    // Threshold and smooth the wave to create distinct lines
+    float roll_line = smoothstep(0.5, 0.9, f);
+    return roll_line * roll_line_amount;
+}
+
+// ===== Main Shader Function =====
+
+void fragment() {
+    // Get screen coordinates and apply screen warping
+    vec2 pix = FRAGCOORD.xy;
+    vec2 pos = warp(SCREEN_UV);
+    
+    // Generate rolling interference lines if enabled
+    float line = 0.0;
+    if (roll_line_amount > 0.0) {
+        line = roll_line(pos);
+    }
+
+    // Apply horizontal interference/jitter
+    vec2 sq_pix = floor(pos * resolution) / resolution + vec2(0.5) / resolution;
+    if (interference_amount + roll_line_amount > 0.0) {
+        float interference = random(sq_pix.yy + fract(TIME));
+        pos.x += (interference * (interference_amount + line * 6.0)) / resolution.x;
+    }
+
+    // Get base color with scanline processing
+    vec3 clr = Tri(pos);
+    
+    // Apply chromatic aberration (color separation)
+    if (aberation_amount > 0.0) {
+        float chromatic = aberation_amount + line * 2.0;  // Enhanced by rolling lines
+        vec2 chromatic_x = vec2(chromatic, 0.0) / resolution.x;
+        vec2 chromatic_y = vec2(0.0, chromatic/2.0) / resolution.y;
+        
+        // Sample RGB channels with slight offsets
+        float r = Tri(pos - chromatic_x).r;  // Red shifted left
+        float g = Tri(pos + chromatic_y).g;  // Green shifted down
+        float b = Tri(pos + chromatic_x).b;  // Blue shifted right
+        clr = vec3(r, g, b);
+    }
+    
+    // Apply shadow mask/grille effect
+    if (grille_amount > 0.0) {
+        clr *= grille(pix);
+    }
+    
+    // Adjust overall brightness based on effects
+    clr *= 1.0 + scan_line_amount * 0.6 + line * 3.0 + grille_amount * 2.0;
+    
+    // Apply vignette (darken edges)
+    if (vignette_amount > 0.0) {
+        clr *= vignette(pos);
+    }
+    
+    // Output final color
+    COLOR.rgb = clr;
+    COLOR.a = 1.0;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jeu0e"]
+shader = SubResource("Shader_4namc")
+shader_parameter/resolution = Vector2(540, 960)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/scan_line_strength = -7.199999772
+shader_parameter/warp_amount = 1.118000053105
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.0
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.2050000097375
+shader_parameter/vignette_intensity = 0.8800000418
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.346000016435
+shader_parameter/roll_speed = 1.0000004274999998
+shader_parameter/pixel_strength = -4.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_p4uf7"]
+font = ExtResource("2_hud8b")
+font_size = 32
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hud8b"]
+font = ExtResource("2_hud8b")
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7s70f"]
+font = ExtResource("2_hud8b")
+font_size = 12
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_t2atl"]
+font = ExtResource("2_hud8b")
+font_size = 12
+font_color = Color(0, 0.894435, 0.894435, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jeu0e"]
+font = ExtResource("2_hud8b")
+font_size = 23
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Credits" type="Node3D" unique_id=101615143]
+
+[node name="Map" type="Node3D" parent="." unique_id=1032510313]
+transform = Transform3D(0.9973943, -0.07214157, 0, 0.07214155, 0.9973946, 0, 0, 0, 1.0000001, 0, 0, 0)
+
+[node name="DeskConsole" parent="Map" unique_id=2064120215 instance=ExtResource("1_jeu0e")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -2.0283718, 0.035983175, -0.21958786)
+
+[node name="Chair" parent="Map" unique_id=2138102768 instance=ExtResource("2_ppvjq")]
+transform = Transform3D(-0.17445925, 0, -0.04431673, 0, 0.18, 0, 0.04431673, 0, -0.17445925, -1.8036312, -0.05978717, -0.04620278)
+
+[node name="Chair2" parent="Map" unique_id=105716794 instance=ExtResource("2_ppvjq")]
+transform = Transform3D(-0.15469798, 0, 0.092024654, 0, 0.17999999, 0, -0.092024654, 0, -0.15469798, -1.8036312, -0.05978717, -0.44620278)
+
+[node name="Door" parent="Map" unique_id=948103190 instance=ExtResource("3_xv0ke")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, -1.2802945, 0.16955005, 0.30413923)
+
+[node name="Ship_Light" type="Node3D" parent="Map" unique_id=1138377135]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -1.7130665, 0.7269739, -0.25852644)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Ship_Light" unique_id=1903020721]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012298584, 0)
+material_override = ExtResource("4_klhno")
+size = Vector3(1.1447754, 0.31347656, 2.168213)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Ship_Light/CSGBox3D2" unique_id=205412866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10276154, 0)
+operation = 2
+size = Vector3(1, 0.19970703, 2.0253906)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Ship_Light/CSGBox3D2/CSGBox3D" unique_id=350771142]
+transform = Transform3D(0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0, 1, 0.42975911, 0.07420024, -4.7326088e-05)
+operation = 2
+size = Vector3(1, 0.19970703, 2.1662598)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Ship_Light/CSGBox3D2/CSGBox3D" unique_id=1015426522]
+transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, -0.45581993, 0.07415375, 0)
+operation = 2
+size = Vector3(1, 0.19970703, 2.1662598)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map/Ship_Light" unique_id=1840078322]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.28852624, -0.028860927, 0)
+material_override = SubResource("StandardMaterial3D_eqyxt")
+radius = 0.106933594
+height = 2.0976563
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Map/Ship_Light" unique_id=1140105596]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.0078392625, -0.028860927, 0)
+material_override = SubResource("StandardMaterial3D_eqyxt")
+radius = 0.106933594
+height = 2.0488281
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Map/Ship_Light" unique_id=1860352391]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.31538722, -0.028860927, 0)
+material_override = SubResource("StandardMaterial3D_eqyxt")
+radius = 0.106933594
+height = 2.0458984
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Map/Ship_Light" unique_id=431165130]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+shadow_enabled = true
+spot_angle = 55.0
+
+[node name="Ship_Light2" type="Node3D" parent="Map" unique_id=1543694012]
+transform = Transform3D(-3.7252903e-09, 0, 0.2, 0, 0.20000003, 0, -0.2, 0, -3.7252903e-09, -1.3433555, 0.62814903, 0.5205378)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Ship_Light2" unique_id=153828237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012298584, 0)
+material_override = ExtResource("4_klhno")
+size = Vector3(1.1447754, 0.31347656, 2.168213)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/Ship_Light2/CSGBox3D2" unique_id=736002572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10276154, 0)
+operation = 2
+size = Vector3(1, 0.19970703, 2.0253906)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Ship_Light2/CSGBox3D2/CSGBox3D" unique_id=337411471]
+transform = Transform3D(0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0, 1, 0.42975911, 0.07420024, -4.7326088e-05)
+operation = 2
+size = Vector3(1, 0.19970703, 2.1662598)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/Ship_Light2/CSGBox3D2/CSGBox3D" unique_id=1239054931]
+transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, -0.45581993, 0.07415375, 0)
+operation = 2
+size = Vector3(1, 0.19970703, 2.1662598)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map/Ship_Light2" unique_id=1626698048]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.28852624, -0.028860927, 0)
+material_override = SubResource("StandardMaterial3D_eqyxt")
+radius = 0.106933594
+height = 2.0976563
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Map/Ship_Light2" unique_id=1553674330]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.0078392625, -0.028860927, 0)
+material_override = SubResource("StandardMaterial3D_eqyxt")
+radius = 0.106933594
+height = 2.0488281
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Map/Ship_Light2" unique_id=1058412646]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.31538722, -0.028860927, 0)
+material_override = SubResource("StandardMaterial3D_eqyxt")
+radius = 0.106933594
+height = 2.0458984
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Map/Ship_Light2" unique_id=1429570547]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+shadow_enabled = true
+spot_angle = 55.0
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Map" unique_id=2089111597]
+material_override = SubResource("StandardMaterial3D_toqgh")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/CSGCombiner3D" unique_id=2098015810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8793457, 0)
+material_override = ExtResource("5_rbj4c")
+size = Vector3(5, 2.1586914, 5)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Map/CSGCombiner3D" unique_id=1461872151]
+transform = Transform3D(-6.160683e-08, 0, -0.19999996, 0, 0.2, 0, 1.4094001, 0, -8.742275e-09, -1.2802945, 0.16955006, 0.27579924)
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/CSGCombiner3D/CSGCombiner3D" unique_id=616837626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4857788, 0)
+size = Vector3(0.16113281, 1.5400391, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map/CSGCombiner3D/CSGCombiner3D" unique_id=1370024015]
+transform = Transform3D(-3.439584e-08, 1, 0, -0.7868851, -4.371139e-08, 0, 0, 0, 1, 0, 1.252731, 0)
+height = 0.15917969
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Map/CSGCombiner3D/CSGCombiner3D" unique_id=1699362806]
+transform = Transform3D(-3.439584e-08, 1, 0, -0.7868851, -4.371139e-08, 0, 0, 0, 1, 0, -0.290984, 0)
+height = 0.15917969
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/CSGCombiner3D" unique_id=1693140244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5832825, 0.28422242, 0.5112152)
+operation = 2
+size = Vector3(1.6244507, 0.7001343, 0.33370972)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/CSGCombiner3D" unique_id=579052867]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7025299, 0.3227356, -0.32470703)
+operation = 2
+size = Vector3(1.3859558, 0.77716064, 1.1201172)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=36928903]
+libraries/ = SubResource("AnimationLibrary_s6a6e")
+autoplay = &"PitchUndRoll"
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1528488467]
+transform = Transform3D(-0.69523567, 6.3667605e-09, 0.71878195, 3.72529e-09, 1, -5.254454e-09, -0.71878195, -9.754124e-10, -0.69523567, -1.084166, 0.45900035, -0.8037623)
+fov = 49.38382
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=399157022]
+layer = 20
+
+[node name="Panel" type="ColorRect" parent="CanvasLayer" unique_id=411285588]
+material = SubResource("ShaderMaterial_jeu0e")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=735249365]
+layer = 5
+
+[node name="Control" type="Control" parent="CanvasLayer2" unique_id=1340416547 node_paths=PackedStringArray("headers", "sub_header", "title_card", "start_below", "kill_point", "crew", "assest")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_7s70f")
+headers = NodePath("Headers&Crew")
+sub_header = NodePath("Sub_header")
+title_card = NodePath("float")
+start_below = NodePath("start_below")
+kill_point = NodePath("kill_point")
+crew = NodePath("Headers&Crew")
+assest = NodePath("assets")
+
+[node name="float" type="Panel" parent="CanvasLayer2/Control" unique_id=1620524215]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -45.0
+offset_right = 139.5
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CanvasLayer2/Control/float" unique_id=918628666]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.5
+offset_top = -20.0
+offset_right = 113.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SubArtic"
+label_settings = SubResource("LabelSettings_p4uf7")
+horizontal_alignment = 1
+
+[node name="assets" type="Panel" parent="CanvasLayer2/Control" unique_id=1274006367]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -324.0
+offset_right = 139.5
+offset_bottom = -205.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CanvasLayer2/Control/assets" unique_id=552713021]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_right = 80.0
+offset_bottom = 38.0
+grow_horizontal = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_hud8b")
+horizontal_alignment = 1
+
+[node name="Author" type="Label" parent="CanvasLayer2/Control/assets" unique_id=1561603357]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 32.0
+offset_right = 80.0
+offset_bottom = 48.0
+grow_horizontal = 2
+text = "By"
+label_settings = SubResource("LabelSettings_7s70f")
+horizontal_alignment = 1
+
+[node name="License" type="Label" parent="CanvasLayer2/Control/assets" unique_id=1504977075]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = 13.5
+offset_right = 46.0
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "License"
+label_settings = SubResource("LabelSettings_7s70f")
+horizontal_alignment = 1
+
+[node name="Link" type="Label" parent="CanvasLayer2/Control/assets" unique_id=1047945280]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.5
+offset_top = -16.0
+offset_right = 45.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Link"
+label_settings = SubResource("LabelSettings_t2atl")
+horizontal_alignment = 1
+
+[node name="kill_point" type="Label" parent="CanvasLayer2/Control" unique_id=909257703]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_right = 25.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Debug"
+
+[node name="Headers&Crew" type="Panel" parent="CanvasLayer2/Control" unique_id=343369724]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -324.0
+offset_right = 139.5
+offset_bottom = -251.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="CanvasLayer2/Control/Headers&Crew" unique_id=1424418186]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.5
+offset_top = -19.0
+offset_right = 113.5
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Flying Walrus 2"
+label_settings = SubResource("LabelSettings_jeu0e")
+horizontal_alignment = 1
+
+[node name="Sub_header" type="Panel" parent="CanvasLayer2/Control" unique_id=245079559]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.5
+offset_top = -263.0
+offset_right = 56.5
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+
+[node name="Title" type="Label" parent="CanvasLayer2/Control/Sub_header" unique_id=1486433433]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -14.5
+offset_right = 73.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_stretch_ratio = 0.0
+label_settings = SubResource("LabelSettings_jeu0e")
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 0
+
+[node name="start_below" type="Button" parent="CanvasLayer2/Control" unique_id=791571947]
+top_level = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.5
+offset_top = -31.0
+offset_right = 20.5
+grow_horizontal = 2
+grow_vertical = 0
+text = "Skip"
+
+[editable path="Map/Door"]
